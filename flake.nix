@@ -74,17 +74,6 @@
       promise-async
     ];
 
-    neovimRuntime = pkgs.symlinkJoin {
-      name = "neovimRuntime";
-      paths = runtimePackages;
-      postBuild = ''
-        for f in $out/lib/node_modules/.bin/*; do
-          path = "$readlink --canonicalize-missing "$f")"
-          ln -s "$path" "$out/bin/$(basename $f)"
-        done
-      '';
-    };
-
 		flakeInputOverlay = prev: final: {
 			neovim = neovim.packages.${prev.system}.neovim;
 		};
@@ -117,7 +106,17 @@
 
     myNeovimOverlay = prev: final:
 		let
-			myNeovimOverlay = prev.wrapNeovim prev.neovim {
+			neovimRuntime = pkgs.symlinkJoin {
+				name = "neovimRuntime";
+				paths = runtimePackages;
+				postBuild = ''
+					for f in $out/lib/node_modules/.bin/*; do
+						path = "$readlink --canonicalize-missing "$f")"
+						ln -s "$path" "$out/bin/$(basename $f)"
+					done
+				'';
+			};
+			myNeovimUnwrapped = prev.wrapNeovim prev.neovim {
 				configure = {
 					customRC = ''
 						set runtimepath+=${./config}
@@ -132,7 +131,7 @@
         name = "nvim";
         runtimeInputs = [ neovimRuntime ];
         text = ''
-          ${myNeovimOverlay}/bin/nvim "$@"
+          ${myNeovimUnwrapped}/bin/nvim "$@"
         '';
       };
     };
