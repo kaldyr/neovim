@@ -90,29 +90,12 @@
         "type": "github"
       }
     },
-    "plugin_obsidian-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1706898090,
-        "narHash": "sha256-eYN1gERQ0Lz1e244OXJKnpYqlt2cCzCO8IhG/ut9n7Y=",
-        "owner": "epwalsh",
-        "repo": "obsidian.nvim",
-        "rev": "e35acb8e00e979b85a1949cd8028eb50a3b5e764",
-        "type": "github"
-      },
-      "original": {
-        "owner": "epwalsh",
-        "repo": "obsidian.nvim",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "flake-util": "flake-util",
         "flake-utils": "flake-utils",
         "neovim": "neovim",
-        "nixpkgs": "nixpkgs",
-        "plugin_obsidian-nvim": "plugin_obsidian-nvim"
+        "nixpkgs": "nixpkgs"
       }
     },
     "systems": {

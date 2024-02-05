@@ -12,25 +12,22 @@
       url = "github:neovim/neovim/stable?dir=contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Plugins
-    plugin_obsidian-nvim = { url = "github:epwalsh/obsidian.nvim"; flake = false; };
+    # Plugins from Github
+    #plugin_obsidian-nvim = { url = "github:epwalsh/obsidian.nvim"; flake = false; };
   };
 
   outputs = { self, nixpkgs, neovim, flake-utils, ... }@inputs:
   flake-utils.lib.eachDefaultSystem (system:
   let
 
+		# Extra executables
     runtimePackages = with pkgs; [
-      emmet-ls
-      go
-      gopls
-      htmx-lsp
       lua-language-server
       marksman
       nil
-			vscode-langservers-extracted
     ];
 
+		# Plugins from nixpkgs
     plugins = with pkgs.vimPlugins; [
       catppuccin-nvim
       comment-nvim
@@ -74,36 +71,39 @@
       promise-async
     ];
 
+		# Get the neovim package from the neovim flake instead of nixpkgs
 		flakeInputOverlay = prev: final: {
 			neovim = neovim.packages.${prev.system}.neovim;
 		};
 
-    githubPluginOverlay = prev: final:
-    let
-      inherit (prev.vimUtils) buildVimPlugin;
-      plugins = builtins.filter
-        (s: (builtins.match "plugin_.*" s) != null)
-        (builtins.attrNames inputs);
-      plugName = input:
-        builtins.substring
-          (builtins.stringLength "plugin_")
-          (builtins.stringLength input)
-          input;
-      buildPlug = name: buildVimPlugin {
-        pname = plugName name;
-        version = "master";
-        src = builtins.getAttr name inputs;
-      };
-    in
-    {
-      pluginsFromGithub = builtins.listToAttrs (map
-        (plugin: {
-          name = plugName plugin;
-          value = buildPlug plugin;
-        })
-        plugins);
-    };
+		# # Take all the inputs that begin with "plugin_", build them, and add in
+  #   githubPluginOverlay = prev: final:
+  #   let
+  #     inherit (prev.vimUtils) buildVimPlugin;
+  #     plugins = builtins.filter
+  #       (s: (builtins.match "plugin_.*" s) != null)
+  #       (builtins.attrNames inputs);
+  #     plugName = input:
+  #       builtins.substring
+  #         (builtins.stringLength "plugin_")
+  #         (builtins.stringLength input)
+  #         input;
+  #     buildPlug = name: buildVimPlugin {
+  #       pname = plugName name;
+  #       version = "master";
+  #       src = builtins.getAttr name inputs;
+  #     };
+  #   in
+  #   {
+  #     pluginsFromGithub = builtins.listToAttrs (map
+  #       (plugin: {
+  #         name = plugName plugin;
+  #         value = buildPlug plugin;
+  #       })
+  #       plugins);
+  #   };
 
+		# Configure neovim
     myNeovimOverlay = prev: final:
 		let
 			neovimRuntime = pkgs.symlinkJoin {
@@ -140,7 +140,7 @@
       system = system;
       overlays = [
 				flakeInputOverlay
-        githubPluginOverlay
+        # githubPluginOverlay
         myNeovimOverlay
       ];
     };
