@@ -72,8 +72,8 @@
 
   in
   {
-    apps = rec {
 
+    apps = rec {
       nvim = flake-utils.lib.mkApp { drv = self.packages.${system}.nvim; };
       default = nvim;
     };
