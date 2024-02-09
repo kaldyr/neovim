@@ -1,13 +1,24 @@
-require('fidget').setup {}
+local status_ok, lspconfig = pcall( require, 'lspconfig' )
+if not status_ok then
+	return
+end
 
-require('neodev').setup({
-	override = function(root_dir, library)
-		if root_dir:find('/home/matt/neovim', 1, true) == 1 then
-			library.enabled = true
-			library.plugins = true
-		end
-	end,
-})
+local status_ok, fidget = pcall( require, 'fidget' )
+if status_ok then
+	fidget.setup {}
+end
+
+local status_ok, neodev = pcall( require, 'neodev' )
+if status_ok then
+	neodev.setup({
+		override = function(root_dir, library)
+			if root_dir:find('/home/matt/.config/nixos/', 1, true) == 1 then
+				library.enabled = true
+				library.plugins = true
+			end
+		end,
+	})
+end
 
 local on_attach = function(_, bufnr)
 
@@ -23,8 +34,8 @@ local on_attach = function(_, bufnr)
   nmap('gI', vim.lsp.buf.implementation, 'Goto Implementation')
   nmap('gr', vim.lsp.buf.references, 'Goto References')
   nmap('gT', vim.lsp.buf.type_definition, 'Goto Type Definition')
-  nmap('K', vim.lsp.buf.hover, 'Hover Documenation')
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documenation')
+  nmap('<leader>ch', vim.lsp.buf.hover, 'Hover Documenation')
+  nmap('<leader>cs', vim.lsp.buf.signature_help, 'Signature Documenation')
   nmap('<leader>ca', vim.buf.code_action, 'Code Action')
   nmap('<leader>cr', vim.buf.rename, 'Code Rename')
   nmap('<leader>ds', vim.buf.document_symbols, 'Document Symbols')
@@ -38,12 +49,12 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-require('lspconfig').cssls.setup { on_attach = on_attach, capabilities = capabilities }
-require('lspconfig').emmet_ls.setup { on_attach = on_attach, capabilities = capabilities }
-require('lspconfig').gopls.setup { on_attach = on_attach, capabilities = capabilities }
-require('lspconfig').html.setup { on_attach = on_attach, capabilities = capabilities }
-require('lspconfig').htmx.setup { on_attach = on_attach, capabilities = capabilities }
-require('lspconfig').lua_ls.setup {
+lspconfig.cssls.setup { on_attach = on_attach, capabilities = capabilities }
+lspconfig.emmet_ls.setup { on_attach = on_attach, capabilities = capabilities }
+lspconfig.gopls.setup { on_attach = on_attach, capabilities = capabilities }
+lspconfig.html.setup { on_attach = on_attach, capabilities = capabilities }
+lspconfig.htmx.setup { on_attach = on_attach, capabilities = capabilities }
+lspconfig.lua_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
@@ -53,8 +64,8 @@ require('lspconfig').lua_ls.setup {
     },
   },
 }
-require('lspconfig').marksman.setup { on_attach = on_attach, capabilities = capabilities }
-require('lspconfig').nil_ls.setup { on_attach = on_attach, capabilities = capabilities }
+lspconfig.marksman.setup { on_attach = on_attach, capabilities = capabilities }
+lspconfig.nil_ls.setup { on_attach = on_attach, capabilities = capabilities }
 
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })

@@ -5,32 +5,33 @@ require('options')
 require('keymaps')
 
 -- Colorscheme
-require('plugs.catppuccin')
+require('plugins.catppuccin')
 
 -- Which Key
-require('plugs.which-key')
+require('plugins.which-key')
 
 -- LSP Configuration
-require('plugs.nvim-lspconfig')
+require('plugins.nvim-lspconfig')
 
 -- Treesitter
-require('plugs.treesitter')
+require('plugins.treesitter')
 
 -- Completion
-require('plugs.nvim-cmp')
+require('plugins.nvim-cmp')
 
 -- Telescope
-require('plugs.telescope')
+require('plugins.telescope')
 
 -- Plugins
-require('Comment').setup()
-require('ibl').setup()
-require('neoscroll').setup()
-require('noice').setup()
-require('plugs.flash')
-require('plugs.gitsigns')
-require('plugs.lualine')
-require('plugs.nvim-colorizer')
-require('plugs.nvim-tree')
-require('plugs.nvim-ufo')
-require('plugs.obsidian')
+require('plugins.comment')
+require('plugins.flash')
+require('plugins.gitsigns')
+require('plugins.indent-blankline')
+require('plugins.lualine')
+require('plugins.neoscroll')
+require('plugins.noice')
+require('plugins.nvim-colorizer')
+require('plugins.nvim-tree')
+require('plugins.nvim-ufo')
+require('plugins.obsidian')
+require('plugins.sort')

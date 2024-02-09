@@ -1,4 +1,9 @@
-require('nvim-tree').setup({
+local status_ok, nvimtree = pcall( require, 'nvim-tree' )
+if not status_ok then
+	return
+end
+
+nvimtree.setup({
 
   filters = {
     custom = {
@@ -67,4 +72,4 @@ require('nvim-tree').setup({
 
 })
 
-vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = 'File Explorer', silent = true })
+vim.keymap.set('n', '<leader>e', ':NvimTreeFocus<CR>', { desc = 'File Explorer', silent = true })

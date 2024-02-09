@@ -1,4 +1,9 @@
-require('gitsigns').setup({
+local status_ok, gitsigns = pcall( require, 'gitsigns' )
+if not status_ok then
+	return
+end
+
+gitsigns.setup({
 
 	signs = {
 		add = { text = '+' },
@@ -57,13 +62,13 @@ require('gitsigns').setup({
 			gs.blame_line { full = false }
 		end, { desc = 'git blame line' })
 		map('n', '<leader>gd', gs.diffthis, { desc = 'git diff against index' })
-		map('n', '<leader>gD', function()
+		map('n', '<leader>gc', function()
 			gs.diffthis '~'
 		end, { desc = 'git diff against last commit' })
 
 		-- Toggles
 		map('n', '<leader>gb', gs.toggle_current_line_blame, { desc = 'toggle git blame line' })
-		map('n', '<leader>gd', gs.toggle_deleted, { desc = 'toggle git show deleted' })
+		map('n', '<leader>gD', gs.toggle_deleted, { desc = 'toggle git show deleted' })
 
 		-- Text object
 		map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'select git hunk' })
