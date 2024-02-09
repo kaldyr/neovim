@@ -19,11 +19,11 @@
   let
 
 		# Extra executables
-    runtimePackages = with pkgs; [
-      lua-language-server
-      marksman
-      nil
-    ];
+    # runtimePackages = with pkgs; [
+    #   lua-language-server
+    #   marksman
+    #   nil
+    # ];
 
 		# Plugins from nixpkgs
     plugins = with pkgs.vimPlugins; [
@@ -81,7 +81,7 @@
 
 			neovimRuntime = pkgs.symlinkJoin {
 				name = "neovimRuntime";
-				paths = runtimePackages;
+				# paths = runtimePackages;
 				postBuild = ''
 					for f in $out/lib/node_modules/.bin/*; do
 						path = "$readlink --canonicalize-missing "$f")"
@@ -103,8 +103,8 @@
 		in 
 		{
 			myNeovim = prev.writeShellApplication {
-        name = "nvim";
-        runtimeInputs = [ neovimRuntime ];
+        name = "neovim";
+        # runtimeInputs = [ neovimRuntime ];
         text = ''
           ${myNeovimUnwrapped}/bin/nvim "$@"
         '';
