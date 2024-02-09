@@ -122,13 +122,13 @@
   in
   {
     packages = rec {
-      nvim = pkgs.myNeovim;
-      default = nvim;
+      neovim = pkgs.myNeovim;
+      default = neovim;
     };
 
     apps = rec {
-      nvim = flake-utils.lib.mkApp { drv = self.packages.${system}.nvim; };
-      default = nvim;
+      neovim = flake-utils.lib.mkApp { drv = self.packages.${system}.neovim; };
+      default = neovim;
     };
   });
 
