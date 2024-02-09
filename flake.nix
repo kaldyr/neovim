@@ -13,6 +13,11 @@
   flake-utils.lib.eachDefaultSystem (system:
   let
 
+    pkgs = import nixpkgs {
+      system = system;
+      overlays = [ (final: prev: { neovim = neovim.packages.${prev.system}.neovim; }) ];
+    };
+
 		neovimWrapped = pkgs.wrapNeovim pkgs.neovim {
 			configure = {
 				customRC = ''
@@ -65,13 +70,14 @@
 			};
 		};
 
-    pkgs = import nixpkgs {
-      system = system;
-      overlays = [ (final: prev: { neovim = neovim.packages.${prev.system}.neovim; }) ];
-    };
-
   in
   {
+    apps = rec {
+
+      nvim = flake-utils.lib.mkApp { drv = self.packages.${system}.nvim; };
+      default = nvim;
+    };
+
     packages = rec {
       nvim = pkgs.writeShellApplication {
         name = "neovim";
@@ -82,10 +88,6 @@
       default = nvim;
     };
 
-    apps = rec {
-      nvim = flake-utils.lib.mkApp { drv = self.packages.${system}.nvim; };
-      default = nvim;
-    };
   });
 
 }

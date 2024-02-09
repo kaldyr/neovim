@@ -6,8 +6,7 @@ end
 obsidian.setup {
 
 	workspaces = {
-		{ name = "Notes", path = "~/Notes/Main" },
-		{ name = 'LaochraEadrom', path = '~/Notes/LaochraEadrom' },
+		{ name = "Notes", path = "~/Notes" },
 	},
 
 	mappings = {
