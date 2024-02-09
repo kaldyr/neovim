@@ -1,13 +1,8 @@
 {
 
-  description = "Custom Neovim";
-
   inputs = {
-    # Packages
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    # Flake
     flake-util.url = "github:numtide/flake-utils";
-    # Neovim
     neovim = {
       url = "github:neovim/neovim/stable?dir=contrib";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,15 +13,8 @@
   flake-utils.lib.eachDefaultSystem (system:
   let
 
-		# Get the neovim package from the neovim flake instead of nixpkgs
-		flakeInputOverlay = prev: final: {
-			neovim = neovim.packages.${prev.system}.neovim;
-		};
-
-		# Configure neovim
     myNeovimOverlay = prev: final:
 		let
-
 			myNeovimUnwrapped = prev.wrapNeovim prev.neovim {
 				configure = {
 					customRC = ''
@@ -76,10 +64,8 @@
 						vim-illuminate
 						which-key-nvim
 					];
-
 				};
 			};
-
 		in 
 		{
 			myNeovim = prev.writeShellApplication {
@@ -93,7 +79,7 @@
     pkgs = import nixpkgs {
       system = system;
       overlays = [
-				flakeInputOverlay
+				(final: prev: { neovim = neovim.packages.${prev.system}.neovim; })
         myNeovimOverlay
       ];
     };
@@ -101,13 +87,13 @@
   in
   {
     packages = rec {
-      neovim = pkgs.myNeovim;
-      default = neovim;
+      nvim = pkgs.myNeovim;
+      default = nvim;
     };
 
     apps = rec {
-      neovim = flake-utils.lib.mkApp { drv = self.packages.${system}.neovim; };
-      default = neovim;
+      nvim = flake-utils.lib.mkApp { drv = self.packages.${system}.nvim; };
+      default = nvim;
     };
   });
 
