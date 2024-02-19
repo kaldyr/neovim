@@ -25,6 +25,7 @@
 					source ${./config/init.lua}
 				'';
 				packages.all.start = with pkgs.vimPlugins; [
+					boole-nvim
 					catppuccin-nvim
 					cmp-buffer
 					cmp-cmdline
@@ -47,7 +48,7 @@
 					nvim-colorizer-lua
 					nvim-lspconfig
 					nvim-tree-lua
-					(nvim-treesitter.withPlugins (_: nvim-treesitter.allGrammars))
+					nvim-treesitter.withAllGrammars
 					nvim-treesitter-context
 					nvim-treesitter-textobjects
 					nvim-ts-autotag
