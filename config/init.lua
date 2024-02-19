@@ -23,6 +23,7 @@ require('plugins.nvim-cmp')
 require('plugins.telescope')
 
 -- Plugins
+require('plugins.boole')
 require('plugins.comment')
 require('plugins.flash')
 require('plugins.gitsigns')

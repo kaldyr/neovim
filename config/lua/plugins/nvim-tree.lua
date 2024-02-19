@@ -32,7 +32,7 @@ nvimtree.setup({
   end,
 
   sort_by = function(nodes)
-
+		-- Natural sorting method putting numbers in correct order (1, 10, 100, 2) -> (1, 2, 10, 100)
     table.sort(nodes, function(left, right)
 
       if left.type ~= 'directory' and right.type == 'directory' then

@@ -14,8 +14,8 @@ vim.keymap.set('n', '<C-Up>', ':resize -1<CR>', { silent = true })
 -- Close buffers
 vim.keymap.set('n', '<S-q>', ':bd<CR>', { silent = true })
 -- Move current line
-vim.keymap.set('n', '<C-k>', ':move .-2<CR>==', { silent = true, noremap = true })
 vim.keymap.set('n', '<C-j>', ':move .+1<CR>==', { silent = true, noremap = true })
+vim.keymap.set('n', '<C-k>', ':move .-2<CR>==', { silent = true, noremap = true })
 -- Spellcheck
 vim.keymap.set('n', '<leader>St', ':set invspell<CR>', { desc = 'Toggle Spellcheck', silent = true, noremap = true })
 vim.keymap.set('n', '<leader>Ss', 'z=', { desc = 'Suggest Spelling', silent = true, noremap = true })

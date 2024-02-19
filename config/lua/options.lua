@@ -1,4 +1,3 @@
-vim.opt.autoindent = true
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.conceallevel = 2
 vim.opt.cursorline = true
@@ -24,6 +23,4 @@ vim.opt.timeoutlen = 400
 vim.opt.title = true
 vim.opt.undofile = true
 vim.opt.wrap = false
--- vim.opt.shortmess:append "sfI"
--- vim.opt.whichwrap:append("<>[]hl")
--- vim.opt.iskeyword:append("-")
+vim.opt.shortmess:append "sfI"
