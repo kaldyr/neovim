@@ -1,6 +1,8 @@
+vim.opt.autoindent = true;
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.conceallevel = 2
 vim.opt.cursorline = true
+vim.opt.expandtab = true;
 vim.opt.fillchars = { eob = ' '; }
 vim.opt.mouse = 'a'
 vim.opt.number = true
@@ -14,6 +16,7 @@ vim.opt.sidescrolloff = 8
 vim.opt.signcolumn = 'yes'
 vim.opt.smartcase = true
 vim.opt.smartindent = true
+vim.opt.softtabstop = 2
 vim.opt.spelllang = 'en_us'
 vim.opt.swapfile = false
 vim.opt.syntax = 'on'
