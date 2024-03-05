@@ -1,23 +1,23 @@
 local status_ok, lspconfig = pcall( require, 'lspconfig' )
 if not status_ok then
-	return
+  return
 end
 
 local status_ok, fidget = pcall( require, 'fidget' )
 if status_ok then
-	fidget.setup {}
+  fidget.setup {}
 end
 
 local status_ok, neodev = pcall( require, 'neodev' )
 if status_ok then
-	neodev.setup({
-		override = function(root_dir, library)
-			if root_dir:find('/home/matt/.config/nixos/', 1, true) == 1 then
-				library.enabled = true
-				library.plugins = true
-			end
-		end,
-	})
+  neodev.setup({
+    override = function(root_dir, library)
+      if root_dir:find('/home/matt/.config/nixos/', 1, true) == 1 then
+        library.enabled = true
+        library.plugins = true
+      end
+    end,
+  })
 end
 
 local on_attach = function(_, bufnr)

@@ -21,10 +21,10 @@ vim.keymap.set('n', '<leader>St', ':set invspell<CR>', { desc = 'Toggle Spellche
 vim.keymap.set('n', '<leader>Ss', 'z=', { desc = 'Suggest Spelling', silent = true, noremap = true })
 -- Replace word under cursor
 vim.keymap.set(
-	'n',
-	'<leader>rw',
-	':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gcI<left><left><left><left>',
-	{ desc = 'Replace [W]ord under cursor', silent = false }
+  'n',
+  '<leader>rw',
+  ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gcI<left><left><left><left>',
+  { desc = 'Replace [W]ord under cursor', silent = false }
 )
 -- Smart dd
 vim.keymap.set('n', 'dd', function()
@@ -46,10 +46,10 @@ vim.keymap.set('x', '.', ':norm .<CR>', { silent = true, noremap = true })
 vim.keymap.set('x', '@', ':norm @@<CR>', { silent = true, noremap = true })
 -- Replace selection
 vim.keymap.set(
-	'v',
-	'<leader>rs',
-	'"hy:%s/<C-r>h/<C-r>h/gc<left><left><left>',
-	{ desc = 'Replace [S]election', silent = false }
+  'v',
+  '<leader>rs',
+  '"hy:%s/<C-r>h/<C-r>h/gc<left><left><left>',
+  { desc = 'Replace [S]election', silent = false }
 )
 
 -- Multiple modes
@@ -60,8 +60,8 @@ vim.keymap.set({'n', 'v'}, 'c', '\"_c', { silent = true, noremap = true })
 vim.keymap.set({'n', 'v'}, 'x', '\"_x', { silent = true, noremap = true })
 -- Fighting One-Eyed Kirby
 vim.keymap.set(
-	{'n', 'x'},
-	'<leader>rk',
-	':s/\\(.*\\)/\\1<left><left><left><left><left><left><left><left><left>',
-	{ desc = 'Fighting One-Eyed Kirby', silent = false }
+  {'n', 'x'},
+  '<leader>rk',
+  ':s/\\(.*\\)/\\1<left><left><left><left><left><left><left><left><left>',
+  { desc = 'Fighting One-Eyed Kirby', silent = false }
 )
