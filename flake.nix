@@ -71,6 +71,22 @@
 			};
 		};
 
+    runtimeDeps = pkgs.symlinkJoin {
+      name = "runtimeDeps";
+      paths = with pkgs; [
+        lua-language-server
+        marksman
+        nil
+        ripgrep
+      ];
+      postBuild = ''
+        for f in $out/lib/node_modules/.bin/*; do
+          path="$(readlink --canonicalize-missing "$f")"
+          ln -s "$path" "$out/bin/$(basename $f)"
+        done
+      '';
+    };
+
   in
   {
 
@@ -81,7 +97,8 @@
 
     packages = rec {
       nvim = pkgs.writeShellApplication {
-        name = "neovim";
+        name = "nvim";
+        runtimeInputs = [ runtimeDeps ];
         text = ''
           ${neovimWrapped}/bin/nvim "$@"
         '';

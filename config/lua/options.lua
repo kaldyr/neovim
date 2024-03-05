@@ -15,7 +15,6 @@ vim.opt.showtabline = 0
 vim.opt.sidescrolloff = 8
 vim.opt.signcolumn = 'yes'
 vim.opt.smartcase = true
-vim.opt.smartindent = true
 vim.opt.softtabstop = 2
 vim.opt.spelllang = 'en_us'
 vim.opt.swapfile = false
