@@ -21,6 +21,7 @@ vim.opt.swapfile = false
 vim.opt.syntax = 'on'
 vim.opt.tabstop = 2
 vim.opt.termguicolors = true
+vim.opt.timeout = true;
 vim.opt.timeoutlen = 400
 vim.opt.title = true
 vim.opt.undofile = true
