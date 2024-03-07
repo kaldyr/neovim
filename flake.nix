@@ -72,18 +72,19 @@
 
   in {
 
-    packages.x86_64-linux.default = pkgs.writeShellApplication {
-      name = "nvim";
-      runtimeInputs = with pkgs; [
-        lua-language-server
-        marksman
-        nil
-        ripgrep
-      ];
-      text = ''
-        ${neovimWrapped}/bin/nvim "$@"
-      '';
-    };
+    packages.${system}.default = neovimWrapped;
+    # packages.${system}.default = pkgs.writeShellApplication {
+    #   name = "nvim";
+    #   runtimeInputs = with pkgs; [
+    #     lua-language-server
+    #     marksman
+    #     nil
+    #     ripgrep
+    #   ];
+    #   text = ''
+    #     ${neovimWrapped}/bin/nvim "$@"
+    #   '';
+    # };
 
   };
 
