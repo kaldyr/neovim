@@ -46,7 +46,6 @@
           nvim-cmp
           nvim-colorizer-lua
           nvim-lspconfig
-          nvim-tree-lua
           nvim-treesitter.withAllGrammars
           nvim-treesitter-context
           nvim-treesitter-textobjects
@@ -54,6 +53,7 @@
           nvim-ufo
           nvim-web-devicons
           obsidian-nvim
+          oil-nvim
           plenary-nvim
           promise-async
           rainbow-delimiters-nvim
