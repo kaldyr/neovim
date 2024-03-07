@@ -17,7 +17,7 @@
       overlays = [ (final: prev: { neovim = neovim.packages.x86_64-linux.neovim; }) ];
     };
 
-    neovimWrapped = pkgs.wrapNeovim pkgs.neovim {
+    neovimWrapped = pkgs.wrapNeovim pkgs.neovim-unwrapped {
       configure = {
         customRC = ''
           set runtimepath+=${./config}
