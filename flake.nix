@@ -92,13 +92,14 @@
 
     # apps.default = flake-utils.lib.mkApp { drv = self.packages.${system}.default; };
 
-    packages.default = pkgs.writeShellApplication {
-      name = "nvim";
-      runtimeInputs = [ runtimeDeps ];
-      text = ''
-        ${neovimWrapped}/bin/nvim "$@"
-      '';
-    };
+    packages.default = neovimWrapped;
+    # packages.default = pkgs.writeShellApplication {
+    #   name = "nvim";
+    #   runtimeInputs = [ runtimeDeps ];
+    #   text = ''
+    #     ${neovimWrapped}/bin/nvim "$@"
+    #   '';
+    # };
 
   });
 
