@@ -2,22 +2,22 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    flake-util.url = "github:numtide/flake-utils";
     neovim = {
       url = "github:neovim/neovim/stable?dir=contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, neovim, flake-utils, ... }: flake-utils.lib.eachDefaultSystem (system:
-  let
+  outputs = { self, nixpkgs, neovim, ... }: let
 
     pkgs = import nixpkgs {
-      system = system;
-      overlays = [ (final: prev: { neovim = neovim.packages.${prev.system}.neovim; }) ];
+      system = "x86_64-linux";
+      overlays = [ (final: prev: { neovim = neovim.packages.x86_64-linux.neovim; }) ];
     };
 
-    neovimWrapped = pkgs.wrapNeovim pkgs.neovim {
+  in {
+
+    packages.x86_64-linux.default = pkgs.wrapNeovim pkgs.neovim {
       configure = {
         customRC = ''
           set runtimepath+=${./config}
@@ -70,18 +70,6 @@
       };
     };
 
-  in
-  {
-
-    packages.default = neovimWrapped;
-    # packages.default = pkgs.writeShellApplication {
-    #   name = "nvim";
-    #   # runtimeInputs = [ runtimeDeps ];
-    #   text = ''
-    #     ${neovimWrapped}/bin/nvim "$@"
-    #   '';
-    # };
-
-  });
+  };
 
 }
