@@ -10,14 +10,14 @@
 
   outputs = { nixpkgs, neovim, ... }: let
 
+    system = "x86_64-linux";
+
     pkgs = import nixpkgs {
-      system = "x86_64-linux";
+      inherit system;
       overlays = [ (final: prev: { neovim = neovim.packages.x86_64-linux.neovim; }) ];
     };
 
-  in {
-
-    packages.x86_64-linux.default = pkgs.wrapNeovim pkgs.neovim {
+    neovimWrapped = pkgs.wrapNeovim pkgs.neovim {
       configure = {
         customRC = ''
           set runtimepath+=${./config}
@@ -68,6 +68,21 @@
           which-key-nvim
         ];
       };
+    };
+
+  in {
+
+    packages.x86_64-linux.default = pkgs.writeShellApplication {
+      name = "nvim";
+      runtimeInputs = with pkgs; [
+        lua-language-server
+        marksman
+        nil
+        ripgrep
+      ];
+      text = ''
+        ${neovimWrapped}/bin/nvim "$@"
+      '';
     };
 
   };
