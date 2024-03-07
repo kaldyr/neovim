@@ -8,7 +8,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, neovim, ... }: let
+  outputs = { nixpkgs, neovim, ... }: let
 
     pkgs = import nixpkgs {
       system = "x86_64-linux";
