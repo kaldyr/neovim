@@ -9,8 +9,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, neovim, flake-utils, ... }:
-  flake-utils.lib.eachDefaultSystem (system:
+  outputs = { self, nixpkgs, neovim, flake-utils, ... }: flake-utils.lib.eachDefaultSystem (system:
   let
 
     pkgs = import nixpkgs {
@@ -71,31 +70,13 @@
       };
     };
 
-    runtimeDeps = pkgs.symlinkJoin {
-      name = "runtimeDeps";
-      paths = with pkgs; [
-        lua-language-server
-        marksman
-        nil
-        ripgrep
-      ];
-      postBuild = ''
-        for f in $out/lib/node_modules/.bin/*; do
-          path="$(readlink --canonicalize-missing "$f")"
-          ln -s "$path" "$out/bin/$(basename $f)"
-        done
-      '';
-    };
-
   in
   {
-
-    # apps.default = flake-utils.lib.mkApp { drv = self.packages.${system}.default; };
 
     packages.default = neovimWrapped;
     # packages.default = pkgs.writeShellApplication {
     #   name = "nvim";
-    #   runtimeInputs = [ runtimeDeps ];
+    #   # runtimeInputs = [ runtimeDeps ];
     #   text = ''
     #     ${neovimWrapped}/bin/nvim "$@"
     #   '';
