@@ -90,20 +90,14 @@
   in
   {
 
-    apps = rec {
-      nvim = flake-utils.lib.mkApp { drv = self.packages.${system}.nvim; };
-      default = nvim;
-    };
+    apps.default = flake-utils.lib.mkApp { drv = self.packages.${system}.default; };
 
-    packages = rec {
-      nvim = pkgs.writeShellApplication {
-        name = "nvim";
-        runtimeInputs = [ runtimeDeps ];
-        text = ''
-          ${neovimWrapped}/bin/nvim "$@"
-        '';
-      };
-      default = nvim;
+    packages.default = pkgs.writeShellApplication {
+      name = "nvim";
+      runtimeInputs = [ runtimeDeps ];
+      text = ''
+        ${neovimWrapped}/bin/nvim "$@"
+      '';
     };
 
   });

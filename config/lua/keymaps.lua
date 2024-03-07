@@ -53,11 +53,13 @@ vim.keymap.set(
 )
 
 -- Multiple modes
--- Send things to black hole register
+-- Tweak register manipulation
 vim.keymap.set({'n', 'v'}, 'd', '\"_d', { silent = true, noremap = true })
-vim.keymap.set({'n', 'v'}, 'D', 'd', { silent = true, noremap = true })
-vim.keymap.set({'n', 'v'}, 'c', '\"_c', { silent = true, noremap = true })
+vim.keymap.set('v', 'D', 'd', { silent = true, noremap = true })
 vim.keymap.set({'n', 'v'}, 'x', '\"_x', { silent = true, noremap = true })
+vim.keymap.set({'n', 'v'}, 'X', '\"_X', { silent = true, noremap = true })
+vim.keymap.set({'n', 'v'}, 'c', '\"_c', { silent = true, noremap = true })
+vim.keymap.set('v', 'C', 'c', { silent = true, noremap = true })
 -- Fighting One-Eyed Kirby
 vim.keymap.set(
   {'n', 'x'},
