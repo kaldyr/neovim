@@ -90,7 +90,7 @@
   in
   {
 
-    apps.default = flake-utils.lib.mkApp { drv = self.packages.${system}.default; };
+    # apps.default = flake-utils.lib.mkApp { drv = self.packages.${system}.default; };
 
     packages.default = pkgs.writeShellApplication {
       name = "nvim";
