@@ -1,28 +1,23 @@
 {
 
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    neovim = {
-      url = "github:neovim/neovim/stable?dir=contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-  };
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
-  outputs = { nixpkgs, neovim, ... }: let
-
+  outputs = { nixpkgs, ... }: let
+    
     system = "x86_64-linux";
+    pkgs = import nixpkgs { system = system; };
 
-    pkgs = import nixpkgs {
-      inherit system;
-      overlays = [ (final: prev: { neovim = neovim.packages.x86_64-linux.neovim; }) ];
-    };
+  in {
 
-    neovimWrapped = pkgs.wrapNeovim pkgs.neovim-unwrapped {
+    packages.x86_64-linux.default = pkgs.neovim.override {
+
       configure = {
+
         customRC = ''
           set runtimepath+=${./config}
           source ${./config/init.lua}
         '';
+
         packages.all.start = with pkgs.vimPlugins; [
           boole-nvim
           catppuccin-nvim
@@ -67,22 +62,13 @@
           vim-illuminate
           which-key-nvim
         ];
+
       };
-    };
 
-  in {
+      withNodeJs = false;
+      withPython3 = false;
+      withRuby = false;
 
-    packages.${system}.default = pkgs.writeShellApplication {
-      name = "nvim";
-      runtimeInputs = with pkgs; [
-        lua-language-server
-        marksman
-        nil
-        ripgrep
-      ];
-      text = ''
-        ${neovimWrapped}/bin/nvim "$@"
-      '';
     };
 
   };
