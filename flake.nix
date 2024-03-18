@@ -8,6 +8,8 @@
         # Plugins from github
         plugin_boole-nvim = { url = "github:nat-418/boole.nvim"; flake = false; };
         plugin_grapple-nvim = { url = "github:cbochs/grapple.nvim"; flake = false; };
+        plugin_lazygit-nvim = { url = "github:kdheepak/lazygit.nvim"; flake = false; };
+        plugin_yazi-nvim = { url = "github:DreamMaoMao/yazi.nvim"; flake = false; };
 
     };
 
@@ -71,6 +73,7 @@
                     gitsigns-nvim
                     grapple-nvim
                     indent-blankline-nvim
+                    lazygit-nvim
                     lualine-nvim
                     luasnip
                     neodev-nvim
@@ -100,6 +103,7 @@
                     vim-fugitive
                     vim-illuminate
                     which-key-nvim
+                    yazi-nvim
                 ];
 
             };

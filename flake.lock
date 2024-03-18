@@ -48,11 +48,45 @@
         "type": "github"
       }
     },
+    "plugin_lazygit-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1709265017,
+        "narHash": "sha256-Z8qKzmx8geyzR5Wyp6oLRvvqcLfPEYgTNEh1nweA/cU=",
+        "owner": "kdheepak",
+        "repo": "lazygit.nvim",
+        "rev": "774dcecbd0b9b57be6c150adacb60ced79b11b23",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kdheepak",
+        "repo": "lazygit.nvim",
+        "type": "github"
+      }
+    },
+    "plugin_yazi-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1695290217,
+        "narHash": "sha256-/wuo95maj6WxfwPvu0AAm3JJ6ifDI/ONp2SSA6k+5WQ=",
+        "owner": "DreamMaoMao",
+        "repo": "yazi.nvim",
+        "rev": "b5c9390c733244b10859b940413ef9741955301a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DreamMaoMao",
+        "repo": "yazi.nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "nixpkgs": "nixpkgs",
         "plugin_boole-nvim": "plugin_boole-nvim",
-        "plugin_grapple-nvim": "plugin_grapple-nvim"
+        "plugin_grapple-nvim": "plugin_grapple-nvim",
+        "plugin_lazygit-nvim": "plugin_lazygit-nvim",
+        "plugin_yazi-nvim": "plugin_yazi-nvim"
       }
     }
   },
