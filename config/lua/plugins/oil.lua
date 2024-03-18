@@ -1,31 +1,43 @@
 local status_ok, oil = pcall( require, 'oil' )
 if not status_ok then
-  return
+    return
 end
 
 oil.setup({
 
-  columns = {
-    "icon",
-    "permissions",
-  },
+    columns = {
+        "icon",
+        "permissions",
+    },
 
-  default_file_explorer = true,
+    constrain_cursor = "editable",
+    default_file_explorer = true,
 
-  keymaps = {
-    ["<CR>"] = "actions.select",
-    ["<S-H>"] = "actions.parent",
-    ["<S-L>"] = "actions.select",
-    ["g?"] = "actions.show_help",
-    ["g."] = "actions.toggle_hidden",
-    ["gr"] = "actions.refresh",
-    ["gs"] = "actions.change_sort",
-    ["gx"] = "actions.open_external",
-    ["q"] = "actions.close",
-  },
+    keymaps = {
+        ["<CR>"] = "actions.select",
+        ["<S-H>"] = "actions.parent",
+        ["<S-L>"] = "actions.select",
+        ["<C-v"] = "actions.select_vsplit",
+        ["g?"] = "actions.show_help",
+        ["g."] = "actions.toggle_hidden",
+        ["gr"] = "actions.refresh",
+        ["gs"] = "actions.change_sort",
+        ["gx"] = "actions.open_external",
+        ["q"] = "actions.close",
+        ["`"] = "actions.cd",
+    },
 
-  use_default_keymaps = false,
+    preview = {
+        border = "rounded",
+        update_on_cursor_moved = true,
+    },
+
+    progress = {
+        border = "rounded",
+    },
+
+    use_default_keymaps = false,
 
 })
 
-vim.keymap.set('n', '<leader>e', '<cmd>Oil --float<CR>', { desc = 'File Explorer', silent = true })
+vim.keymap.set('n', '<leader>e', '<cmd>Oil<cr>', { desc = 'File Explorer', silent = true })

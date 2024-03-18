@@ -4,6 +4,9 @@ require('options')
 -- Keymap changes
 require('keymaps')
 
+-- Autocmd
+require('autocmd')
+
 -- Colorscheme
 require('plugins.catppuccin')
 

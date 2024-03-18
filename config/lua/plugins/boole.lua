@@ -1,24 +1,24 @@
 local status_ok, boole = pcall( require, 'boole' )
 if not status_ok then
-  return
+    return
 end
 
 boole.setup({
 
-  mappings = {
-    increment = '<C-a>',
-    decrement = '<C-x>',
-  },
+    mappings = {
+        increment = '<C-a>',
+        decrement = '<C-x>',
+    },
 
-  -- User defined loops
-  additions = {
-    -- { 'Foo', 'Bar' },
-    -- { 'tic', 'tac', 'toe' },
-  },
+    -- User defined loops
+    additions = {
+        -- { 'Foo', 'Bar' },
+        -- { 'tic', 'tac', 'toe' },
+    },
 
-  allow_caps_additions = {
-    { 'enable', 'disable' },
-    { 'true', 'false' },
-  }
+    allow_caps_additions = {
+        { 'enable', 'disable' },
+        { 'true', 'false' },
+    }
 
 })

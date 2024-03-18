@@ -1,18 +1,18 @@
 local status_ok, telescope = pcall( require, 'telescope' )
 if not status_ok then
-  return
+    return
 end
 
 telescope.setup {
-  extensions = {
-    ["ui-select"] = {
-      require('telescope.themes').get_dropdown {}
-    }
-  },
+    extensions = {
+        ["ui-select"] = {
+            require('telescope.themes').get_dropdown {}
+        }
+    },
 }
 
-pcall( require('telescope').load_extension, 'fzf' )
-pcall( require('telescope').load_extension, 'ui-select' )
+pcall( telescope.load_extension, 'fzf' )
+pcall( telescope.load_extension, 'ui-select' )
 
 local builtin = require('telescope.builtin')
 
@@ -32,4 +32,4 @@ vim.keymap.set('n', '<leader>fm', builtin.marks, { desc = 'Find Marks' })
 vim.keymap.set('n', '<leader>fo', builtin.vim_options, { desc = 'Find Options' })
 vim.keymap.set('n', '<leader>fr', builtin.oldfiles, { desc = 'Recent Files' })
 vim.keymap.set('n', '<leader>fR', builtin.resume, { desc = 'Resume' })
-vim.keymap.set('n', '<leader>fs', ':Telescope symbols<CR>', { desc = 'Find Symbols', silent = true })
+vim.keymap.set('n', '<leader>fs', ':Telescope symbols<cr>', { desc = 'Find Symbols', silent = true })
