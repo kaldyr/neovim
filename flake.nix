@@ -90,7 +90,6 @@
                     nvim-ufo
                     nvim-web-devicons
                     obsidian-nvim
-                    oil-nvim
                     plenary-nvim
                     promise-async
                     rainbow-delimiters-nvim
