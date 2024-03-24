@@ -59,8 +59,7 @@
             (s: (builtins.match "plugin_.*" s) != null)
             (builtins.attrNames inputs);
 
-        pluginName = input:
-            builtins.substring
+        pluginName = input: builtins.substring
             (builtins.stringLength "plugin_")
             (builtins.stringLength input)
             input;
@@ -74,12 +73,12 @@
         pkgs = import nixpkgs {
             system = system;
             overlays = [ ( final: prev: {
-                neovimPlugins = builtins.listToAttrs ( map
-                    ( plugin: {
+                neovimPlugins = builtins.listToAttrs (
+                    map ( plugin: {
                         name = pluginName plugin;
                         value = buildPlugin plugin;
-                    } )
-                    pluginsFromInputs );
+                    } ) pluginsFromInputs
+                );
             } ) ];
         };
 

@@ -3,7 +3,7 @@ vim.opt.clipboard = 'unnamedplus'
 vim.opt.conceallevel = 2
 vim.opt.cursorline = true
 vim.opt.expandtab = true;
-vim.opt.fillchars = { eob = ' '; }
+vim.opt.fillchars = { eob = ' '; fold = ' '; foldopen = ''; foldsep = ' '; foldclose = ''; }
 vim.opt.mouse = 'a'
 vim.opt.number = true
 vim.opt.numberwidth = 2
