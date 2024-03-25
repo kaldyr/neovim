@@ -8,18 +8,6 @@ if status_ok then
     fidget.setup {}
 end
 
-local status_ok, neodev = pcall( require, 'neodev' )
-if status_ok then
-    neodev.setup({
-        override = function(root_dir, library)
-            if root_dir:find('/nix/config', 1, true) == 1 then
-                library.enabled = true
-                library.plugins = true
-            end
-        end,
-    })
-end
-
 local on_attach = function(_, bufnr)
 
     local nmap = function(keys, func, desc)
