@@ -67,3 +67,23 @@ vim.keymap.set(
   ':s/\\(.*\\)/\\1<left><left><left><left><left><left><left><left><left>',
   { desc = 'Fighting One-Eyed Kirby', silent = false }
 )
+
+
+if vim.g.neovide then
+    vim.keymap.set(
+        'n',
+        '<C-ScrollWheelUp>',
+        function()
+            vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.10
+        end,
+        { desc = 'Increase font size', silent = true }
+    )
+    vim.keymap.set(
+        'n',
+        '<C-ScrollWheelDown>',
+        function()
+            vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.10
+        end,
+        { desc = 'Decrease font size', silent = true }
+    )
+end
