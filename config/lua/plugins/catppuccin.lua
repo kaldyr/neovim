@@ -10,16 +10,20 @@ local pluginIsPresent = function(plugin)
 end
 
 catppuccin.setup({
+
     flavour = 'frappe',
+
     background = {
         light = 'latte',
         dark = 'frappe',
     },
+
     dim_inactive = {
         enabled = true,
         shade = 'dark',
         percentage = 0.15,
     },
+
     integrations = {
         fidget = pluginIsPresent('fidget'),
         flash = pluginIsPresent('flash'),
@@ -45,6 +49,9 @@ catppuccin.setup({
         ufo = pluginIsPresent('ufo'),
         which_key = pluginIsPresent('which-key'),
     },
+
+    term_colors = true,
+
 })
 
 vim.cmd [[colorscheme catppuccin]]

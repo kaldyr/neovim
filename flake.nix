@@ -70,6 +70,7 @@
                     indent-blankline-nvim
                     lazygit-nvim
                     lualine-nvim
+                    neodev-nvim
                     neoscroll-nvim
                     noice-nvim
                     nui-nvim
