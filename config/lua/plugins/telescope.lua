@@ -3,6 +3,16 @@ if not status_ok then
     return
 end
 
+status_ok, _ = pcall( telescope.load_extension, 'fzf' )
+if not status_ok then
+    return
+end
+
+status_ok, _ = pcall( telescope.load_extension, 'ui-select' )
+if not status_ok then
+    return
+end
+
 telescope.setup {
     extensions = {
         ["ui-select"] = {
@@ -10,9 +20,6 @@ telescope.setup {
         }
     },
 }
-
-pcall( telescope.load_extension, 'fzf' )
-pcall( telescope.load_extension, 'ui-select' )
 
 local builtin = require('telescope.builtin')
 
