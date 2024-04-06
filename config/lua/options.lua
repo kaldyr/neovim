@@ -30,9 +30,9 @@ vim.opt.shortmess:append "sfI"
 
 if vim.g.neovide then
     vim.o.guifont = 'IntoneMono Nerd Font:h9'
-    vim.g.neovide_cursor_animate_command_line = false
-    vim.g.neovide_cursor_animation_length = 0
-    vim.g.neovide_cursor_trail_legnth = 0
+    vim.g.neovide_cursor_animate_command_line = true
+    vim.g.neovide_cursor_animation_length = 0.1
+    vim.g.neovide_cursor_trail_legnth = 0.1
     vim.g.neovide_input_use_logo = false
     vim.g.neovide_scale_factor = 1.0
 end
