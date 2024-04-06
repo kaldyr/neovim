@@ -66,6 +66,7 @@
                     fidget-nvim
                     flash-nvim
                     friendly-snippets
+                    FTerm-nvim
                     gitsigns-nvim
                     indent-blankline-nvim
                     lazygit-nvim
