@@ -71,20 +71,21 @@
                     indent-blankline-nvim
                     lazygit-nvim
                     lualine-nvim
+                    luasnip
                     neodev-nvim
                     neoscroll-nvim
                     noice-nvim
                     nui-nvim
-                    luasnip
                     nvim-cmp
                     nvim-colorizer-lua
                     nvim-lspconfig
-                    nvim-treesitter.withAllGrammars
                     nvim-treesitter-context
                     nvim-treesitter-textobjects
+                    nvim-treesitter.withAllGrammars
                     nvim-ts-autotag
                     nvim-ufo
                     nvim-web-devicons
+                    oil-nvim
                     plenary-nvim
                     promise-async
                     rainbow-delimiters-nvim

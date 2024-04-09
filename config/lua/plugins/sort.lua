@@ -3,7 +3,7 @@ if not status_ok then
     vim.keymap.set(
         {'n', 'x'},
         '<leader>s',
-        ':sort',
+        ':sort<CR>',
         { desc = 'sort', silent = true }
     )
     return
@@ -14,6 +14,6 @@ sort.setup()
 vim.keymap.set(
     {'n', 'x'},
     '<leader>s',
-    ':Sort',
+    ':Sort<CR>',
     { desc = 'Sort', silent = true }
 )
