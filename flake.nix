@@ -6,8 +6,6 @@
         nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
         # Plugins from git
-        plugin_grapple-nvim = { url = "github:cbochs/grapple.nvim"; flake = false; };
-        plugin_obsidian-nvim = { url = "github:epwalsh/obsidian.nvim"; flake = false; };
         plugin_yazi-nvim = { url = "github:DreamMaoMao/yazi.nvim"; flake = false; };
 
     };
@@ -79,12 +77,13 @@
                     nvim-cmp
                     nvim-colorizer-lua
                     nvim-lspconfig
+                    nvim-treesitter.withAllGrammars
                     nvim-treesitter-context
                     nvim-treesitter-textobjects
-                    nvim-treesitter.withAllGrammars
                     nvim-ts-autotag
                     nvim-ufo
                     nvim-web-devicons
+                    obsidian-nvim
                     oil-nvim
                     plenary-nvim
                     promise-async

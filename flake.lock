@@ -2,49 +2,17 @@
   "nodes": {
     "nixpkgs": {
       "locked": {
-        "lastModified": 1713254108,
-        "narHash": "sha256-0TZIsfDbHG5zibtlw6x0yOp3jkInIGaJ35B7Y4G8Pec=",
+        "lastModified": 1713714268,
+        "narHash": "sha256-ZJGnom7YthvNxUZLdUzy5VePTwYgDYcnnPpyHT4n9lY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "2fd19c8be2551a61c1ddc3d9f86d748f4db94f00",
+        "rev": "69ee1d82f1fa4c70a3dc9a64111e7eef3b8e4527",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
         "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "plugin_grapple-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1712800281,
-        "narHash": "sha256-oaG/doaiDeuWdRyzLkZAiO2CK/eBjbbWMrqC9Q/B8WY=",
-        "owner": "cbochs",
-        "repo": "grapple.nvim",
-        "rev": "12172536620464f8cc124e07c6e3ccd306ea3c5c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cbochs",
-        "repo": "grapple.nvim",
-        "type": "github"
-      }
-    },
-    "plugin_obsidian-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1712778222,
-        "narHash": "sha256-jjsDXGdFMgdalgkw8HSY3+EfiTkYotsNA6txk1/09VY=",
-        "owner": "epwalsh",
-        "repo": "obsidian.nvim",
-        "rev": "1265a1fbfca5979f629ecedb2552f743c70f458f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "epwalsh",
-        "repo": "obsidian.nvim",
         "type": "github"
       }
     },
@@ -67,8 +35,6 @@
     "root": {
       "inputs": {
         "nixpkgs": "nixpkgs",
-        "plugin_grapple-nvim": "plugin_grapple-nvim",
-        "plugin_obsidian-nvim": "plugin_obsidian-nvim",
         "plugin_yazi-nvim": "plugin_yazi-nvim"
       }
     }
