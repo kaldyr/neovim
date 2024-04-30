@@ -3,9 +3,7 @@ if not status_ok then
     return
 end
 
-yazi.setup({
-    open_for_directories = true,
-})
+yazi.setup()
 
 vim.keymap.set(
     'n',
