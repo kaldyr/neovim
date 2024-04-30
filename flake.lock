@@ -2,11 +2,11 @@
   "nodes": {
     "nixpkgs": {
       "locked": {
-        "lastModified": 1713714268,
-        "narHash": "sha256-ZJGnom7YthvNxUZLdUzy5VePTwYgDYcnnPpyHT4n9lY=",
+        "lastModified": 1714314149,
+        "narHash": "sha256-yNAevSKF4krRWacmLUsLK7D7PlfuY3zF0lYnGYNi9vQ=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "69ee1d82f1fa4c70a3dc9a64111e7eef3b8e4527",
+        "rev": "cf8cc1201be8bc71b7cbbbdaf349b22f4f99c7ae",
         "type": "github"
       },
       "original": {
@@ -19,15 +19,15 @@
     "plugin_yazi-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1695290217,
-        "narHash": "sha256-/wuo95maj6WxfwPvu0AAm3JJ6ifDI/ONp2SSA6k+5WQ=",
-        "owner": "DreamMaoMao",
+        "lastModified": 1714390220,
+        "narHash": "sha256-y7uZUmwKVNbtM5uWdCF5lTPiBX64MR8de/H00bj8FdQ=",
+        "owner": "mikavilpas",
         "repo": "yazi.nvim",
-        "rev": "b5c9390c733244b10859b940413ef9741955301a",
+        "rev": "051bfcef27f68aa22d14fc11342d3473bae1cb78",
         "type": "github"
       },
       "original": {
-        "owner": "DreamMaoMao",
+        "owner": "mikavilpas",
         "repo": "yazi.nvim",
         "type": "github"
       }

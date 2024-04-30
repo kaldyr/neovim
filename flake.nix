@@ -6,7 +6,7 @@
         nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
         # Plugins from git
-        plugin_yazi-nvim = { url = "github:DreamMaoMao/yazi.nvim"; flake = false; };
+        plugin_yazi-nvim = { url = "github:mikavilpas/yazi.nvim"; flake = false; };
 
     };
 
