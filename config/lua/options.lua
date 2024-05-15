@@ -28,6 +28,10 @@ vim.opt.undofile = true
 vim.opt.wrap = false
 vim.opt.shortmess:append "sfI"
 
+vim.g.netrw_banner = 0
+vim.g.netrw_keepdir = 0
+vim.g.netrw_localcopydircmd = 'cp -r'
+
 if vim.g.neovide then
     vim.o.guifont = 'IntoneMono Nerd Font:h10'
     vim.g.neovide_cursor_animate_command_line = true
