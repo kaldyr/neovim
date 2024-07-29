@@ -2,11 +2,11 @@
   "nodes": {
     "nixpkgs": {
       "locked": {
-        "lastModified": 1721782431,
-        "narHash": "sha256-UNDpwjYxNXQet/g3mgRLsQ9zxrbm9j2JEvP4ijF3AWs=",
+        "lastModified": 1722141560,
+        "narHash": "sha256-Ul3rIdesWaiW56PS/Ak3UlJdkwBrD4UcagCmXZR9Z7Y=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "4f02464258baaf54992debfd010a7a3662a25536",
+        "rev": "038fb464fcfa79b4f08131b07f2d8c9a6bcc4160",
         "type": "github"
       },
       "original": {
@@ -19,11 +19,11 @@
     "plugin_yazi-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1721845248,
-        "narHash": "sha256-NTblfvfw1i8SsqCNxMRwRsesYlrckfYnSpWW1E3pj1I=",
+        "lastModified": 1722229952,
+        "narHash": "sha256-yo5dh0Zne2jT3p9ZLNpSnyb6mR/L0Yp3CrE0UuhG/X8=",
         "owner": "mikavilpas",
         "repo": "yazi.nvim",
-        "rev": "65bff77e59e0b5c8587266580c24d658913b825e",
+        "rev": "9c1504821d52cd73b020239c12bc629fd8370728",
         "type": "github"
       },
       "original": {

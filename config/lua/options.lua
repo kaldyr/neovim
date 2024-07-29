@@ -33,7 +33,7 @@ vim.g.netrw_keepdir = 0
 vim.g.netrw_localcopydircmd = 'cp -r'
 
 if vim.g.neovide then
-    vim.o.guifont = 'IntoneMono Nerd Font:h10'
+    vim.o.guifont = 'Recursive Mn Csl St:h10'
     vim.g.neovide_cursor_animate_command_line = true
     vim.g.neovide_cursor_animation_length = 0.05
     vim.g.neovide_cursor_trail_legnth = 0.05
