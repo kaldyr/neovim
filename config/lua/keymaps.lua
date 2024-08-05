@@ -72,7 +72,7 @@ vim.keymap.set(
 if vim.g.neovide then
     vim.keymap.set(
         'n',
-        '<C-ScrollWheelUp>',
+        '<C-=>',
         function()
             vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.10
         end,
@@ -80,10 +80,18 @@ if vim.g.neovide then
     )
     vim.keymap.set(
         'n',
-        '<C-ScrollWheelDown>',
+        '<C-->',
         function()
             vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.10
         end,
         { desc = 'Decrease font size', silent = true }
+    )
+    vim.keymap.set(
+        'n',
+        '<C-0>',
+        function()
+            vim.g.neovide_scale_factor = 1
+        end,
+        { desc = 'Reset font size', silent = true }
     )
 end
