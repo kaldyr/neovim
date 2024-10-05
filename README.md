@@ -23,9 +23,29 @@ nix run github:kaldyr/neovim -- [arguments]
 ```
 To include in a nix config:
 - Add as input in flake.nix
-- Add the following to environment.systemPackages or home.packages:
+- Install the package with:
 ```
 inputs.neovim.packages.${pkgs.system}.default
 ```
+- Or add as an overlay with:
+```
+overlays.modifications = final: prev: {
+    ...
+    neovim = inputs.neovim.packages.${prev.system}.default;
+    ...
+};
 
-Example usage: [https://github.com/kaldyr/nixos/blob/main/home/programs/neovim.nix]
+...
+
+"system" = nixpkgs.lib.nixosSystem {
+    ...
+    modules = [
+        ...
+        { nixpkgs.overlays = with overlays; [ modifications ]; }
+        ...
+    ];
+    ...
+};
+```
+
+Example usage: [https://github.com/kaldyr/nixos]
