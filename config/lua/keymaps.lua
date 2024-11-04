@@ -21,17 +21,17 @@ vim.keymap.set('n', '<leader>St', ':set invspell<CR>', { desc = 'Toggle Spellche
 vim.keymap.set('n', '<leader>Ss', 'z=', { desc = 'Suggest Spelling', silent = true, noremap = true })
 -- Replace word under cursor
 vim.keymap.set(
-  'n',
-  '<leader>rw',
-  ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gcI<left><left><left><left>',
-  { desc = 'Replace [W]ord under cursor', silent = false }
+    'n',
+    '<leader>rw',
+    ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gcI<left><left><left><left>',
+    { desc = 'Replace [W]ord under cursor', silent = false }
 )
 -- Smart dd
 vim.keymap.set('n', 'dd', function()
-  if vim.api.nvim_get_current_line():match('^%s*$') then
-    return '"_dd'
-  end
-  return 'dd'
+    if vim.api.nvim_get_current_line():match('^%s*$') then
+        return '"_dd'
+    end
+    return 'dd'
 end, { expr = true })
 
 -- Visual Mode
@@ -46,10 +46,10 @@ vim.keymap.set('x', '.', ':norm .<CR>', { silent = true, noremap = true })
 vim.keymap.set('x', '@', ':norm @@<CR>', { silent = true, noremap = true })
 -- Replace selection
 vim.keymap.set(
-  'v',
-  '<leader>rs',
-  '"hy:%s/<C-r>h/<C-r>h/gc<left><left><left>',
-  { desc = 'Replace [S]election', silent = false }
+    'v',
+    '<leader>rs',
+    '"hy:%s/<C-r>h/<C-r>h/gc<left><left><left>',
+    { desc = 'Replace [S]election', silent = false }
 )
 
 -- Multiple modes
@@ -62,36 +62,8 @@ vim.keymap.set({'n', 'v'}, 'c', '\"_c', { silent = true, noremap = true })
 vim.keymap.set('v', 'C', 'c', { silent = true, noremap = true })
 -- Fighting One-Eyed Kirby
 vim.keymap.set(
-  {'n', 'x'},
-  '<leader>rk',
-  ':s/\\(.*\\)/\\1<left><left><left><left><left><left><left><left><left>',
-  { desc = 'Fighting One-Eyed Kirby', silent = false }
+    {'n', 'x'},
+    '<leader>rk',
+    ':s/\\(.*\\)/\\1<left><left><left><left><left><left><left><left><left>',
+    { desc = 'Fighting One-Eyed Kirby', silent = false }
 )
-
-
-if vim.g.neovide then
-    vim.keymap.set(
-        'n',
-        '<C-=>',
-        function()
-            vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.10
-        end,
-        { desc = 'Increase font size', silent = true }
-    )
-    vim.keymap.set(
-        'n',
-        '<C-->',
-        function()
-            vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.10
-        end,
-        { desc = 'Decrease font size', silent = true }
-    )
-    vim.keymap.set(
-        'n',
-        '<C-0>',
-        function()
-            vim.g.neovide_scale_factor = 1
-        end,
-        { desc = 'Reset font size', silent = true }
-    )
-end

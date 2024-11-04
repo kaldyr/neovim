@@ -6,7 +6,7 @@
         nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
         # Plugins from git
-        plugin_yazi-nvim = { url = "github:mikavilpas/yazi.nvim"; flake = false; };
+        # plugin_PLUGINNAME = { url = "github:user/repo"; flake = false; };
 
     };
 
@@ -64,7 +64,6 @@
                     fidget-nvim
                     flash-nvim
                     friendly-snippets
-                    FTerm-nvim
                     gitsigns-nvim
                     indent-blankline-nvim
                     lazygit-nvim
@@ -84,7 +83,6 @@
                     nvim-ufo
                     nvim-web-devicons
                     obsidian-nvim
-                    oil-nvim
                     plenary-nvim
                     promise-async
                     rainbow-delimiters-nvim

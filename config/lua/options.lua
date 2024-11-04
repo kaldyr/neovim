@@ -29,14 +29,6 @@ vim.opt.wrap = false
 vim.opt.shortmess:append "sfI"
 
 vim.g.netrw_banner = 0
-vim.g.netrw_keepdir = 0
+vim.g.netrw_keepdir = 1
+vim.g.netrw_liststyle = 3
 vim.g.netrw_localcopydircmd = 'cp -r'
-
-if vim.g.neovide then
-    vim.o.guifont = 'Recursive Mn Csl St:h10'
-    vim.g.neovide_cursor_animate_command_line = true
-    vim.g.neovide_cursor_animation_length = 0.05
-    vim.g.neovide_cursor_trail_legnth = 0.05
-    vim.g.neovide_input_use_logo = false
-    vim.g.neovide_scale_factor = 1.0
-end
