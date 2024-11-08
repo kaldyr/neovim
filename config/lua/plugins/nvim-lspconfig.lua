@@ -21,7 +21,7 @@ if status_ok then
 end
 
 local on_attach = function(_, bufnr)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition,  { buffer = bufnr, desc = 'Goto Definition' })
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = bufnr, desc = 'Goto Definition' })
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = bufnr, desc = 'Goto Declaration' })
     vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, { buffer = bufnr, desc = 'Goto Implementation' })
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = bufnr, desc = 'Goto References' })
@@ -43,7 +43,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 vim.filetype.add({ extension = { templ = "templ" } }) -- a-h/templ Go
 
 lspconfig.cssls.setup { on_attach = on_attach, capabilities = capabilities }
-lspconfig.emmet_ls.setup({
+lspconfig.emmet_ls.setup {
     -- on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "css", "html", "templ" },
@@ -54,7 +54,7 @@ lspconfig.emmet_ls.setup({
             },
         },
     }
-})
+}
 lspconfig.gopls.setup { on_attach = on_attach, capabilities = capabilities }
 lspconfig.html.setup { on_attach = on_attach, capabilities = capabilities , filetypes = { "html", "templ" } }
 lspconfig.htmx.setup { on_attach = on_attach, capabilities = capabilities, filetypes = { "html", "templ" } }
@@ -70,6 +70,7 @@ lspconfig.lua_ls.setup {
 }
 lspconfig.marksman.setup { on_attach = on_attach, capabilities = capabilities }
 lspconfig.nil_ls.setup { on_attach = on_attach, capabilities = capabilities }
+lspconfig.nushell.setup { on_attach = on_attach, capabilities = capabilities }
 lspconfig.templ.setup { on_attach = on_attach, capabilities = capabilities }
 
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
@@ -85,6 +86,7 @@ vim.g.markdown_fenced_languages = {
     'javascript',
     'lua',
     'nix',
+    'nu',
     'python',
     'sql',
     'vim',

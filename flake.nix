@@ -70,7 +70,6 @@
                     lualine-nvim
                     luasnip
                     neodev-nvim
-                    neoscroll-nvim
                     noice-nvim
                     nui-nvim
                     nvim-cmp
