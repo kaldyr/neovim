@@ -66,7 +66,6 @@
                     friendly-snippets
                     gitsigns-nvim
                     indent-blankline-nvim
-                    lazygit-nvim
                     lualine-nvim
                     luasnip
                     neodev-nvim
