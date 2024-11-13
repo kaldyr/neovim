@@ -16,11 +16,11 @@ vim.opt.listchars = {
     -- eol      = '↲',
     extends  = '⟩',
     lead     = '·',
-    leadmultispace = '▏   ',
+    -- leadmultispace = '▏   ',
     nbsp     = '␣',
     precedes = '⟨',
     space = '·',
-    tab      = '▏ ',
+    -- tab      = '▏ ',
     trail    = '*',
 }
 
