@@ -14,7 +14,6 @@ end
 lualine.setup({
 
     options = {
-        disabled_filetypes = { 'NvimTree' },
         show_filename_only = false,
         theme = colorscheme('catppuccin', 'habamax'),
     },

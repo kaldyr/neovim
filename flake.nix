@@ -65,7 +65,6 @@
                     flash-nvim
                     friendly-snippets
                     gitsigns-nvim
-                    indent-blankline-nvim
                     lualine-nvim
                     luasnip
                     neodev-nvim
@@ -87,7 +86,6 @@
                     sort-nvim
                     telescope-fzf-native-nvim
                     telescope-nvim
-                    telescope-symbols-nvim
                     telescope-ui-select-nvim
                     vim-illuminate
                     which-key-nvim

@@ -39,7 +39,6 @@ catppuccin.setup({
         },
         noice = pluginIsPresent('noice'),
         notify = pluginIsPresent('notify'),
-        nvimtree = pluginIsPresent('nvim-tree'),
         rainbow_delimiters = pluginIsPresent('rainbow-delimiters'),
         telescope = {
             enabled = pluginIsPresent('telescope'),

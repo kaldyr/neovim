@@ -19,6 +19,9 @@ boole.setup({
     allow_caps_additions = {
         { 'enable', 'disable' },
         { 'true', 'false' },
+        { 'yes', 'no' },
+        { 'on', 'off' },
+        { 'before', 'after' },
     }
 
 })
