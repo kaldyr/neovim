@@ -26,13 +26,18 @@ vim.keymap.set(
     ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gcI<left><left><left><left>',
     { desc = 'Replace [W]ord under cursor', silent = false }
 )
--- Smart dd
-vim.keymap.set('n', 'dd', function()
-    if vim.api.nvim_get_current_line():match('^%s*$') then
-        return '"_dd'
-    end
-    return 'dd'
-end, { expr = true })
+-- Smart dd - if the line is empty don't override registers
+vim.keymap.set(
+    'n',
+    'dd',
+    function()
+        if vim.api.nvim_get_current_line():match('^%s*$') then
+            return '"_dd'
+        end
+        return 'dd'
+    end,
+    { expr = true }
+)
 
 -- Visual Mode
 -- Stay in visual mode after indent
