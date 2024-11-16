@@ -3,6 +3,9 @@ vim.api.nvim_create_autocmd ( 'VimEnter', {
     pattern = '*',
     callback = function()
 
+        -- Turn on list characters, can be toggled by :set list!
+        vim.cmd [[ set list ]]
+
         -- Set the current working directory to the path of the file passed to neovim
         local pwd = vim.fn.expand('%:p:h')
         vim.api.nvim_set_current_dir(pwd)
@@ -15,9 +18,6 @@ vim.api.nvim_create_autocmd ( 'VimEnter', {
                 tbi.find_files()
             end
         end
-
-        -- Turn on list characters, can be toggled by :set list!
-        vim.cmd [[ set list ]]
 
     end,
 })
