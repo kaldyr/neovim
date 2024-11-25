@@ -74,11 +74,10 @@
                     nvim-cmp
                     nvim-colorizer-lua
                     nvim-lspconfig
-                    nvim-treesitter.withAllGrammars
                     nvim-treesitter-context
                     nvim-treesitter-textobjects
+                    nvim-treesitter.withAllGrammars
                     nvim-ts-autotag
-                    nvim-ufo
                     nvim-web-devicons
                     obsidian-nvim
                     plenary-nvim
