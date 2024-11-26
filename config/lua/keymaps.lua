@@ -22,9 +22,6 @@ vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', { silent = true })
 vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', { silent = true })
 vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', { silent = true })
 vim.keymap.set('n', '<C-q>', ':wincmd q<CR>', { silent = true })
--- Move current line
-vim.keymap.set('n', '<Down>', ':move .+1<CR>==', { silent = true, noremap = true })
-vim.keymap.set('n', '<Up>', ':move .-2<CR>==', { silent = true, noremap = true })
 -- Spellcheck
 vim.keymap.set('n', '<leader>S', ':set invspell<CR>', { desc = 'Toggle Spellcheck', silent = true, noremap = true })
 -- Replace word under cursor

@@ -16,26 +16,26 @@
         "type": "github"
       }
     },
-    "plugin_telescope-git-file-history-nvim": {
+    "plugin_mini-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1727128584,
-        "narHash": "sha256-rf5orEKvsS7gRcUb3+USmCK2SD84xusGU1xIIW8Ntyw=",
-        "owner": "isak102",
-        "repo": "telescope-git-file-history.nvim",
-        "rev": "c27d99ba88ec5f0b6d2b9f9bc67dd3d14c610b25",
+        "lastModified": 1732613204,
+        "narHash": "sha256-1WjDwPxUftzKpf/Dpzkj7TaeamkfvEVPZ3ZdbfkbzGs=",
+        "owner": "echasnovski",
+        "repo": "mini.nvim",
+        "rev": "c8922aef8207137e66c80acdb9523668599ba62a",
         "type": "github"
       },
       "original": {
-        "owner": "isak102",
-        "repo": "telescope-git-file-history.nvim",
+        "owner": "echasnovski",
+        "repo": "mini.nvim",
         "type": "github"
       }
     },
     "root": {
       "inputs": {
         "nixpkgs": "nixpkgs",
-        "plugin_telescope-git-file-history-nvim": "plugin_telescope-git-file-history-nvim"
+        "plugin_mini-nvim": "plugin_mini-nvim"
       }
     }
   },
