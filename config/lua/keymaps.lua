@@ -16,6 +16,12 @@ vim.keymap.set('n', '<C-w>v', ':vnew<CR>', { desc = 'Split to right', silent = t
 vim.keymap.set('n', '<C-w>n', ':new<CR>', { desc = 'Split down', silent = true })
 -- Close buffers
 vim.keymap.set('n', '<S-q>', ':bd<CR>', { silent = true })
+-- Move between windows
+vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', { silent = true })
+vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', { silent = true })
+vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', { silent = true })
+vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', { silent = true })
+vim.keymap.set('n', '<C-q>', ':wincmd q<CR>', { silent = true })
 -- Move current line
 vim.keymap.set('n', '<Down>', ':move .+1<CR>==', { silent = true, noremap = true })
 vim.keymap.set('n', '<Up>', ':move .-2<CR>==', { silent = true, noremap = true })
