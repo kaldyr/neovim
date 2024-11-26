@@ -2,11 +2,11 @@
   "nodes": {
     "nixpkgs": {
       "locked": {
-        "lastModified": 1731531548,
-        "narHash": "sha256-sz8/v17enkYmfpgeeuyzniGJU0QQBfmAjlemAUYhfy8=",
+        "lastModified": 1732238832,
+        "narHash": "sha256-sQxuJm8rHY20xq6Ah+GwIUkF95tWjGRd1X8xF+Pkk38=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "24f0d4acd634792badd6470134c387a3b039dace",
+        "rev": "8edf06bea5bcbee082df1b7369ff973b91618b8d",
         "type": "github"
       },
       "original": {
@@ -16,9 +16,26 @@
         "type": "github"
       }
     },
+    "plugin_telescope-git-file-history-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1727128584,
+        "narHash": "sha256-rf5orEKvsS7gRcUb3+USmCK2SD84xusGU1xIIW8Ntyw=",
+        "owner": "isak102",
+        "repo": "telescope-git-file-history.nvim",
+        "rev": "c27d99ba88ec5f0b6d2b9f9bc67dd3d14c610b25",
+        "type": "github"
+      },
+      "original": {
+        "owner": "isak102",
+        "repo": "telescope-git-file-history.nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "plugin_telescope-git-file-history-nvim": "plugin_telescope-git-file-history-nvim"
       }
     }
   },

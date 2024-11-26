@@ -11,7 +11,7 @@ flash.setup({
 
 vim.keymap.set(
     { 'n', 'x', 'o' },
-    's',
+    '<leader>j',
     function()
         flash.jump()
     end,
@@ -20,7 +20,7 @@ vim.keymap.set(
 
 vim.keymap.set(
     { 'n', 'x', 'o' },
-    'S',
+    '<leader>J',
     function()
         flash.treesitter()
     end,

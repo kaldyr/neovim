@@ -7,6 +7,7 @@
 
         # Plugins from git
         # plugin_PLUGINNAME = { url = "github:user/repo"; flake = false; };
+        plugin_telescope-git-file-history-nvim = { url = "github:isak102/telescope-git-file-history.nvim"; flake = false; };
 
     };
 
@@ -88,6 +89,7 @@
                     telescope-nvim
                     telescope-ui-select-nvim
                     vim-illuminate
+                    vim-fugitive
                     which-key-nvim
                 ] ++ (builtins.attrValues pkgs.neovimPlugins);
 
