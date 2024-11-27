@@ -54,16 +54,6 @@
                 '';
 
                 packages.all.start = with pkgs.vimPlugins; [
-                    catppuccin-nvim
-                    cmp-buffer
-                    cmp-cmdline
-                    cmp-nvim-lsp
-                    cmp-path
-                    fidget-nvim
-                    neodev-nvim
-                    nvim-lspconfig
-                    nvim-treesitter-context
-                    nvim-treesitter-textobjects
                     nvim-treesitter.withAllGrammars
                 ] ++ (builtins.attrValues pkgs.neovimPlugins);
 
