@@ -13,9 +13,9 @@ vim.api.nvim_create_autocmd ( 'VimEnter', {
         -- If neovim opened a folder instead of a file, remove netrw and open telescope find_files
         if string.sub( vim.fn.expand('%p'), 0, -1 ) == pwd then
             vim.api.nvim_buf_delete( 0, { force = true } )
-            local status_ok, tbi = pcall( require, 'telescope.builtin' )
+            local status_ok, mini = pcall( require, 'mini.pick')
             if status_ok then
-                tbi.find_files()
+                MiniPick.builtin.files({ tool = 'git' })
             end
         end
 

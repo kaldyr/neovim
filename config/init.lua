@@ -6,6 +6,9 @@ require 'autocmd'
 -- LSP Configuration
 require('plugins.nvim-lspconfig')
 
+-- Comp
+require('plugins.nvim-cmp')
+
 -- Treesitter
 require('plugins.treesitter')
 
