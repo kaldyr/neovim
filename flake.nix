@@ -2,12 +2,15 @@
 
     inputs = {
 
-        # Nixpkgs for neovim and the the plugins in the nix store
+        # Nixpkgs for neovim, treesitter with all grammars, lsps, and other runtime helpers
         nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
         # Plugins from git
         # plugin_PLUGINNAME = { url = "github:user/repo"; flake = false; };
+        plugin_neodev-nvim = { url = "github:folke/neodev.nvim"; flake = false; };
         plugin_mini-nvim = { url = "github:echasnovski/mini.nvim"; flake = false; };
+        plugin_nvim-lspconfig = { url = "github:neovim/nvim-lspconfig"; flake = false; };
+        plugin_nvim-treesitter-context = { url = "github:nvim-treesitter/nvim-treesitter-context"; flake = false; };
 
     };
 
@@ -48,7 +51,7 @@
 
             configure = {
 
-                customRC = ''
+                customRC = /* bash */ ''
                     set runtimepath+=${./config}
                     source ${./config/init.lua}
                 '';
@@ -56,6 +59,24 @@
                 packages.all.start = with pkgs.vimPlugins; [
                     nvim-treesitter.withAllGrammars
                 ] ++ (builtins.attrValues pkgs.neovimPlugins);
+
+                runtimeInputs = with pkgs; [
+                    # System Utilities
+                    fd
+                    fzf
+                    git
+                    ripgrep
+                    # Language servers
+                    gopls
+                    htmx-lsp
+                    lua-language-server
+                    marksman
+                    neovim
+                    nil
+                    taplo
+                    yaml-language-server
+                    vscode-langservers-extracted
+                ];
 
             };
 

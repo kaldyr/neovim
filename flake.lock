@@ -32,10 +32,61 @@
         "type": "github"
       }
     },
+    "plugin_neodev-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1720260306,
+        "narHash": "sha256-hOjzlo/IqmV8tYjGwfmcCPEmHYsWnEIwtHZdhpwA1kM=",
+        "owner": "folke",
+        "repo": "neodev.nvim",
+        "rev": "46aa467dca16cf3dfe27098042402066d2ae242d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "neodev.nvim",
+        "type": "github"
+      }
+    },
+    "plugin_nvim-lspconfig": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1732772939,
+        "narHash": "sha256-4NL+/A9hzZX2V9vGtfHMl26Ii6UyNyNBNPTPwTxnCUI=",
+        "owner": "neovim",
+        "repo": "nvim-lspconfig",
+        "rev": "e8f9c46c99e1901167a92ab13e2357158e5aabdb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "neovim",
+        "repo": "nvim-lspconfig",
+        "type": "github"
+      }
+    },
+    "plugin_nvim-treesitter-context": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1732575800,
+        "narHash": "sha256-SzzC/myrfw8mogEIQBl2LqYpm0RQEf8xlTva0xLqrfo=",
+        "owner": "nvim-treesitter",
+        "repo": "nvim-treesitter-context",
+        "rev": "6b081ea63a3711243d11540ce28ccdb6f35ecd33",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-treesitter",
+        "repo": "nvim-treesitter-context",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "nixpkgs": "nixpkgs",
-        "plugin_mini-nvim": "plugin_mini-nvim"
+        "plugin_mini-nvim": "plugin_mini-nvim",
+        "plugin_neodev-nvim": "plugin_neodev-nvim",
+        "plugin_nvim-lspconfig": "plugin_nvim-lspconfig",
+        "plugin_nvim-treesitter-context": "plugin_nvim-treesitter-context"
       }
     }
   },

@@ -1,7 +1,10 @@
 -- Neovim Config
+require 'autocmd'
 require 'options'
 require 'keymaps'
-require 'autocmd'
+
+-- Lsp
+require 'lsp'
 
 -- Colorscheme
 require( 'mini.base16' ).setup({ palette = {
@@ -19,27 +22,28 @@ require( 'mini.base16' ).setup({ palette = {
     base0B = "#a6d189",
     base0C = "#81c8be",
     base0D = "#8caaee",
-    base0F = "#eebebe",
     base0E = "#ca9ee6",
+    base0F = "#eebebe",
 } })
 
 -- Plugins
 require( 'mini.ai' ).setup()
 require( 'mini.bracketed' ).setup()
 require( 'mini.clue' ).setup()
-require( 'mini.comment' ).setup()
+require( 'mini.comment' ).setup({ options = { ignore_blank_line = true } })
 require( 'mini.completion' ).setup()
+require( 'mini.diff' ).setup()
 require( 'mini.doc' ).setup()
+require( 'mini.extra' ).setup()
 require( 'mini.fuzzy' ).setup()
-require( 'mini.git' ).setup()
+require( 'mini.git' ).setup({ command = { split = 'vertical' } })
 require( 'mini.hipatterns' ).setup()
 require( 'mini.icons' ).setup()
-require( 'mini.indentscope' ).setup()
+require( 'mini.indentscope' ).setup({ symbol = "▏" })
 require( 'mini.jump' ).setup()
-require( 'mini.jump2d' ).setup()
-require( 'mini.move' ).setup()
+require( 'mini.jump2d' ).setup({ view ={ dim = true } })
+require( 'mini.map' ).setup()
 require( 'mini.notify' ).setup()
-require( 'mini.operators' ).setup()
 require( 'mini.pairs' ).setup()
 require( 'mini.pick' ).setup()
 require( 'mini.splitjoin' ).setup()
