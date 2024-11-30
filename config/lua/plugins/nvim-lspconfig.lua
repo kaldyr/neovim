@@ -6,12 +6,12 @@ end
 local status_ok, neodev = pcall( require, 'neodev' )
 if status_ok then
     neodev.setup({
-        override = function(root_dir, library)
-            if root_dir:find('~/Projects/neovim/', 1, true) == 1 then
-                library.enabled = true
-                library.plugins = true
-            end
-        end,
+	override = function(root_dir, library)
+	    if root_dir:find('~/Projects/neovim/', 1, true) == 1 then
+		library.enabled = true
+		library.plugins = true
+	    end
+	end,
     })
 end
 
@@ -27,7 +27,7 @@ lspconfig.nil_ls.setup { }
 lspconfig.nushell.setup { }
 lspconfig.taplo.setup { }
 lspconfig.templ.setup { }
-lspconfig.yaml_language_server.setup { }
+lspconfig.yamlls.setup { }
 
 vim.g.markdown_fenced_languages = {
     'css',

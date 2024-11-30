@@ -1,9 +1,3 @@
-vim.opt.autoindent = true;
-vim.opt.clipboard = 'unnamedplus'
-vim.opt.conceallevel = 2
-vim.opt.cursorline = true
-vim.opt.expandtab = true;
-
 vim.opt.fillchars = {
     eob = ' ',
     fold = ' ',
@@ -13,10 +7,8 @@ vim.opt.fillchars = {
 }
 
 vim.opt.listchars = {
-    -- eol      = '↲',
     extends  = '⟩',
     lead     = '·',
-    -- leadmultispace = '▏   ',
     nbsp     = '␣',
     precedes = '⟨',
     space = '·',
@@ -24,24 +16,31 @@ vim.opt.listchars = {
     trail    = '*',
 }
 
+vim.opt.autoindent = true;
+vim.opt.expandtab = false
+vim.opt.shiftwidth = 4
+vim.opt.smarttab = true
+vim.opt.softtabstop = -1
+vim.opt.tabstop = 4
+
+vim.opt.clipboard = 'unnamedplus'
+vim.opt.conceallevel = 2
+vim.opt.cursorline = true
 vim.opt.mouse = 'a'
 vim.opt.number = true
 vim.opt.numberwidth = 2
 vim.opt.relativenumber = true
 vim.opt.ruler = false
 vim.opt.scrolloff = 8
-vim.opt.shiftwidth = 4
 vim.opt.showtabline = 0
 vim.opt.sidescrolloff = 8
 vim.opt.signcolumn = 'yes'
 vim.opt.smartcase = true
-vim.opt.softtabstop = -1
 vim.opt.spelllang = 'en_us'
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.swapfile = false
 vim.opt.syntax = 'on'
-vim.opt.tabstop = 8
 vim.opt.termguicolors = true
 vim.opt.timeout = true;
 vim.opt.timeoutlen = 400

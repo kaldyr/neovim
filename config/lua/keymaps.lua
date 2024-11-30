@@ -38,10 +38,10 @@ vim.keymap.set(
     'n',
     'dd',
     function()
-        if vim.api.nvim_get_current_line():match('^%s*$') then
-            return '"_dd'
-        end
-        return 'dd'
+	if vim.api.nvim_get_current_line():match('^%s*$') then
+	    return '"_dd'
+	end
+	return 'dd'
     end,
     { expr = true }
 )
