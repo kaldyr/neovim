@@ -11,7 +11,6 @@ require 'plugins/barbar'
 require 'plugins/boole'
 require 'plugins/flash'
 require 'plugins/gitsigns'
-require('ibl').setup()
 require 'plugins/lualine'
 require 'plugins/noice'
 require 'plugins/nvim-cmp'
@@ -28,6 +27,7 @@ require('mini.ai').setup()
 require('mini.comment').setup({ options = { ignore_blank_line = true } })
 require('mini.cursorword').setup()
 require('mini.hipatterns').setup() -- TODO: Configure
+require('mini.indentscope').setup({ symbol = "▏" })
 require('mini.jump').setup()
 require('mini.pairs').setup()
 require('mini.splitjoin').setup()

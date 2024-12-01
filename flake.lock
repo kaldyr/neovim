@@ -176,22 +176,6 @@
         "type": "github"
       }
     },
-    "plugin_indent-blankline-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1731320409,
-        "narHash": "sha256-WVDNi/woG0ohPEYzM83mmXDCRNYnQbqooSDVUtBsJbY=",
-        "owner": "lukas-reineke",
-        "repo": "indent-blankline.nvim",
-        "rev": "7871a88056f7144defca9c931e311a3134c5d509",
-        "type": "github"
-      },
-      "original": {
-        "owner": "lukas-reineke",
-        "repo": "indent-blankline.nvim",
-        "type": "github"
-      }
-    },
     "plugin_lualine-nvim": {
       "flake": false,
       "locked": {
@@ -464,6 +448,22 @@
         "type": "github"
       }
     },
+    "plugin_vim-fugitive": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1732036604,
+        "narHash": "sha256-RGS2T6tHuFPZROU0W4Z6j6wMEiJmd8xuKv3qqM3XHPI=",
+        "owner": "tpope",
+        "repo": "vim-fugitive",
+        "rev": "320b18fba2a4f2fe3c8225c778c687e0d2620384",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tpope",
+        "repo": "vim-fugitive",
+        "type": "github"
+      }
+    },
     "plugin_which-key-nvim": {
       "flake": false,
       "locked": {
@@ -493,7 +493,6 @@
         "plugin_cmp-path": "plugin_cmp-path",
         "plugin_flake-nvim": "plugin_flake-nvim",
         "plugin_gitsigns-nvim": "plugin_gitsigns-nvim",
-        "plugin_indent-blankline-nvim": "plugin_indent-blankline-nvim",
         "plugin_lualine-nvim": "plugin_lualine-nvim",
         "plugin_luasnip": "plugin_luasnip",
         "plugin_mini-nvim": "plugin_mini-nvim",
@@ -511,6 +510,7 @@
         "plugin_telescope-git-file-history-nvim": "plugin_telescope-git-file-history-nvim",
         "plugin_telescope-nvim": "plugin_telescope-nvim",
         "plugin_telescope-ui-select-nvim": "plugin_telescope-ui-select-nvim",
+        "plugin_vim-fugitive": "plugin_vim-fugitive",
         "plugin_which-key-nvim": "plugin_which-key-nvim"
       }
     }
