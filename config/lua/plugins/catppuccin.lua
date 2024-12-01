@@ -28,7 +28,6 @@ catppuccin.setup({
 		fidget = pluginIsPresent('fidget'),
 		flash = pluginIsPresent('flash'),
 		gitsigns = pluginIsPresent('gitsigns'),
-		illuminate = pluginIsPresent('illuminate'),
 		indent_blankline = {
 			enabled = pluginIsPresent('ibl'),
 			scope_color = 'sapphire',
@@ -45,7 +44,6 @@ catppuccin.setup({
 		},
 		treesitter = pluginIsPresent('nvim-treesitter'),
 		treesitter_context = pluginIsPresent('treesitter-context'),
-		ufo = pluginIsPresent('ufo'),
 		which_key = pluginIsPresent('which-key'),
 	},
 

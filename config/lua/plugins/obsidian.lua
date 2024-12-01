@@ -7,7 +7,7 @@ local notesPath = "/home/matt/Notes"
 
 local status_ok, errstr, _ = os.rename(notesPath, notesPath)
 if status_ok == nil then
-	print(errstr)
+	print( errstr )
 	return
 end
 
@@ -19,15 +19,9 @@ obsidian.setup({
 	mappings = {
 		["gf"] = {
 			action = function()
-				return require("obsidian").util.gf_passthrough()
+				return obsidian.util.gf_passthrough()
 			end,
 			opts = { buffer = true, expr = true, noremap = false },
-		},
-		["<leader>c"] = {
-			action = function()
-				return require("obsidian").util.toggle_checkbox()
-			end,
-			opts = { buffer = true },
 		},
 		["<cr>"] = {
 			action = function()
@@ -37,7 +31,13 @@ obsidian.setup({
 		},
 	},
 
-	ui = { enable = true },
+	ui = {
+		enable = true,
+		checkboxes = {
+		[" "] = { hl_group = "ObsidianTodo" },
+		["x"] = { hl_group = "ObsidianDone" },
+		},
+	},
 
 	workspaces = {
 		{ name = "Notes", path = notesPath },

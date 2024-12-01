@@ -7,7 +7,7 @@ flash.setup()
 
 vim.keymap.set(
 	{ 'n', 'x', 'o' },
-	's',
+	'S',
 	function()
 		flash.jump()
 	end,
