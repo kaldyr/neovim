@@ -1,25 +1,25 @@
 vim.opt.fillchars = {
-    eob = ' ',
-    fold = ' ',
-    foldopen = '',
-    foldsep = ' ',
-    foldclose = '',
+	eob = ' ',
+	fold = ' ',
+	foldopen = '',
+	foldsep = ' ',
+	foldclose = '',
 }
 
 vim.opt.listchars = {
-    extends  = '⟩',
-    lead     = '·',
-    nbsp     = '␣',
-    precedes = '⟨',
-    space = '·',
-    tab      = '▏ ',
-    trail    = '*',
+	extends  = '⟩',
+	lead     = '·',
+	nbsp     = '␣',
+	precedes = '⟨',
+	space = '·',
+	tab      = '▏ ',
+	trail    = '*',
 }
 
 vim.opt.autoindent = true;
 vim.opt.expandtab = false
-vim.opt.shiftwidth = 4
-vim.opt.smarttab = true
+vim.opt.shiftwidth = 0
+vim.opt.smarttab = false
 vim.opt.softtabstop = -1
 vim.opt.tabstop = 4
 

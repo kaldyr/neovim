@@ -24,3 +24,23 @@ vim.api.nvim_create_autocmd( 'VimEnter', {
 
 	end,
 })
+
+-- Deal with yaml's stupid decisions
+vim.api.nvim_create_autocmd( 'BufEnter', {
+
+	pattern = { "*.yaml", "*.yml" },
+	callback = function()
+		vim.cmd [[ setlocal expandtab ]]
+	end,
+
+})
+
+-- Languages with tabstop=2
+vim.api.nvim_create_autocmd( 'BufEnter', {
+
+	pattern = { "*.css", "*.htm", "*.html", "*.templ", "*.tmpl", "*.yaml", "*.yml" },
+	callback = function()
+		vim.cmd [[ setlocal tabstop=2 ]]
+	end,
+
+})
