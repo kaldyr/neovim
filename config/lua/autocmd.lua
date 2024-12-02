@@ -26,21 +26,19 @@ vim.api.nvim_create_autocmd( 'VimEnter', {
 })
 
 -- Deal with yaml's stupid decisions
-vim.api.nvim_create_autocmd( 'BufEnter', {
-
-	pattern = { "*.yaml", "*.yml" },
-	callback = function()
-		vim.cmd [[ setlocal expandtab ]]
-	end,
-
+vim.api.nvim_create_autocmd( 'FileType', {
+	pattern = { "yaml", "yml" },
+	command = "setlocal expandtab"
 })
 
 -- Languages with tabstop=2
-vim.api.nvim_create_autocmd( 'BufEnter', {
+vim.api.nvim_create_autocmd( 'FileType', {
+	pattern = { "css", "htm", "html", "templ", "tmpl", "yaml", "yml" },
+	command = "setlocal tabstop=2"
+})
 
-	pattern = { "*.css", "*.htm", "*.html", "*.templ", "*.tmpl", "*.yaml", "*.yml" },
-	callback = function()
-		vim.cmd [[ setlocal tabstop=2 ]]
-	end,
-
+-- Open help on the side
+vim.api.nvim_create_autocmd( "FileType", {
+	pattern = "help",
+	command = "wincmd L"
 })

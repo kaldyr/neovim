@@ -1,5 +1,23 @@
 {
   "nodes": {
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1732238832,
@@ -176,6 +194,22 @@
         "type": "github"
       }
     },
+    "plugin_image-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1732136347,
+        "narHash": "sha256-Az/jiHW/DtvHNlV+Wzw6U+p8b2Ic9pNJRQ6YGerL81c=",
+        "owner": "3rd",
+        "repo": "image.nvim",
+        "rev": "5f8fceca2d1be96a45b81de21c2f98bf6084fb34",
+        "type": "github"
+      },
+      "original": {
+        "owner": "3rd",
+        "repo": "image.nvim",
+        "type": "github"
+      }
+    },
     "plugin_lualine-nvim": {
       "flake": false,
       "locked": {
@@ -317,6 +351,22 @@
       "original": {
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter-context",
+        "type": "github"
+      }
+    },
+    "plugin_nvim-treesitter-textobjects": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1732260993,
+        "narHash": "sha256-b/7Bz7L83KL+uZC1bRJ4PrzPVK/NaCKSx4VCHlPcdCM=",
+        "owner": "nvim-treesitter",
+        "repo": "nvim-treesitter-textobjects",
+        "rev": "ad8f0a472148c3e0ae9851e26a722ee4e29b1595",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-treesitter",
+        "repo": "nvim-treesitter-textobjects",
         "type": "github"
       }
     },
@@ -482,6 +532,7 @@
     },
     "root": {
       "inputs": {
+        "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs",
         "plugin_barbar-nvim": "plugin_barbar-nvim",
         "plugin_boole-nvim": "plugin_boole-nvim",
@@ -493,6 +544,7 @@
         "plugin_cmp-path": "plugin_cmp-path",
         "plugin_flake-nvim": "plugin_flake-nvim",
         "plugin_gitsigns-nvim": "plugin_gitsigns-nvim",
+        "plugin_image-nvim": "plugin_image-nvim",
         "plugin_lualine-nvim": "plugin_lualine-nvim",
         "plugin_luasnip": "plugin_luasnip",
         "plugin_mini-nvim": "plugin_mini-nvim",
@@ -502,6 +554,7 @@
         "plugin_nvim-cmp": "plugin_nvim-cmp",
         "plugin_nvim-lspconfig": "plugin_nvim-lspconfig",
         "plugin_nvim-treesitter-context": "plugin_nvim-treesitter-context",
+        "plugin_nvim-treesitter-textobjects": "plugin_nvim-treesitter-textobjects",
         "plugin_nvim-web-devicons": "plugin_nvim-web-devicons",
         "plugin_obsidian-nvim": "plugin_obsidian-nvim",
         "plugin_plenary-nvim": "plugin_plenary-nvim",
@@ -512,6 +565,21 @@
         "plugin_telescope-ui-select-nvim": "plugin_telescope-ui-select-nvim",
         "plugin_vim-fugitive": "plugin_vim-fugitive",
         "plugin_which-key-nvim": "plugin_which-key-nvim"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
       }
     }
   },
