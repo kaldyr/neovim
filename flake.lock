@@ -194,6 +194,22 @@
         "type": "github"
       }
     },
+    "plugin_lazydev-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1732489623,
+        "narHash": "sha256-ErX0dCyAVRn5wtlXVnbEYku2dicIkFySdlsqg5vrWoA=",
+        "owner": "folke",
+        "repo": "lazydev.nvim",
+        "rev": "f59bd14a852ca43db38e3662395354cb2a9b13e0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "lazydev.nvim",
+        "type": "github"
+      }
+    },
     "plugin_lualine-nvim": {
       "flake": false,
       "locked": {
@@ -239,22 +255,6 @@
       "original": {
         "owner": "echasnovski",
         "repo": "mini.nvim",
-        "type": "github"
-      }
-    },
-    "plugin_neodev-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1720260306,
-        "narHash": "sha256-hOjzlo/IqmV8tYjGwfmcCPEmHYsWnEIwtHZdhpwA1kM=",
-        "owner": "folke",
-        "repo": "neodev.nvim",
-        "rev": "46aa467dca16cf3dfe27098042402066d2ae242d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "folke",
-        "repo": "neodev.nvim",
         "type": "github"
       }
     },
@@ -544,10 +544,10 @@
         "plugin_cmp-path": "plugin_cmp-path",
         "plugin_flake-nvim": "plugin_flake-nvim",
         "plugin_gitsigns-nvim": "plugin_gitsigns-nvim",
+        "plugin_lazydev-nvim": "plugin_lazydev-nvim",
         "plugin_lualine-nvim": "plugin_lualine-nvim",
         "plugin_luasnip": "plugin_luasnip",
         "plugin_mini-nvim": "plugin_mini-nvim",
-        "plugin_neodev-nvim": "plugin_neodev-nvim",
         "plugin_noice-nvim": "plugin_noice-nvim",
         "plugin_nui-nvim": "plugin_nui-nvim",
         "plugin_nvim-cmp": "plugin_nvim-cmp",

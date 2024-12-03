@@ -26,7 +26,6 @@ vim.opt.tabstop = 4
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.conceallevel = 2
 vim.opt.cursorline = true
-vim.opt.hlsearch = true
 vim.opt.mouse = 'a'
 vim.opt.number = true
 vim.opt.numberwidth = 2
@@ -49,10 +48,3 @@ vim.opt.title = true
 vim.opt.undofile = true
 vim.opt.wrap = false
 vim.opt.shortmess:append "sfI"
-
-vim.diagnostic.config({ virtual_text = false; })
-
-vim.g.netrw_banner = 0
-vim.g.netrw_keepdir = 1
-vim.g.netrw_liststyle = 3
-vim.g.netrw_localcopydircmd = 'cp -r'
