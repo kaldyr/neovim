@@ -17,7 +17,6 @@
 		plugin_cmp-path = { url = "github:hrsh7th/cmp-path"; flake = false; };
 		plugin_flake-nvim = { url = "github:folke/flash.nvim"; flake = false; };
 		plugin_gitsigns-nvim = { url = "github:lewis6991/gitsigns.nvim"; flake = false; };
-		plugin_image-nvim = { url = "github:3rd/image.nvim"; flake = false; };
 		plugin_lualine-nvim = { url = "github:nvim-lualine/lualine.nvim"; flake = false; };
 		plugin_luasnip = { url = "github:L3MON4D3/LuaSnip"; flake = false; };
 		plugin_mini-nvim = { url = "github:echasnovski/mini.nvim"; flake = false; };
@@ -90,7 +89,6 @@
 			yaml-language-server
 			vscode-langservers-extracted
 			# Lua stuff
-			lua51Packages.magick
 			python312Packages.pylatexenc
 		];
 

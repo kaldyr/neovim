@@ -194,22 +194,6 @@
         "type": "github"
       }
     },
-    "plugin_image-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1732136347,
-        "narHash": "sha256-Az/jiHW/DtvHNlV+Wzw6U+p8b2Ic9pNJRQ6YGerL81c=",
-        "owner": "3rd",
-        "repo": "image.nvim",
-        "rev": "5f8fceca2d1be96a45b81de21c2f98bf6084fb34",
-        "type": "github"
-      },
-      "original": {
-        "owner": "3rd",
-        "repo": "image.nvim",
-        "type": "github"
-      }
-    },
     "plugin_lualine-nvim": {
       "flake": false,
       "locked": {
@@ -560,7 +544,6 @@
         "plugin_cmp-path": "plugin_cmp-path",
         "plugin_flake-nvim": "plugin_flake-nvim",
         "plugin_gitsigns-nvim": "plugin_gitsigns-nvim",
-        "plugin_image-nvim": "plugin_image-nvim",
         "plugin_lualine-nvim": "plugin_lualine-nvim",
         "plugin_luasnip": "plugin_luasnip",
         "plugin_mini-nvim": "plugin_mini-nvim",
