@@ -21,24 +21,19 @@ catppuccin.setup({
 	dim_inactive = {
 		enabled = true,
 		shade = 'dark',
-		percentage = 0.15,
+		percentage = 0.25,
 	},
 
 	integrations = {
 		fidget = pluginIsPresent('fidget'),
 		flash = pluginIsPresent('flash'),
 		gitsigns = pluginIsPresent('gitsigns'),
-		indent_blankline = {
-			enabled = pluginIsPresent('ibl'),
-			scope_color = 'sapphire',
-			colored_indent_levels = false,
-		},
 		native_lsp = {
 			enabled = pluginIsPresent('lspconfig'),
 		},
 		noice = pluginIsPresent('noice'),
 		notify = pluginIsPresent('notify'),
-		rainbow_delimiters = pluginIsPresent('rainbow-delimiters'),
+		-- rainbow_delimiters = pluginIsPresent('rainbow-delimiters'),
 		telescope = {
 			enabled = pluginIsPresent('telescope'),
 		},

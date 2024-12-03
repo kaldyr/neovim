@@ -13,7 +13,6 @@ require 'plugins/flash'
 require 'plugins/gitsigns'
 require('image').setup()
 require 'plugins/lualine'
--- require('neorg').setup()
 require 'plugins/noice'
 require 'plugins/nvim-cmp'
 require 'plugins/nvim-lspconfig'
@@ -21,6 +20,7 @@ require 'plugins/obsidian'
 require('render-markdown').setup({ file_types = {'markdown'} })
 require 'plugins/sort'
 require 'plugins/telescope'
+require('tiny-inline-diagnostic').setup()
 require 'plugins/treesitter'
 require 'plugins/which-key'
 
@@ -33,4 +33,4 @@ require('mini.indentscope').setup({ symbol = "▏" })
 require('mini.jump').setup()
 require('mini.pairs').setup()
 require('mini.splitjoin').setup()
-require('mini.surround').setup()
+-- require('mini.surround').setup()

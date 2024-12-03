@@ -498,6 +498,22 @@
         "type": "github"
       }
     },
+    "plugin_tiny-inline-diagnostic-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1733185760,
+        "narHash": "sha256-16czVRGMDWsaf93JPAlZjtDHLDUhHXM+hwHon42LVTQ=",
+        "owner": "rachartier",
+        "repo": "tiny-inline-diagnostic.nvim",
+        "rev": "f8b6d0bc4bc0ab7e7df30899ff062ab4b76dc055",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rachartier",
+        "repo": "tiny-inline-diagnostic.nvim",
+        "type": "github"
+      }
+    },
     "plugin_vim-fugitive": {
       "flake": false,
       "locked": {
@@ -563,6 +579,7 @@
         "plugin_telescope-git-file-history-nvim": "plugin_telescope-git-file-history-nvim",
         "plugin_telescope-nvim": "plugin_telescope-nvim",
         "plugin_telescope-ui-select-nvim": "plugin_telescope-ui-select-nvim",
+        "plugin_tiny-inline-diagnostic-nvim": "plugin_tiny-inline-diagnostic-nvim",
         "plugin_vim-fugitive": "plugin_vim-fugitive",
         "plugin_which-key-nvim": "plugin_which-key-nvim"
       }

@@ -1,15 +1,10 @@
 local status_ok, obsidian = pcall( require, 'obsidian' )
-if not status_ok then
-	return
-end
+if not status_ok then return end
 
 local notesPath = "/home/matt/Notes"
 
-local status_ok, errstr, _ = os.rename(notesPath, notesPath)
-if status_ok == nil then
-	print( errstr )
-	return
-end
+status_ok, _, _ = os.rename(notesPath, notesPath)
+if not status_ok then return end
 
 obsidian.setup({
 
@@ -32,7 +27,7 @@ obsidian.setup({
 	},
 
 	ui = {
-		enable = true,
+		enable = false,
 		checkboxes = {
 		[" "] = { hl_group = "ObsidianTodo" },
 		["x"] = { hl_group = "ObsidianDone" },

@@ -1,7 +1,5 @@
 local status_ok, barbar = pcall( require, 'barbar' )
-if not status_ok then
-	return
-end
+if not status_ok then return end
 
 barbar.setup({ auto_hide = 1; })
 

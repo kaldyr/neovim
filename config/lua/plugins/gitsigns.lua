@@ -1,7 +1,5 @@
 local status_ok, gitsigns = pcall( require, 'gitsigns' )
-if not status_ok then
-	return
-end
+if not status_ok then return end
 
 gitsigns.setup({
 
@@ -14,88 +12,80 @@ gitsigns.setup({
 	},
 
 	on_attach = function(bufnr)
-		local gs = package.loaded.gitsigns
-
-		local function map(mode, l, r, opts)
-			opts = opts or {}
-			opts.buffer = bufnr
-			vim.keymap.set(mode, l, r, opts)
-		end
-
 		-- Navigation
-		map(
+		vim.keymap.set(
 			{ 'n', 'v' },
 			']h',
 			function()
 				vim.schedule(function()
-					gs.next_hunk()
+					gitsigns.next_hunk()
 				end)
 				return '<Ignore>'
 			end,
-			{ expr = true, desc = 'Jump to next hunk' }
+			{ expr = true, desc = 'Jump to next hunk', buffer = bufnr }
 		)
 
-		map(
+		vim.keymap.set(
 			{ 'n', 'v' },
 			'[h',
 			function()
 				vim.schedule(function()
-					gs.prev_hunk()
+					gitsigns.prev_hunk()
 				end)
 				return '<Ignore>'
 			end,
-			{ expr = true, desc = 'Jump to previous hunk' }
+			{ expr = true, desc = 'Jump to previous hunk', buffer = bufnr }
 		)
 
 		-- Actions
 		-- visual mode
-		map(
+		vim.keymap.set(
 			'v',
-			'<leader>gs',
+			'<leader>Gs',
 			function()
-				gs.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
+				gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
 			end,
-			{ desc = 'stage git hunk' }
+			{ desc = 'stage git hunk', buffer = bufnr }
 		)
-		map(
+		vim.keymap.set(
 			'v',
-			'<leader>gr',
+			'<leader>Gr',
 			function()
-				gs.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
+				gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
 			end,
-			{ desc = 'reset git hunk' }
+			{ desc = 'reset git hunk', buffer = bufnr }
 		)
 		-- normal mode
-		map('n', '<leader>gs', gs.stage_hunk, { desc = 'git stage hunk' })
-		map('n', '<leader>gr', gs.reset_hunk, { desc = 'git reset hunk' })
-		map('n', '<leader>gS', gs.stage_buffer, { desc = 'git Stage buffer' })
-		map('n', '<leader>gu', gs.undo_stage_hunk, { desc = 'undo stage hunk' })
-		map('n', '<leader>gR', gs.reset_buffer, { desc = 'git Reset buffer' })
-		map('n', '<leader>gp', gs.preview_hunk, { desc = 'preview git hunk' })
-		map(
+		vim.keymap.set('n', '<leader>Gs', gitsigns.stage_hunk, { desc = 'git stage hunk', buffer = bufnr })
+		vim.keymap.set('n', '<leader>Gr', gitsigns.reset_hunk, { desc = 'git reset hunk', buffer = bufnr })
+		vim.keymap.set('n', '<leader>GS', gitsigns.stage_buffer, { desc = 'git Stage buffer', buffer = bufnr })
+		vim.keymap.set('n', '<leader>Gu', gitsigns.undo_stage_hunk, { desc = 'undo stage hunk', buffer = bufnr })
+		vim.keymap.set('n', '<leader>GR', gitsigns.reset_buffer, { desc = 'git Reset buffer', buffer = bufnr })
+		vim.keymap.set('n', '<leader>Gp', gitsigns.preview_hunk, { desc = 'preview git hunk', buffer = bufnr })
+		vim.keymap.set(
 			'n',
-			'<leader>gb',
+			'<leader>Gb',
 			function()
-				gs.blame_line { full = false }
+				gitsigns.blame_line { full = false }
 			end,
-			{ desc = 'git blame line' }
+			{ desc = 'git blame line', buffer = bufnr }
 		)
-		map('n', '<leader>gd', gs.diffthis, { desc = 'git diff against index' })
-		map(
+		vim.keymap.set('n', '<leader>Gd', gitsigns.diffthis, { desc = 'git diff against index', buffer = bufnr })
+		vim.keymap.set(
 			'n',
-			'<leader>gc',
+			'<leader>Gc',
 			function()
-				gs.diffthis '~'
+				gitsigns.diffthis '~'
 			end,
-			{ desc = 'git diff against last commit' }
+			{ desc = 'git diff against last commit', buffer = bufnr }
 		)
 
 		-- Toggles
-		map('n', '<leader>gb', gs.toggle_current_line_blame, { desc = 'toggle git blame line' })
-		map('n', '<leader>gD', gs.toggle_deleted, { desc = 'toggle git show deleted' })
+		vim.keymap.set('n', '<leader>Gb', gitsigns.toggle_current_line_blame, { desc = 'toggle git blame line', buffer = bufnr })
+		vim.keymap.set('n', '<leader>GD', gitsigns.toggle_deleted, { desc = 'toggle git show deleted', buffer = bufnr })
 
 		-- Text object
-		map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'select git hunk' })
+		vim.keymap.set({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'select git hunk', buffer = bufnr })
 
 	end,
 

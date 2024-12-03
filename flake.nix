@@ -26,7 +26,6 @@
 		plugin_nui-nvim = { url = "github:MunifTanjim/nui.nvim"; flake = false; };
 		plugin_nvim-cmp = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
 		plugin_nvim-lspconfig = { url = "github:neovim/nvim-lspconfig"; flake = false; };
-		# plugin_nvim-neorg = { url = "github:nvim-neorg/neorg"; flake = false; };
 		plugin_nvim-treesitter-context = { url = "github:nvim-treesitter/nvim-treesitter-context"; flake = false; };
 		plugin_nvim-treesitter-textobjects = { url = "github:nvim-treesitter/nvim-treesitter-textobjects"; flake = false; };
 		plugin_nvim-web-devicons = { url = "github:nvim-tree/nvim-web-devicons"; flake = false; };
@@ -37,6 +36,7 @@
 		plugin_telescope-git-file-history-nvim = { url = "github:isak102/telescope-git-file-history.nvim"; flake = false; };
 		plugin_telescope-nvim = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
 		plugin_telescope-ui-select-nvim = { url = "github:nvim-telescope/telescope-ui-select.nvim"; flake = false; };
+		plugin_tiny-inline-diagnostic-nvim = { url = "github:rachartier/tiny-inline-diagnostic.nvim"; flake = false; };
 		plugin_vim-fugitive = { url = "github:tpope/vim-fugitive"; flake = false; };
 		plugin_which-key-nvim = { url = "github:folke/which-key.nvim"; flake = false; };
 
@@ -91,9 +91,15 @@
 			vscode-langservers-extracted
 			# Lua stuff
 			lua51Packages.magick
+			python312Packages.pylatexenc
 		];
 
 	in rec {
+
+		devShells.develop = packages.neovim;
+		devShells.default = pkgs.mkShell {
+			packages = [ packages.neovim ] ++ extraPackages;
+		};
 
 		packages.default = packages.neovim;
 		packages.neovim = pkgs.neovim.override {
@@ -116,15 +122,6 @@
 			withRuby = false;
 
 		};
-
-		devShells.default = pkgs.mkShell {
-
-			packages = [
-				packages.neovim
-			] ++ extraPackages;
-
-		};
-		devShells.develop = packages.neovim;
 
 	});
 

@@ -29,7 +29,7 @@ vim.keymap.set('n', '<leader>S', ':set invspell<CR>', { desc = 'Toggle Spellchec
 -- Replace word under cursor
 vim.keymap.set(
     'n',
-    '<leader>rw',
+    '<leader>r',
     ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gcI<left><left><left><left>',
     { desc = 'Replace [W]ord under cursor', silent = false }
 )
@@ -59,7 +59,7 @@ vim.keymap.set('x', '@', ':norm @@<CR>', { silent = true, noremap = true })
 -- Replace selection
 vim.keymap.set(
     'v',
-    '<leader>rs',
+    '<leader>r',
     '"hy:%s/<C-r>h/<C-r>h/gc<left><left><left>',
     { desc = 'Replace [S]election', silent = false }
 )

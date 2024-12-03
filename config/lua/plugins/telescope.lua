@@ -1,17 +1,11 @@
 local status_ok, telescope = pcall( require, 'telescope' )
-if not status_ok then
-	return
-end
+if not status_ok then return end
 
 status_ok, _ = pcall( telescope.load_extension, 'ui-select' )
-if not status_ok then
-	return
-end
+if not status_ok then return end
 
 status_ok, _ = pcall( telescope.load_extension, 'git_file_history' )
-if not status_ok then
-	return
-end
+if not status_ok then return end
 
 telescope.setup {
 	extensions = {
