@@ -88,7 +88,7 @@
 			taplo
 			yaml-language-server
 			vscode-langservers-extracted
-			# Lua stuff
+			# Extras
 			python312Packages.pylatexenc
 		];
 
