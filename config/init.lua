@@ -11,7 +11,6 @@ require 'plugins/barbar'
 require 'plugins/boole'
 require 'plugins/flash'
 require 'plugins/gitsigns'
-require('image').setup()
 require 'plugins/lualine'
 require 'plugins/noice'
 require 'plugins/nvim-cmp'
