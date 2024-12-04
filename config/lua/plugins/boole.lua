@@ -1,19 +1,19 @@
-local status_ok, boole = pcall( require, 'boole' )
-if not status_ok then return end
+return {
 
-boole.setup({
+	PluginsFromNix['boole-nvim'],
 
-	mappings = {
-		increment = '<C-a>',
-		decrement = '<C-x>',
+	opts = {
+
+		allow_caps_additions = {
+			{ 'true', 'false' },
+			{ 'yes', 'no' },
+		},
+
+		mappings = {
+			increment = '<C-a>',
+			decrement = '<C-x>',
+		},
+
 	},
 
-	allow_caps_additions = {
-		{ 'enable', 'disable' },
-		{ 'true', 'false' },
-		{ 'yes', 'no' },
-		{ 'on', 'off' },
-		{ 'before', 'after' },
-	}
-
-})
+}

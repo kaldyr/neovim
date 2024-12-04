@@ -1,13 +1,11 @@
-local status_ok, flash = pcall( require, 'flash' )
-if not status_ok then return end
+return {
 
-flash.setup()
+	PluginsFromNix['flash-nvim'],
 
-vim.keymap.set(
-	{ 'n', 'x', 'o' },
-	'S',
-	function()
-		flash.jump()
-	end,
-	{ desc = 'Flash Jump' }
-)
+	keys = {
+		{ 'S', function() require('flash').jump() end, mode = { 'n', 'x', 'o' }, desc = 'Flash' }
+	},
+
+	opts = {},
+
+}

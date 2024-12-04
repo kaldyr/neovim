@@ -1,23 +1,20 @@
-local status_ok, lualine = pcall( require, 'lualine' )
-if not status_ok then return end
+return {
 
-local colorscheme = function(desired, fallback)
-	status_ok, _ = pcall( require, desired )
-	if status_ok then return desired end
-	return fallback
-end
+	PluginsFromNix['lualine-nvim'],
 
-lualine.setup({
+	opts = {
 
-	options = {
-		show_filename_only = false,
-		theme = colorscheme('catppuccin', 'habamax'),
-	},
-
-	sections = {
-		lualine_c = {
-			{ 'filename', path = 1 },
+		options = {
+			show_filename_only = false,
+			theme = 'catppuccin',
 		},
+
+		sections = {
+			lualine_c = {
+				{ 'filename', path = 1 },
+			},
+		},
+
 	},
 
-})
+}

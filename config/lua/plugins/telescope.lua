@@ -1,33 +1,30 @@
-local status_ok, telescope = pcall( require, 'telescope' )
-if not status_ok then return end
+return {
 
-status_ok, _ = pcall( telescope.load_extension, 'ui-select' )
-if not status_ok then return end
+	PluginsFromNix['telescope-nvim'],
 
-status_ok, _ = pcall( telescope.load_extension, 'git_file_history' )
-if not status_ok then return end
-
-telescope.setup {
-	extensions = {
-		["ui-select"] = {
-			require('telescope.themes').get_dropdown {}
-		}
+	keys = {
+		{ '<leader>f:', require('telescope.builtin').command_history, desc = 'Command History' },
+		{ '<leader>fb', require('telescope.builtin').buffers, desc = 'Find Buffers' },
+		{ '<leader>fc', require('telescope.builtin').commands, desc = 'Find Commands' },
+		{ '<leader>fd', require('telescope.builtin').diagnostics, desc = 'Find Diagnostics' },
+		{ '<leader>ff', require('telescope.builtin').find_files, desc = 'Find Files' },
+		{ '<leader>fg', require('telescope.builtin').live_grep, desc = 'Find Grep' },
+		{ '<leader>fh', require('telescope.builtin').help_tags, desc = 'Find Help' },
+		{ '<leader>fH', require('telescope.builtin').highlights, desc = 'Find Highlights' },
+		{ '<leader>fk', require('telescope.builtin').keymaps, desc = 'Find Keymaps' },
+		{ '<leader>fm', require('telescope.builtin').marks, desc = 'Find Marks' },
+		{ '<leader>fo', require('telescope.builtin').vim_options, desc = 'Find Options' },
+		{ '<leader>fr', require('telescope.builtin').oldfiles, desc = 'Recent Files' },
+		{ '<leader>fR', require('telescope.builtin').resume, desc = 'Resume' },
+		{ '<leader>fG', require('telescope').extensions.git_file_history.git_file_history, desc = 'Git File History' },
 	},
+
+	opts = {
+		extensions = {
+			["ui-select"] = {
+				require('telescope.themes').get_dropdown {}
+			}
+		},
+	},
+
 }
-
-local builtin = require('telescope.builtin')
-
-vim.keymap.set('n', '<leader>f:', builtin.command_history, { desc = 'Command History' })
-vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find Buffers' })
-vim.keymap.set('n', '<leader>fc', builtin.commands, { desc = 'Find Commands' })
-vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Find Diagnostics' })
-vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Find Files' })
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Find Grep' })
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Find Help' })
-vim.keymap.set('n', '<leader>fH', builtin.highlights, { desc = 'Find Highlights' })
-vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = 'Find Keymaps' })
-vim.keymap.set('n', '<leader>fm', builtin.marks, { desc = 'Find Marks' })
-vim.keymap.set('n', '<leader>fo', builtin.vim_options, { desc = 'Find Options' })
-vim.keymap.set('n', '<leader>fr', builtin.oldfiles, { desc = 'Recent Files' })
-vim.keymap.set('n', '<leader>fR', builtin.resume, { desc = 'Resume' })
-vim.keymap.set('n', '<leader>fG', require('telescope').extensions.git_file_history.git_file_history, { desc = 'Git File History' })

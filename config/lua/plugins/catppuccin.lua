@@ -1,49 +1,68 @@
-local status_ok, catppuccin = pcall( require, 'catppuccin' )
-if not status_ok then
-	vim.cmd [[colorscheme habamax]]
-	return
-end
+return {
 
-local pluginIsPresent = function(plugin)
-	status_ok, _ = pcall(require, plugin)
-	return status_ok
-end
+	PluginsFromNix['catppuccin-nvim'],
+	lazy = false,
+	priority = 1000,
 
-catppuccin.setup({
+	init = function()
+		vim.cmd [[colorscheme catppuccin]]
+	end,
 
-	flavour = 'frappe',
+	opts = {
 
-	background = {
-		light = 'latte',
-		dark = 'frappe',
-	},
+		flavour = 'frappe',
 
-	dim_inactive = {
-		enabled = true,
-		shade = 'dark',
-		percentage = 0.25,
-	},
-
-	integrations = {
-		fidget = pluginIsPresent('fidget'),
-		flash = pluginIsPresent('flash'),
-		gitsigns = pluginIsPresent('gitsigns'),
-		native_lsp = {
-			enabled = pluginIsPresent('lspconfig'),
+		background = {
+			light = 'latte',
+			dark = 'frappe',
 		},
-		noice = pluginIsPresent('noice'),
-		notify = pluginIsPresent('notify'),
-		-- rainbow_delimiters = pluginIsPresent('rainbow-delimiters'),
-		telescope = {
-			enabled = pluginIsPresent('telescope'),
+
+		dim_inactive = {
+			enabled = true,
+			shade = 'dark',
+			percentage = 0.35,
 		},
-		treesitter = pluginIsPresent('nvim-treesitter'),
-		treesitter_context = pluginIsPresent('treesitter-context'),
-		which_key = pluginIsPresent('which-key'),
+
+		integrations = {
+			barbar = true,
+			cmp = true,
+			flash = true,
+			gitsigns = true,
+			native_lsp = {
+				enabled = true,
+				virtual_text = {
+					errors = { "italic" },
+					hints = { "italic" },
+					warnings = { "italic" },
+					information = { "italic" },
+					ok = { "italic" },
+				},
+				underlines = {
+					errors = { "underline" },
+					hints = { "underline" },
+					warnings = { "underline" },
+					information = { "underline" },
+					ok = { "underline" },
+				},
+				inlay_hints = {
+					background = true,
+				},
+			},
+			mini = {
+				enabled = true,
+			},
+			noice = true,
+			render_markdown = true,
+			telescope = {
+				enabled = true,
+			},
+			treesitter = true,
+			treesitter_context = true,
+			which_key = true,
+		},
+
+		term_colors = true,
+
 	},
 
-	term_colors = true,
-
-})
-
-vim.cmd [[colorscheme catppuccin]]
+}

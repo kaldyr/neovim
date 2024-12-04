@@ -1,6 +1,17 @@
-local status_ok, whichkey = pcall( require, 'which-key' )
-if not status_ok then return end
+return {
 
-whichkey.setup()
+	PluginsFromNix['which-key-nvim'],
 
-vim.keymap.set('n', '<leader> ', ':WhichKey<CR>')
+	keys = {
+		{
+			"<leader>?",
+			function()
+				require("which-key").show({ global = false })
+			end,
+			desc = "Buffer Local Keymaps (which-key)",
+		},
+	},
+
+	opts = {},
+
+}

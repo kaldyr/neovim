@@ -1,12 +1,23 @@
-local status_ok, barbar = pcall( require, 'barbar' )
-if not status_ok then return end
+return {
 
-barbar.setup({ auto_hide = 1; })
+	PluginsFromNix['barbar-nvim'],
 
-vim.api.nvim_set_keymap('n', '<C-p>', ':BufferPick<CR>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('n', '<C-n>', ':BufferPin<CR>', { silent = true, noremap = true })
--- Keyd used to get around the C-, C-. C-< C-> limitations of neovim
-vim.api.nvim_set_keymap('n', '<Leader>bp', ':BufferPrevious<CR>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>bn', ':BufferNext<CR>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>BP', ':BufferMovePrevious<CR>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>BN', ':BufferMoveNext<CR>', { silent = true, noremap = true })
+	init = function()
+		vim.g.barbar_auto_setup = false
+	end,
+
+	keys = {
+		{ '<C-p>', ':BufferPick<CR>', noremap = true, silent = true },
+		{ '<C-n>', ':BufferPin<CR>', noremap = true, silent = true },
+		-- Keyd used to get around the C-, C-. C-< C-> limitations of neovim
+		{ '<Leader>bp', ':BufferPrevious<CR>', noremap = true, silent = true },
+		{ '<Leader>bn', ':BufferNext<CR>', noremap = true, silent = true },
+		{ '<Leader>BP', ':BufferMovePrevious<CR>', noremap = true, silent = true },
+		{ '<Leader>BN', ':BufferMoveNext<CR>', noremap = true, silent = true },
+	},
+
+	opts = {
+		auto_hide = 1
+	},
+
+}
