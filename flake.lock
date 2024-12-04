@@ -98,38 +98,6 @@
         "type": "github"
       }
     },
-    "plugin_cmp-cmdline": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1711081050,
-        "narHash": "sha256-iBmXp+gUSMbgfkv7c7RDQAwPq02e07wEnBETP0dWBOo=",
-        "owner": "hrsh7th",
-        "repo": "cmp-cmdline",
-        "rev": "d250c63aa13ead745e3a40f61fdd3470efde3923",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hrsh7th",
-        "repo": "cmp-cmdline",
-        "type": "github"
-      }
-    },
-    "plugin_cmp-luasnip": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1730707109,
-        "narHash": "sha256-86lKQPPyqFz8jzuLajjHMKHrYnwW6+QOcPyQEx6B+gw=",
-        "owner": "saadparwaiz1",
-        "repo": "cmp_luasnip",
-        "rev": "98d9cb5c2c38532bd9bdb481067b20fea8f32e90",
-        "type": "github"
-      },
-      "original": {
-        "owner": "saadparwaiz1",
-        "repo": "cmp_luasnip",
-        "type": "github"
-      }
-    },
     "plugin_cmp-nvim-lsp": {
       "flake": false,
       "locked": {
@@ -162,7 +130,7 @@
         "type": "github"
       }
     },
-    "plugin_flake-nvim": {
+    "plugin_flash-nvim": {
       "flake": false,
       "locked": {
         "lastModified": 1721651134,
@@ -191,6 +159,22 @@
       "original": {
         "owner": "lewis6991",
         "repo": "gitsigns.nvim",
+        "type": "github"
+      }
+    },
+    "plugin_lazy-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1732091289,
+        "narHash": "sha256-4M2MumRyX5XmsomXPMjOAJQsNaaRnbWmtUDm1fM3izk=",
+        "owner": "folke",
+        "repo": "lazy.nvim",
+        "rev": "56ead98e05bb37a4ec28930a54d836d033cf00f2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "lazy.nvim",
         "type": "github"
       }
     },
@@ -223,22 +207,6 @@
       "original": {
         "owner": "nvim-lualine",
         "repo": "lualine.nvim",
-        "type": "github"
-      }
-    },
-    "plugin_luasnip": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1731918376,
-        "narHash": "sha256-Yl95znL076u6cuSigMQpUOOBw9ZXfqy1a3JF0fL8+KI=",
-        "owner": "L3MON4D3",
-        "repo": "LuaSnip",
-        "rev": "0f7bbce41ea152a94d12aea286f2ce98e63c0f58",
-        "type": "github"
-      },
-      "original": {
-        "owner": "L3MON4D3",
-        "repo": "LuaSnip",
         "type": "github"
       }
     },
@@ -418,6 +386,22 @@
         "type": "github"
       }
     },
+    "plugin_snacks-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1733218264,
+        "narHash": "sha256-QJB/4rRV7fckYNgeqDfzseUha+piE9dD419P5Z6WR4g=",
+        "owner": "folke",
+        "repo": "snacks.nvim",
+        "rev": "60bd4e108cf7b2df0c0f578815b2b985d2cc2871",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "snacks.nvim",
+        "type": "github"
+      }
+    },
     "plugin_sort-nvim": {
       "flake": false,
       "locked": {
@@ -538,15 +522,13 @@
         "plugin_boole-nvim": "plugin_boole-nvim",
         "plugin_catppuccin-nvim": "plugin_catppuccin-nvim",
         "plugin_cmp-buffer": "plugin_cmp-buffer",
-        "plugin_cmp-cmdline": "plugin_cmp-cmdline",
-        "plugin_cmp-luasnip": "plugin_cmp-luasnip",
         "plugin_cmp-nvim-lsp": "plugin_cmp-nvim-lsp",
         "plugin_cmp-path": "plugin_cmp-path",
-        "plugin_flake-nvim": "plugin_flake-nvim",
+        "plugin_flash-nvim": "plugin_flash-nvim",
         "plugin_gitsigns-nvim": "plugin_gitsigns-nvim",
+        "plugin_lazy-nvim": "plugin_lazy-nvim",
         "plugin_lazydev-nvim": "plugin_lazydev-nvim",
         "plugin_lualine-nvim": "plugin_lualine-nvim",
-        "plugin_luasnip": "plugin_luasnip",
         "plugin_mini-nvim": "plugin_mini-nvim",
         "plugin_noice-nvim": "plugin_noice-nvim",
         "plugin_nui-nvim": "plugin_nui-nvim",
@@ -558,6 +540,7 @@
         "plugin_obsidian-nvim": "plugin_obsidian-nvim",
         "plugin_plenary-nvim": "plugin_plenary-nvim",
         "plugin_render-markdown-nvim": "plugin_render-markdown-nvim",
+        "plugin_snacks-nvim": "plugin_snacks-nvim",
         "plugin_sort-nvim": "plugin_sort-nvim",
         "plugin_telescope-git-file-history-nvim": "plugin_telescope-git-file-history-nvim",
         "plugin_telescope-nvim": "plugin_telescope-nvim",

@@ -1,7 +1,23 @@
 -- Neovim Config
-require 'autocmd'
 require 'options'
 require 'keymaps'
+require 'autocmd'
+
+local runtimePaths = vim.api.nvim_list_runtime_paths()
+Plugins = {}
+local i = 1;
+local ignoreMatch = "vimplugin-treesitter-grammar"
+while ( i <= #runtimePaths ) do
+	local startPos = string.find( runtimePaths[i], "myNeovimPackages/start/" )
+	if startPos ~= nil then
+		local plugName = string.sub( runtimePaths[i], startPos + 23 )
+		if string.sub( plugName, 1, string.len(ignoreMatch)) ~= ignoreMatch then
+			Plugins[plugName] = runtimePaths[i]
+		end
+	end
+	i = i + 1
+end
+print(Plugins["boole-nvim"])
 
 -- Colorscheme
 require 'plugins/catppuccin'
