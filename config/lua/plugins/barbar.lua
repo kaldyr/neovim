@@ -1,6 +1,7 @@
 return {
 
-	PluginsFromNix['barbar-nvim'],
+	"barbar.nvim",
+	dir = PluginsFromNix['barbar-nvim'],
 
 	init = function()
 		vim.g.barbar_auto_setup = false

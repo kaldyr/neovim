@@ -1,6 +1,7 @@
 return {
 
-	PluginsFromNix['obsidian-nvim'],
+	"obsidian.nvim",
+	dir = PluginsFromNix['obsidian-nvim'],
 
 	cond = function()
 		return vim.fn.getcwd() == vim.fn.expand '~' .. '/Notes'

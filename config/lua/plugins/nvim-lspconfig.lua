@@ -1,6 +1,7 @@
 return {
 
-	PluginsFromNix['nvim-lspconfig'],
+	"nvim-lspconfig",
+	dir = PluginsFromNix['nvim-lspconfig'],
 
 	config = function()
 		vim.filetype.add({ extension = { templ = "templ" } }) -- a-h/templ Go

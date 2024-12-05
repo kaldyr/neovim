@@ -1,6 +1,7 @@
 return {
 
-	PluginsFromNix['which-key-nvim'],
+	"which-key.nvim",
+	dir = PluginsFromNix['which-key-nvim'],
 
 	keys = {
 		{

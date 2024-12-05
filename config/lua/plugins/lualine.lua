@@ -1,6 +1,7 @@
 return {
 
-	PluginsFromNix['lualine-nvim'],
+	"lualine.nvim",
+	dir = PluginsFromNix['lualine-nvim'],
 
 	opts = {
 

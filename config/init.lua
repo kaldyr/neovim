@@ -17,7 +17,7 @@ local i = 1;
 while ( i <= #runtimePaths ) do
 	local startPos = string.find( runtimePaths[i], matchInPath )
 	if startPos ~= nil then
-		local plugName = string.sub( runtimePaths[i], startPos + string.len(matchInPath) + 1 )
+		local plugName = string.sub( runtimePaths[i], startPos + string.len(matchInPath) )
 		if string.sub( plugName, 1, string.len(ignoreMatch)) ~= ignoreMatch then
 			PluginsFromNix[plugName] = runtimePaths[i]
 		end
@@ -26,4 +26,8 @@ while ( i <= #runtimePaths ) do
 end
 
 -- Get Lazy configured and started
-require('lazy').setup({ spec = { import = 'plugins' } })
+require('lazy').setup({
+	spec = {
+		{ import = 'plugins' }
+	}
+})

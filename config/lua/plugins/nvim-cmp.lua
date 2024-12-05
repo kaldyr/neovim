@@ -1,6 +1,7 @@
 return {
 
-	PluginsFromNix['nvim-cmp'],
+	"nvim-cmp",
+	dir = PluginsFromNix['nvim-cmp'],
 
 	opts = {
 

@@ -1,6 +1,7 @@
 return {
 
-	PluginsFromNix['gitsigns-nvim'],
+	"gitsigns.nvim",
+	dir = PluginsFromNix['gitsigns-nvim'],
 	event = { 'BufReadPre', 'BufNewFile' },
 
 	opts = {

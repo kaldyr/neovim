@@ -1,6 +1,7 @@
 return {
 
-	PluginsFromNix['telescope-nvim'],
+	"telescope.nvim",
+	dir = PluginsFromNix['telescope-nvim'],
 
 	keys = {
 		{ '<leader>f:', require('telescope.builtin').command_history, desc = 'Command History' },

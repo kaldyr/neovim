@@ -1,5 +1,6 @@
 return {
-	PluginsFromNix['tiny-inline-diagnostic-nvim'],
+	"tiny-inline-diagnostic.nvim",
+	dir = PluginsFromNix['tiny-inline-diagnostic-nvim'],
 	event = 'VeryLazy',
 	priority = 1000,
 	init = {

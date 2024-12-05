@@ -1,6 +1,7 @@
 return {
 
-	PluginsFromNix['catppuccin-nvim'],
+	"catppuccin.nvim",
+	dir = PluginsFromNix['catppuccin-nvim'],
 	lazy = false,
 	priority = 1000,
 

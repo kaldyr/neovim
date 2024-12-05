@@ -1,6 +1,7 @@
 return {
 
-	PluginsFromNix['treesitter'],
+	"nvim-treesitter",
+	dir = PluginsFromNix['nvim-treesitter'],
 
 	keys = {
 		{ ';', require('nvim-treesitter.textobjects.repeatable_move').repeat_last_move, mode = { 'n', 'x', 'o' } },

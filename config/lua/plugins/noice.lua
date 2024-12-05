@@ -1,6 +1,7 @@
 return {
 
-	PluginsFromNix['noice-nvim'],
+	"noice.nvim",
+	dir = PluginsFromNix['noice-nvim'],
 	event = 'VeryLazy',
 
 	opts = {

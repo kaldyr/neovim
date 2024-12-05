@@ -72,6 +72,12 @@
 			} ) ];
 		};
 
+		pluginPathsLua = builtins.foldl' (
+			map ( plugin: {
+				
+			} )	pluginsFromInputs
+		) "PluginsFromNix['']";
+
 		extraPackages = with pkgs; [
 			# System utilities
 			fd
@@ -103,7 +109,7 @@
 
 			configure = {
 
-				customRC = /* bash */ ''
+				customRC = /* vimscript */ ''
 					set runtimepath+=${./config}
 					source ${./config/init.lua}
 				'';

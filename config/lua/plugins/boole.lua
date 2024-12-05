@@ -1,6 +1,7 @@
 return {
 
-	PluginsFromNix['boole-nvim'],
+	"boole.nvim",
+	dir = PluginsFromNix['boole-nvim'],
 
 	opts = {
 

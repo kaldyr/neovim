@@ -1,6 +1,7 @@
 return {
 
-	PluginsFromNix['mini-nvim'],
+	"mini.nvim",
+	dir = PluginsFromNix['mini-nvim'],
 
 	config = {
 		require('mini.cursorword').setup(),
