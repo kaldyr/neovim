@@ -18,9 +18,9 @@
 		plugin_lazy-nvim = { url = "github:folke/lazy.nvim"; flake = false; };
 		plugin_lazydev-nvim = { url = "github:folke/lazydev.nvim"; flake = false; };
 		plugin_lualine-nvim = { url = "github:nvim-lualine/lualine.nvim"; flake = false; };
-		plugin_mini-nvim = { url = "github:echasnovski/mini.nvim"; flake = false; };
-		plugin_noice-nvim = { url = "github:folke/noice.nvim"; flake = false; };
-		plugin_nui-nvim = { url = "github:MunifTanjim/nui.nvim"; flake = false; };
+		# plugin_mini-nvim = { url = "github:echasnovski/mini.nvim"; flake = false; };
+		# plugin_noice-nvim = { url = "github:folke/noice.nvim"; flake = false; };
+		# plugin_nui-nvim = { url = "github:MunifTanjim/nui.nvim"; flake = false; };
 		plugin_nvim-cmp = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
 		plugin_nvim-lspconfig = { url = "github:neovim/nvim-lspconfig"; flake = false; };
 		plugin_nvim-treesitter-context = { url = "github:nvim-treesitter/nvim-treesitter-context"; flake = false; };
@@ -64,7 +64,7 @@
 			config.allowBroken = true;
 			overlays = [ ( final: prev: {
 				neovimPlugins = builtins.listToAttrs (
-					map ( plugin: {
+					builtins.map ( plugin: {
 						name = pluginName plugin;
 						value = buildPlugin plugin;
 					} ) pluginsFromInputs
@@ -72,11 +72,11 @@
 			} ) ];
 		};
 
-		pluginPathsLua = builtins.foldl' (
-			map ( plugin: {
-				
-			} )	pluginsFromInputs
-		) "PluginsFromNix['']";
+		pluginPathsLua = builtins.concatStringsSep "\n" (
+			pkgs.lib.attrsets.mapAttrsToList ( name: outPath:
+				"PluginsFromNix['${name}'] = '${outPath}'")
+			pkgs.neovimPlugins
+		);
 
 		extraPackages = with pkgs; [
 			# System utilities
@@ -110,8 +110,13 @@
 			configure = {
 
 				customRC = /* vimscript */ ''
-					set runtimepath+=${./config}
-					source ${./config/init.lua}
+set runtimepath+=${./config}
+lua <<EOF
+PluginsFromNix = {}
+PluginsFromNix['nvim-treesitter'] = '${pkgs.vimPlugins.nvim-treesitter.withAllGrammars}'
+${pluginPathsLua}
+EOF
+source ${./config/init.lua}
 				'';
 				
 				packages.all.start = with pkgs.vimPlugins; [

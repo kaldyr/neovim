@@ -210,54 +210,6 @@
         "type": "github"
       }
     },
-    "plugin_mini-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1732613204,
-        "narHash": "sha256-1WjDwPxUftzKpf/Dpzkj7TaeamkfvEVPZ3ZdbfkbzGs=",
-        "owner": "echasnovski",
-        "repo": "mini.nvim",
-        "rev": "c8922aef8207137e66c80acdb9523668599ba62a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "echasnovski",
-        "repo": "mini.nvim",
-        "type": "github"
-      }
-    },
-    "plugin_noice-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1732649160,
-        "narHash": "sha256-0RLMkThaE6AxYvUKx056Ac63Oc2NTJxvgyRnZJ5/D2g=",
-        "owner": "folke",
-        "repo": "noice.nvim",
-        "rev": "c6f6fb178ebe9b4fd90383de743c3399f8c3a37c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "folke",
-        "repo": "noice.nvim",
-        "type": "github"
-      }
-    },
-    "plugin_nui-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1726376728,
-        "narHash": "sha256-90Wq+vT361mTaGU/SvAezqJkX9HHmZ2GI2fKBDxPn04=",
-        "owner": "MunifTanjim",
-        "repo": "nui.nvim",
-        "rev": "b58e2bfda5cea347c9d58b7f11cf3012c7b3953f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "MunifTanjim",
-        "repo": "nui.nvim",
-        "type": "github"
-      }
-    },
     "plugin_nvim-cmp": {
       "flake": false,
       "locked": {
@@ -529,9 +481,6 @@
         "plugin_lazy-nvim": "plugin_lazy-nvim",
         "plugin_lazydev-nvim": "plugin_lazydev-nvim",
         "plugin_lualine-nvim": "plugin_lualine-nvim",
-        "plugin_mini-nvim": "plugin_mini-nvim",
-        "plugin_noice-nvim": "plugin_noice-nvim",
-        "plugin_nui-nvim": "plugin_nui-nvim",
         "plugin_nvim-cmp": "plugin_nvim-cmp",
         "plugin_nvim-lspconfig": "plugin_nvim-lspconfig",
         "plugin_nvim-treesitter-context": "plugin_nvim-treesitter-context",
