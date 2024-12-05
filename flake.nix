@@ -7,6 +7,7 @@
 		flake-utils.url = "github:numtide/flake-utils";
 
 		# Plugins from git
+		# plugin_PLUGIN-NAME = { url = "github:OWNER/REPO"; flake = false; };
 		plugin_barbar-nvim = { url = "github:romgrk/barbar.nvim"; flake = false; };
 		plugin_boole-nvim = { url = "github:nat-418/boole.nvim"; flake = false; };
 		plugin_catppuccin-nvim = { url = "github:catppuccin/nvim"; flake = false; };
@@ -18,9 +19,9 @@
 		plugin_lazy-nvim = { url = "github:folke/lazy.nvim"; flake = false; };
 		plugin_lazydev-nvim = { url = "github:folke/lazydev.nvim"; flake = false; };
 		plugin_lualine-nvim = { url = "github:nvim-lualine/lualine.nvim"; flake = false; };
-		# plugin_mini-nvim = { url = "github:echasnovski/mini.nvim"; flake = false; };
-		# plugin_noice-nvim = { url = "github:folke/noice.nvim"; flake = false; };
-		# plugin_nui-nvim = { url = "github:MunifTanjim/nui.nvim"; flake = false; };
+		plugin_mini-nvim = { url = "github:echasnovski/mini.nvim"; flake = false; };
+		plugin_noice-nvim = { url = "github:folke/noice.nvim"; flake = false; };
+		plugin_nui-nvim = { url = "github:MunifTanjim/nui.nvim"; flake = false; };
 		plugin_nvim-cmp = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
 		plugin_nvim-lspconfig = { url = "github:neovim/nvim-lspconfig"; flake = false; };
 		plugin_nvim-treesitter-context = { url = "github:nvim-treesitter/nvim-treesitter-context"; flake = false; };
@@ -43,6 +44,31 @@
 	outputs = { self, nixpkgs, flake-utils, ... }@inputs:
 	flake-utils.lib.eachDefaultSystem (system:
 	let
+
+		# Plugins from nixpkgs
+		nixpkgPlugins = with pkgs.vimPlugins; [
+			nvim-treesitter.withAllGrammars
+		];
+
+		# Extra stuff needed by neovim when running from flake
+		extraPackages = with pkgs; [
+			# System utilities
+			fd
+			fzf
+			git
+			ripgrep
+			# Language servers
+			gopls
+			htmx-lsp
+			lua-language-server
+			marksman
+			taplo
+			nil
+			yaml-language-server
+			vscode-langservers-extracted
+			# Extras
+			python312Packages.pylatexenc
+		];
 
 		pluginsFromInputs = builtins.filter
 			(s: (builtins.match "plugin_.*" s) != null)
@@ -73,39 +99,26 @@
 		};
 
 		pluginPathsLua = builtins.concatStringsSep "\n" (
-			pkgs.lib.attrsets.mapAttrsToList ( name: outPath:
-				"PluginsFromNix['${name}'] = '${outPath}'")
-			pkgs.neovimPlugins
+			( pkgs.lib.attrsets.mapAttrsToList
+				( name: outPath:
+					"PluginsFromNix['${name}'] = '${outPath}'"
+				) pkgs.neovimPlugins)
+			++
+			( pkgs.lib.lists.forEach nixpkgPlugins
+				( plugin:
+					"PluginsFromNix['${plugin.pname}'] = '${plugin}'"
+				)
+			)
 		);
-
-		extraPackages = with pkgs; [
-			# System utilities
-			fd
-			fzf
-			git
-			ripgrep
-			# Language servers
-			gopls
-			htmx-lsp
-			lua-language-server
-			marksman
-			taplo
-			nil
-			yaml-language-server
-			vscode-langservers-extracted
-			# Extras
-			python312Packages.pylatexenc
-		];
 
 	in rec {
 
-		devShells.develop = packages.neovim;
+		devShells.develop = packages.default;
 		devShells.default = pkgs.mkShell {
 			packages = [ packages.neovim ] ++ extraPackages;
 		};
 
-		packages.default = packages.neovim;
-		packages.neovim = pkgs.neovim.override {
+		packages.default = pkgs.neovim.override {
 
 			configure = {
 
@@ -113,15 +126,12 @@
 set runtimepath+=${./config}
 lua <<EOF
 PluginsFromNix = {}
-PluginsFromNix['nvim-treesitter'] = '${pkgs.vimPlugins.nvim-treesitter.withAllGrammars}'
 ${pluginPathsLua}
 EOF
 source ${./config/init.lua}
 				'';
 				
-				packages.all.start = with pkgs.vimPlugins; [
-					nvim-treesitter.withAllGrammars
-				] ++ (builtins.attrValues pkgs.neovimPlugins);
+				packages.all.start = with pkgs.neovimPlugins; [ lazy-nvim ];
 
 			};
 
