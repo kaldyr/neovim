@@ -15,8 +15,8 @@ vim.keymap.set('n', '<Up>', ':move .-2<CR>==', { silent = true, noremap = true }
 vim.keymap.set('n', '<Left>', '"mxh"mP', { silent = true })
 vim.keymap.set('n', '<Right>', '"mx"mp', { silent = true })
 -- Window management
-vim.keymap.set('n', '<C-w>n', ':new<CR>:Pick files<CR>', { desc = 'Split down', silent = true })
-vim.keymap.set('n', '<C-w>v', ':vnew<CR>:Pick files<CR>', { desc = 'Split to right', silent = true })
+vim.keymap.set('n', '<C-w>n', ':new<CR>:Telescope find_files<CR>', { desc = 'Split down', silent = true })
+vim.keymap.set('n', '<C-w>v', ':vnew<CR>:Telescope find_files<CR>', { desc = 'Split to right', silent = true })
 vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', { silent = true })
 vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', { silent = true })
 vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', { silent = true })

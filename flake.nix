@@ -98,11 +98,26 @@
 			} ) ];
 		};
 
+		runtimePaths = builtins.concatStringsSep "," (
+			( pkgs.lib.attrsets.mapAttrsToList
+				( name: outPath:
+					"${outPath}"
+				) pkgs.neovimPlugins
+			)
+			++
+			( pkgs.lib.lists.forEach nixpkgPlugins
+				( plugin:
+					"${plugin}"
+				)
+			)
+		);
+
 		pluginPathsLua = builtins.concatStringsSep "\n" (
 			( pkgs.lib.attrsets.mapAttrsToList
 				( name: outPath:
 					"PluginsFromNix['${name}'] = '${outPath}'"
-				) pkgs.neovimPlugins)
+				) pkgs.neovimPlugins
+			)
 			++
 			( pkgs.lib.lists.forEach nixpkgPlugins
 				( plugin:
@@ -123,7 +138,7 @@
 			configure = {
 
 				customRC = /* vimscript */ ''
-set runtimepath+=${./config}
+set runtimepath+=${./config},${runtimePaths}
 lua <<EOF
 PluginsFromNix = {}
 ${pluginPathsLua}
