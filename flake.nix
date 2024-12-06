@@ -37,6 +37,7 @@
 		plugin_telescope-nvim = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
 		plugin_telescope-ui-select-nvim = { url = "github:nvim-telescope/telescope-ui-select.nvim"; flake = false; };
 		plugin_tiny-inline-diagnostic-nvim = { url = "github:rachartier/tiny-inline-diagnostic.nvim"; flake = false; };
+		plugin_treesj = { url = "github:Wansmer/treesj"; flake = false; };
 		plugin_vim-fugitive = { url = "github:tpope/vim-fugitive"; flake = false; };
 		plugin_which-key-nvim = { url = "github:folke/which-key.nvim"; flake = false; };
 

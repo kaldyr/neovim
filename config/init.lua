@@ -1,12 +1,191 @@
--- Base Neovim Config
-require 'options'
-require 'keymaps'
-require 'autocmd'
+--
+-- Options
+--
+-- Define the Leader Key
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+-- General
+vim.opt.clipboard = 'unnamedplus'
+vim.opt.conceallevel = 2
+vim.opt.cursorline = true
+vim.opt.mouse = 'a'
+vim.opt.number = true
+vim.opt.numberwidth = 2
+vim.opt.relativenumber = true
+vim.opt.ruler = false
+vim.opt.scrolloff = 8
+vim.opt.showtabline = 0
+vim.opt.sidescrolloff = 8
+vim.opt.signcolumn = 'yes'
+vim.opt.smartcase = true
+vim.opt.spelllang = 'en_us'
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.swapfile = false
+vim.opt.syntax = 'on'
+vim.opt.termguicolors = true
+vim.opt.timeout = true;
+vim.opt.timeoutlen = 400
+vim.opt.title = true
+vim.opt.undofile = true
+vim.opt.wrap = false
+vim.opt.shortmess:append "sfI"
+
+-- Folding
+vim.o.foldcolumn = '1'
+vim.o.foldenable = true
+vim.o.foldexpr = 'v:lua.vim.lsp.foldexpr()'
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldmethod = 'expr'
+
+-- Indenting
+vim.opt.autoindent = true;
+vim.opt.expandtab = false
+vim.opt.shiftwidth = 0
+vim.opt.smarttab = false
+vim.opt.softtabstop = -1
+vim.opt.tabstop = 4
+
+-- Special characters
+vim.opt.fillchars = {
+	eob = ' ',
+	fold = ' ',
+	foldopen = '',
+	foldsep = ' ',
+	foldclose = '',
+}
+vim.opt.listchars = {
+	extends  = '⟩',
+	lead     = '·',
+	nbsp     = '␣',
+	precedes = '⟨',
+	space = '·',
+	tab      = '▏ ',
+	trail    = '*',
+}
+
+--
+-- Keybinds
+-- 
+-- All Modes
+vim.keymap.set('', '<Space>', '<Nop>', { silent = true })
+
+-- Normal Mode
+-- Escape removes highlights
+vim.keymap.set('n', '<ESC>', ':noh<CR>', { silent = true })
+-- Move current line
+vim.keymap.set('n', '<', '<<', { silent = true, noremap = true })
+vim.keymap.set('n', '>', '>>', { silent = true, noremap = true })
+vim.keymap.set('n', '<Down>', ':move .+1<CR>==', { silent = true, noremap = true })
+vim.keymap.set('n', '<Up>', ':move .-2<CR>==', { silent = true, noremap = true })
+-- Move character under cursor
+vim.keymap.set('n', '<Left>', '"mxh"mP', { silent = true })
+vim.keymap.set('n', '<Right>', '"mx"mp', { silent = true })
+-- Window management
+vim.keymap.set('n', '<C-w>n', ':new<CR>:Telescope find_files<CR>', { desc = 'Split down', silent = true })
+vim.keymap.set('n', '<C-w>v', ':vnew<CR>:Telescope find_files<CR>', { desc = 'Split to right', silent = true })
+vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', { silent = true })
+vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', { silent = true })
+vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', { silent = true })
+vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', { silent = true })
+-- Movement
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
+-- Spellcheck
+vim.keymap.set('n', '<leader>S', ':set invspell<CR>', { desc = 'Toggle Spellcheck', silent = true, noremap = true })
+-- Replace word under cursor
+vim.keymap.set(
+	'n',
+	'<leader>r',
+	':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gcI<left><left><left><left>',
+	{ desc = 'Replace [W]ord under cursor', silent = false }
+)
+-- Smart dd - if the line is empty don't override registers
+vim.keymap.set(
+	'n',
+	'dd',
+	function()
+		if vim.api.nvim_get_current_line():match('^%s*$') then
+			return '"_dd'
+		end
+		return 'dd'
+	end,
+	{ expr = true }
+)
+
+-- Visual Mode
+-- Stay in visual mode after indent
+vim.keymap.set('v', '<', '<gv', { silent = true })
+vim.keymap.set('v', '>', '>gv', { silent = true })
+-- Move text
+vim.keymap.set('v', '<Down>', ":move '>+1<CR>gv=gv", { silent = true, noremap = true })
+vim.keymap.set('v', '<Up>', ":move '<-2<CR>gv=gv", { silent = true, noremap = true })
+-- Execute/Replay Macro over selection
+vim.keymap.set('x', '.', ':norm .<CR>', { silent = true, noremap = true })
+vim.keymap.set('x', '@', ':norm @@<CR>', { silent = true, noremap = true })
+-- Replace selection
+vim.keymap.set(
+	'v',
+	'<leader>r',
+	'"hy:%s/<C-r>h/<C-r>h/gc<left><left><left>',
+	{ desc = 'Replace [S]election', silent = false }
+)
+
+-- Stuff to set whenever first entering neovim
+vim.api.nvim_create_autocmd( 'VimEnter', {
+	pattern = '*',
+	callback = function()
+
+		-- Turn on list characters, can be toggled by :set list!
+		vim.cmd [[ set list ]]
+
+		-- Set the current working directory to the path of the file passed to neovim
+		local pwd = vim.fn.expand( '%:p:h' )
+		vim.api.nvim_set_current_dir( pwd )
+
+		-- If neovim opened a folder instead of a file, remove netrw and open telescope find_files
+		if string.sub( vim.fn.expand('%p'), 0, -1 ) == pwd then
+			vim.api.nvim_buf_delete( 0, { force = true } )
+			require('telescope.builtin').find_files()
+		end
+
+	end,
+})
+
+-- Deal with yaml's stupid decisions
+vim.api.nvim_create_autocmd( 'FileType', {
+	pattern = { 'yaml', 'yml' },
+	command = 'setlocal expandtab'
+})
+
+-- Languages with tabstop=2
+vim.api.nvim_create_autocmd( 'FileType', {
+	pattern = { 'css', 'htm', 'html', 'templ', 'tmpl', 'yaml', 'yml' },
+	command = 'setlocal tabstop=2'
+})
+
+-- Open help on the side
+vim.api.nvim_create_autocmd( 'FileType', {
+	pattern = 'help',
+	command = 'wincmd L'
+})
+
+-- Lsp Attach
+-- vim.api.nvim_create_autocmd( 'LspAttach', {
+-- 	callback = function()
+-- 	end
+-- })
+
+-- Clear the diagnostic warnings, this is generated by the flake before getting here.
+PluginsFromNix = PluginsFromNix or {}
 
 -- Get Lazy configured and setup plugins
 require('lazy').setup({
 	spec = {
-		{ 'barbar.nvim',
+		{ 'romgrk/barbar.nvim',
 			dir = PluginsFromNix['barbar-nvim'],
 			init = function()
 				vim.g.barbar_auto_setup = false
@@ -14,17 +193,17 @@ require('lazy').setup({
 			keys = {
 				{ '<C-p>', ':BufferPick<CR>', noremap = true, silent = true },
 				{ '<C-n>', ':BufferPin<CR>', noremap = true, silent = true },
-				-- Keyd used to get around the C-, C-. C-< C-> limitations of neovim
-				{ '<Leader>bp', ':BufferPrevious<CR>', noremap = true, silent = true },
-				{ '<Leader>bn', ':BufferNext<CR>', noremap = true, silent = true },
-				{ '<Leader>BP', ':BufferMovePrevious<CR>', noremap = true, silent = true },
-				{ '<Leader>BN', ':BufferMoveNext<CR>', noremap = true, silent = true },
+				-- Keyd used to remap the following to get around the C-, C-. limitations of neovim
+				{ '<Leader>bp', ':BufferPrevious<CR>', noremap = true, silent = true }, -- <C-,>
+				{ '<Leader>bn', ':BufferNext<CR>', noremap = true, silent = true }, -- <C-.>
+				{ '<Leader>BP', ':BufferMovePrevious<CR>', noremap = true, silent = true }, -- <C-S-,>
+				{ '<Leader>BN', ':BufferMoveNext<CR>', noremap = true, silent = true }, -- <C-S-.>
 			},
 			opts = {
 				auto_hide = 1
 			},
 		},
-		{ 'boole.nvim',
+		{ 'nat-418/boole.nvim',
 			dir = PluginsFromNix['boole-nvim'],
 			opts = {
 				allow_caps_additions = {
@@ -37,8 +216,9 @@ require('lazy').setup({
 				},
 			},
 		},
-		{ 'catppuccin.nvim',
+		{ 'catppuccin/nvim',
 			dir = PluginsFromNix['catppuccin-nvim'],
+			name = 'catppuccin',
 			lazy = false,
 			priority = 1000,
 			init = function()
@@ -95,14 +275,14 @@ require('lazy').setup({
 				term_colors = true,
 			},
 		},
-		{ 'flash.nvim',
+		{ 'folke/flash.nvim',
 			dir = PluginsFromNix['flash-nvim'],
 			keys = {
 				{ 'S', function() require('flash').jump() end, mode = { 'n', 'x', 'o' }, desc = 'Flash' }
 			},
 			opts = {},
 		},
-		{ 'gitsigns.nvim',
+		{ 'lewis6991/gitsigns.nvim',
 			dir = PluginsFromNix['gitsigns-nvim'],
 			event = { 'BufReadPre', 'BufNewFile' },
 			opts = {
@@ -117,27 +297,28 @@ require('lazy').setup({
 					border = 'single',
 				},
 				on_attach = function(bufnr)
-					vim.keymap.set('n', '[g', require('gitsigns').nav_hunk('prev'), { buffer = bufnr, desc = 'Jump to previous hunk' })
-					vim.keymap.set('n', ']g', require('gitsigns').nav_hunk('next'), { buffer = bufnr, desc = 'Jump to next hunk' })
-					vim.keymap.set('n', '<leader>gs', require('gitsigns').stage_hunk, { buffer = bufnr, desc = 'Stage hunk' })
-					vim.keymap.set('n', '<leader>gu', require('gitsigns').undo_stage_hunk, { buffer = bufnr, desc = 'Undo stage hunk' })
-					vim.keymap.set('n', '<leader>gS', require('gitsigns').stage_buffer, { buffer = bufnr, desc = 'Stage entire buffer' })
-					vim.keymap.set('n', '<leader>gr', require('gitsigns').reset_hunk, { buffer = bufnr, desc = 'Reset hunk' })
-					vim.keymap.set('n', '<leader>gR', require('gitsigns').reset_buffer, { buffer = bufnr, desc = 'Reset buffer' })
-					vim.keymap.set('n', '<leader>gp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview hunk' })
-					vim.keymap.set('n', '<leader>gb', require('gitsigns').blame_line, { buffer = bufnr, desc = 'Show blame information' })
-					vim.keymap.set('n', '<leader>gD', require('gitsigns').diffthis, { buffer = bufnr, desc = 'Diff buffer' })
-					vim.keymap.set('n', '<leader>gT', require('gitsigns').toggle_current_line_blame, { buffer = bufnr, desc = 'Toggle current blame' })
-					vim.keymap.set('n', '<leader>gd', require('gitsigns').toggle_deleted, { buffer = bufnr, desc = 'Toggle deleted' })
+					local gitsigns = require('gitsigns')
+					vim.keymap.set('n', '[g', function() gitsigns.nav_hunk('prev') end, { buffer = bufnr, desc = 'Jump to previous hunk' })
+					vim.keymap.set('n', ']g', function() gitsigns.nav_hunk('next') end, { buffer = bufnr, desc = 'Jump to next hunk' })
+					vim.keymap.set('n', '<leader>gs', gitsigns.stage_hunk, { buffer = bufnr, desc = 'Stage hunk' })
+					vim.keymap.set('n', '<leader>gu', gitsigns.undo_stage_hunk, { buffer = bufnr, desc = 'Undo stage hunk' })
+					vim.keymap.set('n', '<leader>gS', gitsigns.stage_buffer, { buffer = bufnr, desc = 'Stage entire buffer' })
+					vim.keymap.set('n', '<leader>gr', gitsigns.reset_hunk, { buffer = bufnr, desc = 'Reset hunk' })
+					vim.keymap.set('n', '<leader>gR', gitsigns.reset_buffer, { buffer = bufnr, desc = 'Reset buffer' })
+					vim.keymap.set('n', '<leader>gp', gitsigns.preview_hunk, { buffer = bufnr, desc = 'Preview hunk' })
+					vim.keymap.set('n', '<leader>gb', gitsigns.blame_line, { buffer = bufnr, desc = 'Show blame information' })
+					vim.keymap.set('n', '<leader>gD', gitsigns.diffthis, { buffer = bufnr, desc = 'Diff buffer' })
+					vim.keymap.set('n', '<leader>gT', gitsigns.toggle_current_line_blame, { buffer = bufnr, desc = 'Toggle current blame' })
+					vim.keymap.set('n', '<leader>gd', gitsigns.toggle_deleted, { buffer = bufnr, desc = 'Toggle deleted' })
 				end,
 			},
 		},
-		{ 'lazydev.nvim',
+		{ 'folke/lazydev.nvim',
 			dir = PluginsFromNix['lazydev-nvim'],
 			ft = 'lua',
 			opts = {},
 		},
-		{ 'lualine.nvim',
+		{ 'nvim-lualine/lualine.nvim',
 			dir = PluginsFromNix['lualine-nvim'],
 			opts = {
 				options = {
@@ -151,7 +332,7 @@ require('lazy').setup({
 				},
 			},
 		},
-		{ 'noice.nvim',
+		{ 'folke/noice.nvim',
 			dir = PluginsFromNix['noice-nvim'],
 			event = 'VeryLazy',
 			opts = {
@@ -172,11 +353,11 @@ require('lazy').setup({
 				},
 			},
 		},
-		{ 'nui.nvim', dir = PluginsFromNix['nui-nvim'], lazy = true },
-		{ 'cmp-buffer', dir = PluginsFromNix['cmp-buffer'], lazy = true },
-		{ 'cmp-nvim-lsp', dir = PluginsFromNix['cmp-nvim-lsp'], lazy = true },
-		{ 'cmp-path', dir = PluginsFromNix['cmp-path'], lazy = true },
-		{ 'nvim-cmp',
+		{ 'MunifTanjim/nui.nvim', dir = PluginsFromNix['nui-nvim'], lazy = true },
+		{ 'hrsh7th/cmp-buffer', dir = PluginsFromNix['cmp-buffer'], lazy = true },
+		{ 'hrsh7th/cmp-nvim-lsp', dir = PluginsFromNix['cmp-nvim-lsp'], lazy = true },
+		{ 'hrsh7th/cmp-path', dir = PluginsFromNix['cmp-path'], lazy = true },
+		{ 'hrsh7th/nvim-cmp',
 			dir = PluginsFromNix['nvim-cmp'],
 			opts = {
 				completion = {
@@ -214,7 +395,7 @@ require('lazy').setup({
 				},
 			},
 		},
-		{ 'nvim-lspconfig',
+		{ 'neovim/nvim-lspconfig',
 			dir = PluginsFromNix['nvim-lspconfig'],
 			config = function()
 				vim.filetype.add({ extension = { templ = "templ" } }) -- a-h/templ Go
@@ -247,16 +428,12 @@ require('lazy').setup({
 			end
 		},
 		{ 'nvim-treesitter-context', dir = PluginsFromNix['nvim-treesitter-context'], lazy = true },
-		{ 'nvim-treesitter-context', dir = PluginsFromNix['nvim-treesitter-textobjects'], lazy = true },
-		{ 'nvim-treesitter',
+		{ 'nvim-treesitter/nvim-treesitter-textobjects', dir = PluginsFromNix['nvim-treesitter-textobjects'], lazy = true },
+		{ 'nvim-treesitter/nvim-treesitter',
 			dir = PluginsFromNix['nvim-treesitter'],
 			keys = {
 				{ ';', require('nvim-treesitter.textobjects.repeatable_move').repeat_last_move, mode = { 'n', 'x', 'o' } },
 				{ ',', require('nvim-treesitter.textobjects.repeatable_move').repeat_last_move_opposite, mode = { 'n', 'x', 'o' } },
-				{ 'f', require('nvim-treesitter.textobjects.repeatable_move').builtin_f, mode = { 'n', 'x', 'o' } },
-				{ 'F', require('nvim-treesitter.textobjects.repeatable_move').builtin_F, mode = { 'n', 'x', 'o' } },
-				{ 't', require('nvim-treesitter.textobjects.repeatable_move').builtin_t, mode = { 'n', 'x', 'o' } },
-				{ 'T', require('nvim-treesitter.textobjects.repeatable_move').builtin_T, mode = { 'n', 'x', 'o' } },
 			},
 			opts = {
 				auto_install = false,
@@ -338,8 +515,8 @@ require('lazy').setup({
 				},
 			},
 		},
-		{ 'nvim-web-devicons', dir = PluginsFromNix['nvim-web-devicons'], lazy = true },
-		{ 'obsidian.nvim',
+		{ 'nvim-tree/nvim-web-devicons', dir = PluginsFromNix['nvim-web-devicons'], lazy = true },
+		{ 'epwalsh/obsidian.nvim',
 			dir = PluginsFromNix['obsidian-nvim'],
 			cond = function()
 				return vim.fn.getcwd() == vim.fn.expand '~' .. '/Notes'
@@ -367,30 +544,30 @@ require('lazy').setup({
 				},
 			},
 		},
-		{ 'plenary.nvim', dir = PluginsFromNix['plenary-nvim'], lazy = true },
-		{ 'render-markdown.nvim',
+		{ 'nvim-lua/plenary.nvim', dir = PluginsFromNix['plenary-nvim'], lazy = true },
+		{ 'MeanderingProgrammer/render-markdown.nvim',
 			dir = PluginsFromNix['render-markdown-nvim'],
 			ft = 'markdown',
 			opts = {
 				file_types = {'markdown'}
 			},
 		},
-		{ 'snacks.nvim',
+		{ 'folke/snacks.nvim',
 			dir = PluginsFromNix['snacks-nvim'],
 			priority = 1000,
 			lazy = false,
 			opts = {}
 		},
-		{ 'sort.nvim',
+		{ 'sQVe/sort.nvim',
 			dir = PluginsFromNix['sort-nvim'],
 			keys = {
 				{ '<leader>s', ':Sort<CR>', mode = {'n', 'x'}, desc = 'Sort', silent = true },
 			},
 			opts = {},
 		},
-		{ 'telescope-git-file-history.nvim', dir = PluginsFromNix['telescope-git-file-history-nvim'], lazy = true },
-		{ 'telescope-ui-select.nvim', dir = PluginsFromNix['telescope-ui-select-nvim'], lazy = true },
-		{ 'telescope-nvim',
+		{ 'isak102/telescope-git-file-history.nvim', dir = PluginsFromNix['telescope-git-file-history-nvim'], lazy = true },
+		{ 'nvim-telescope/telescope-ui-select.nvim', dir = PluginsFromNix['telescope-ui-select-nvim'], lazy = true },
+		{ 'nvim-telescope/telescope.nvim',
 			dir = PluginsFromNix['telescope-nvim'],
 			keys = {
 				{ '<leader>f:', require('telescope.builtin').command_history, desc = 'Command History' },
@@ -416,7 +593,7 @@ require('lazy').setup({
 				},
 			},
 		},
-		{ 'tiny-inline-diagnostic.nvim',
+		{ 'rachartier/tiny-inline-diagnostic.nvim',
 			dir = PluginsFromNix['tiny-inline-diagnostic-nvim'],
 			event = 'VeryLazy',
 			priority = 1000,
@@ -425,8 +602,18 @@ require('lazy').setup({
 			end,
 			opts = {}
 		},
-		{ 'vim-fugitive', dir = PluginsFromNix['vim-fugitive'], lazy = true },
-		{ 'which-key.nvim',
+		{ 'Wansmer/treesj',
+			dir = PluginsFromNix['treesj'],
+			keys = {
+				{ 'J', '<cmd>TSJToggle<cr>', desc = 'Join Toggle' },
+			},
+			opts = {
+				use_default_keymaps = false,
+				max_join_length = 150
+			},
+		},
+		{ 'tpope/vim-fugitive', dir = PluginsFromNix['vim-fugitive'], lazy = true },
+		{ 'folke/which-key.nvim',
 			dir = PluginsFromNix['which-key-nvim'],
 			event = "VeryLazy",
 			keys = {
