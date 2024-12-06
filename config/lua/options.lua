@@ -1,3 +1,4 @@
+-- Special characters
 vim.opt.fillchars = {
 	eob = ' ',
 	fold = ' ',
@@ -5,7 +6,6 @@ vim.opt.fillchars = {
 	foldsep = ' ',
 	foldclose = '',
 }
-
 vim.opt.listchars = {
 	extends  = '⟩',
 	lead     = '·',
@@ -16,6 +16,15 @@ vim.opt.listchars = {
 	trail    = '*',
 }
 
+-- Folding
+vim.o.foldcolumn = '1'
+vim.o.foldenable = true
+vim.o.foldexpr = 'v:lua.vim.lsp.foldexpr()'
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldmethod = 'expr'
+
+-- Indenting
 vim.opt.autoindent = true;
 vim.opt.expandtab = false
 vim.opt.shiftwidth = 0
@@ -23,6 +32,7 @@ vim.opt.smarttab = false
 vim.opt.softtabstop = -1
 vim.opt.tabstop = 4
 
+-- General
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.conceallevel = 2
 vim.opt.cursorline = true

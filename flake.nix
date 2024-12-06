@@ -2,7 +2,8 @@
 
 	inputs = {
 
-		# Nixpkgs for neovim, treesitter with all grammars, lsps, and other runtime helpers
+		neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+		# Nixpkgs for treesitter with all grammars, lsps, and other runtime helpers
 		nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 		flake-utils.url = "github:numtide/flake-utils";
 
@@ -100,15 +101,11 @@
 
 		runtimePaths = builtins.concatStringsSep "," (
 			( pkgs.lib.attrsets.mapAttrsToList
-				( name: outPath:
-					"${outPath}"
-				) pkgs.neovimPlugins
+				( name: outPath: "${outPath}" ) pkgs.neovimPlugins
 			)
 			++
 			( pkgs.lib.lists.forEach nixpkgPlugins
-				( plugin:
-					"${plugin}"
-				)
+				( plugin: "${plugin}")
 			)
 		);
 
@@ -130,7 +127,7 @@
 
 		devShells.develop = packages.default;
 		devShells.default = pkgs.mkShell {
-			packages = [ packages.neovim ] ++ extraPackages;
+			packages = [ packages.default ] ++ extraPackages;
 		};
 
 		packages.default = pkgs.neovim.override {

@@ -12,14 +12,7 @@ vim.api.nvim_create_autocmd( 'VimEnter', {
 
 		-- If neovim opened a folder instead of a file, remove netrw and open telescope find_files
 		if string.sub( vim.fn.expand('%p'), 0, -1 ) == pwd then
-
 			vim.api.nvim_buf_delete( 0, { force = true } )
-
-			local status_ok, tbi = pcall( require, 'telescope.builtin' )
-			if status_ok then
-				tbi.find_files()
-			end
-
 		end
 
 	end,
@@ -27,18 +20,24 @@ vim.api.nvim_create_autocmd( 'VimEnter', {
 
 -- Deal with yaml's stupid decisions
 vim.api.nvim_create_autocmd( 'FileType', {
-	pattern = { "yaml", "yml" },
-	command = "setlocal expandtab"
+	pattern = { 'yaml', 'yml' },
+	command = 'setlocal expandtab'
 })
 
 -- Languages with tabstop=2
 vim.api.nvim_create_autocmd( 'FileType', {
-	pattern = { "css", "htm", "html", "templ", "tmpl", "yaml", "yml" },
-	command = "setlocal tabstop=2"
+	pattern = { 'css', 'htm', 'html', 'templ', 'tmpl', 'yaml', 'yml' },
+	command = 'setlocal tabstop=2'
 })
 
 -- Open help on the side
-vim.api.nvim_create_autocmd( "FileType", {
-	pattern = "help",
-	command = "wincmd L"
+vim.api.nvim_create_autocmd( 'FileType', {
+	pattern = 'help',
+	command = 'wincmd L'
 })
+
+-- Lsp Attach
+-- vim.api.nvim_create_autocmd( 'LspAttach', {
+-- 	callback = function()
+-- 	end
+-- })

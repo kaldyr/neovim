@@ -3,12 +3,6 @@ require 'options'
 require 'keymaps'
 require 'autocmd'
 
-listPlugins = function()
-	for key, value in pairs(PluginsFromNix) do
-		print( key .. '  |  ' .. value .. '\n' )
-	end
-end
-
 -- Get Lazy configured and setup plugins
 require('lazy').setup({
 	spec = {
@@ -123,8 +117,8 @@ require('lazy').setup({
 					border = 'single',
 				},
 				on_attach = function(bufnr)
-					vim.keymap.set('n', '[g', require('gitsigns').prev_hunk, { buffer = bufnr, desc = 'Jump to previous hunk' })
-					vim.keymap.set('n', ']g', require('gitsigns').next_hunk, { buffer = bufnr, desc = 'Jump to next hunk' })
+					vim.keymap.set('n', '[g', require('gitsigns').nav_hunk('prev'), { buffer = bufnr, desc = 'Jump to previous hunk' })
+					vim.keymap.set('n', ']g', require('gitsigns').nav_hunk('next'), { buffer = bufnr, desc = 'Jump to next hunk' })
 					vim.keymap.set('n', '<leader>gs', require('gitsigns').stage_hunk, { buffer = bufnr, desc = 'Stage hunk' })
 					vim.keymap.set('n', '<leader>gu', require('gitsigns').undo_stage_hunk, { buffer = bufnr, desc = 'Undo stage hunk' })
 					vim.keymap.set('n', '<leader>gS', require('gitsigns').stage_buffer, { buffer = bufnr, desc = 'Stage entire buffer' })
@@ -138,7 +132,11 @@ require('lazy').setup({
 				end,
 			},
 		},
-		{ 'lazydev.nvim', dir = PluginsFromNix['lazydev-nvim'], lazy = true },
+		{ 'lazydev.nvim',
+			dir = PluginsFromNix['lazydev-nvim'],
+			ft = 'lua',
+			opts = {},
+		},
 		{ 'lualine.nvim',
 			dir = PluginsFromNix['lualine-nvim'],
 			opts = {
@@ -153,7 +151,27 @@ require('lazy').setup({
 				},
 			},
 		},
-		{ 'noice.nvim', dir = PluginsFromNix['noice-nvim'], event = 'VeryLazy' },
+		{ 'noice.nvim',
+			dir = PluginsFromNix['noice-nvim'],
+			event = 'VeryLazy',
+			opts = {
+				lsp = {
+					-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+					override = {
+						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+						["vim.lsp.util.stylize_markdown"] = true,
+						["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+					},
+				},
+				presets = {
+					bottom_search = true, -- use a classic bottom cmdline for search
+					command_palette = true, -- position the cmdline and popupmenu together
+					long_message_to_split = true, -- long messages will be sent to a split
+					inc_rename = false, -- enables an input dialog for inc-rename.nvim
+					lsp_doc_border = false, -- add a border to hover docs and signature help
+				},
+			},
+		},
 		{ 'nui.nvim', dir = PluginsFromNix['nui-nvim'], lazy = true },
 		{ 'cmp-buffer', dir = PluginsFromNix['cmp-buffer'], lazy = true },
 		{ 'cmp-nvim-lsp', dir = PluginsFromNix['cmp-nvim-lsp'], lazy = true },
@@ -343,13 +361,7 @@ require('lazy').setup({
 						opts = { buffer = true, expr = true },
 					},
 				},
-				ui = {
-					enable = false,
-					checkboxes = {
-					[" "] = { hl_group = "ObsidianTodo" },
-					["x"] = { hl_group = "ObsidianDone" },
-					},
-				},
+				ui = { enable = false },
 				workspaces = {
 					{ name = "Notes", path = "/home/matt/Notes" },
 				},
@@ -358,6 +370,7 @@ require('lazy').setup({
 		{ 'plenary.nvim', dir = PluginsFromNix['plenary-nvim'], lazy = true },
 		{ 'render-markdown.nvim',
 			dir = PluginsFromNix['render-markdown-nvim'],
+			ft = 'markdown',
 			opts = {
 				file_types = {'markdown'}
 			},
@@ -403,8 +416,29 @@ require('lazy').setup({
 				},
 			},
 		},
-		{ 'tiny-inline-diagnostic.nvim', dir = PluginsFromNix['tiny-inline-diagnostic-nvim'], lazy = true },
+		{ 'tiny-inline-diagnostic.nvim',
+			dir = PluginsFromNix['tiny-inline-diagnostic-nvim'],
+			event = 'VeryLazy',
+			priority = 1000,
+			init = function()
+				vim.diagnostic.config({ virtual_text = false })
+			end,
+			opts = {}
+		},
 		{ 'vim-fugitive', dir = PluginsFromNix['vim-fugitive'], lazy = true },
-		{ 'which-key.nvim', dir = PluginsFromNix['which-key-nvim'], lazy = true },
+		{ 'which-key.nvim',
+			dir = PluginsFromNix['which-key-nvim'],
+			event = "VeryLazy",
+			keys = {
+				{
+					"<leader>?",
+					function()
+						require("which-key").show({ global = false })
+					end,
+					desc = "Buffer Local Keymaps (which-key)",
+				},
+			},
+			opts = {},
+		},
 	}
 })
