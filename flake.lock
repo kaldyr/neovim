@@ -434,6 +434,22 @@
         "type": "github"
       }
     },
+    "plugin:treesj": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1732352951,
+        "narHash": "sha256-UVUWNsD5DOc73nBmJOKrKDm7eMWAaddWwyGuwMhusAA=",
+        "owner": "Wansmer",
+        "repo": "treesj",
+        "rev": "03415ac60791d48e120a80d37e080744faf3ac15",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Wansmer",
+        "repo": "treesj",
+        "type": "github"
+      }
+    },
     "plugin:vim-fugitive": {
       "flake": false,
       "locked": {
@@ -495,6 +511,7 @@
         "plugin:telescope-nvim": "plugin:telescope-nvim",
         "plugin:telescope-ui-select-nvim": "plugin:telescope-ui-select-nvim",
         "plugin:tiny-inline-diagnostic-nvim": "plugin:tiny-inline-diagnostic-nvim",
+        "plugin:treesj": "plugin:treesj",
         "plugin:vim-fugitive": "plugin:vim-fugitive",
         "plugin:which-key-nvim": "plugin:which-key-nvim"
       }

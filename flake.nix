@@ -32,6 +32,7 @@
 		"plugin:telescope-nvim" = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
 		"plugin:telescope-ui-select-nvim" = { url = "github:nvim-telescope/telescope-ui-select.nvim"; flake = false; };
 		"plugin:tiny-inline-diagnostic-nvim" = { url = "github:rachartier/tiny-inline-diagnostic.nvim"; flake = false; };
+		"plugin:treesj" = { url = "github:Wansmer/treesj"; flake = false; };
 		"plugin:vim-fugitive" = { url = "github:tpope/vim-fugitive"; flake = false; };
 		"plugin:which-key-nvim" = { url = "github:folke/which-key.nvim"; flake = false; };
 
@@ -96,27 +97,44 @@
 			];
 		};
 
-		runtimePaths = builtins.concatStringsSep "," (
-			( pkgs.lib.attrsets.mapAttrsToList
-				( name: outPath: "${outPath}" ) pkgs.neovimPlugins
-			)
+		grammarsPath = pkgs.symlinkJoin {
+			name = "nvim-treesitter-grammars";
+			paths = pkgs.vimPlugins.nvim-treesitter.withAllGrammars.dependencies;
+		};
+
+		runtimePaths = pkgs.lib.strings.concatStrings (
+			[
+				"${./config},"
+				"${grammarsPath},"
+				"${pkgs.neovimPlugins.lazy-nvim},"
+			]
 			++
-			( pkgs.lib.lists.forEach nixpkgPlugins
-				( plugin: "${plugin}")
-			)
+			pkgs.lib.lists.forEach nixpkgPlugins
+				( plugin: "${plugin},")
+			++
+			pkgs.lib.attrsets.mapAttrsToList
+				( name: outPath: 
+					if name != "lazy-nvim" then
+						"${outPath},"
+					else "" )
+				pkgs.neovimPlugins
+			++
+			[ "${pkgs.neovim}/share/nvim/runtime" ]
 		);
 
 		pluginPathsLua = builtins.concatStringsSep "\n" (
-			( pkgs.lib.attrsets.mapAttrsToList
-				( name: outPath:
-					"PluginsFromNix['${name}'] = '${outPath}'"
-				) pkgs.neovimPlugins
-			)
+			( [ "PluginsFromNix['parsers'] = '${grammarsPath}/parser'" ] )
 			++
 			( pkgs.lib.lists.forEach nixpkgPlugins
 				( plugin:
 					"PluginsFromNix['${plugin.pname}'] = '${plugin}'"
 				)
+			)
+			++
+			( pkgs.lib.attrsets.mapAttrsToList
+				( name: outPath:
+					"PluginsFromNix['${name}'] = '${outPath}'"
+				) pkgs.neovimPlugins
 			)
 		);
 
@@ -131,17 +149,17 @@
 
 			configure = {
 
-				customRC = /* vimscript */ ''
-set runtimepath+=${./config}
-set runtimepath+=${runtimePaths}
+				customRC = /* vim */ ''
+set runtimepath=${runtimePaths}
 lua <<EOF
+vim.opt.rtp:append( vim.fn.stdpath('data') )
 PluginsFromNix = {}
 ${pluginPathsLua}
 EOF
 source ${./config/init.lua}
 				'';
 				
-				packages.all.start = with pkgs.neovimPlugins; [ lazy-nvim ];
+				packages.all.start = [ pkgs.neovimPlugins.lazy-nvim ];
 
 			};
 
