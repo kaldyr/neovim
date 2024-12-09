@@ -150,9 +150,9 @@ return {
 			lsp = {
 				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 				override = {
-					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-					["vim.lsp.util.stylize_markdown"] = true,
-					["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+					['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+					['vim.lsp.util.stylize_markdown'] = true,
+					['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp
 				},
 			},
 			presets = {
@@ -210,7 +210,7 @@ return {
 	},
 	{ 'neovim/nvim-lspconfig',
 		dir = PluginsFromNix['nvim-lspconfig'],
-		event = { "BufReadPre", "BufNewFile" },
+		event = { 'BufReadPre', 'BufNewFile' },
 		dependencies = {
 			{ 'folke/lazydev.nvim', dir = PluginsFromNix['lazydev-nvim'], ft = 'lua', opts = {} },
 		},
@@ -235,11 +235,11 @@ return {
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-			vim.filetype.add({ extension = { templ = "templ" } }) -- a-h/templ Go
+			vim.filetype.add({ extension = { templ = 'templ' } }) -- a-h/templ Go
 			require('lspconfig').cssls.setup { on_attach = on_attach, capabilities = capabilities }
 			require('lspconfig').gopls.setup { on_attach = on_attach, capabilities = capabilities }
-			require('lspconfig').html.setup { on_attach = on_attach, capabilities = capabilities, filetypes = { "html", "templ" } }
-			require('lspconfig').htmx.setup { on_attach = on_attach, capabilities = capabilities, filetypes = { "html", "templ" } }
+			require('lspconfig').html.setup { on_attach = on_attach, capabilities = capabilities, filetypes = { 'html', 'templ' } }
+			require('lspconfig').htmx.setup { on_attach = on_attach, capabilities = capabilities, filetypes = { 'html', 'templ' } }
 			require('lspconfig').lua_ls.setup { on_attach = on_attach, capabilities = capabilities }
 			require('lspconfig').marksman.setup { on_attach = on_attach, capabilities = capabilities }
 			require('lspconfig').nil_ls.setup { on_attach = on_attach, capabilities = capabilities }
@@ -278,10 +278,10 @@ return {
 			textobjects = {
 				move = {
 					enable = true,
-					goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer", ["]a"] = "@parameter.inner" },
-					goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer", ["]A"] = "@parameter.inner" },
-					goto_previous_start = { ["[f"] = "@function.outer", ["[c"] = "@class.outer", ["[a"] = "@parameter.inner" },
-					goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer", ["[A"] = "@parameter.inner" },
+					goto_next_start = { [']f'] = '@function.outer', [']c'] = '@class.outer', [']a'] = '@parameter.inner' },
+					goto_next_end = { [']F'] = '@function.outer', [']C'] = '@class.outer', [']A'] = '@parameter.inner' },
+					goto_previous_start = { ['[f'] = '@function.outer', ['[c'] = '@class.outer', ['[a'] = '@parameter.inner' },
+					goto_previous_end = { ['[F'] = '@function.outer', ['[C'] = '@class.outer', ['[A'] = '@parameter.inner' },
 				},
 			},
 		},
@@ -289,29 +289,36 @@ return {
 	{ 'nvim-tree/nvim-web-devicons', dir = PluginsFromNix['nvim-web-devicons'], lazy = true },
 	{ 'epwalsh/obsidian.nvim',
 		dir = PluginsFromNix['obsidian-nvim'],
-		cond = function()
-			return vim.fn.getcwd() == vim.fn.expand '~' .. '/Notes'
-		end,
+		event = {
+			"BufReadPre " .. vim.fn.expand '~' .. '/Notes/*.md',
+			"BufNewFile " .. vim.fn.expand '~' .. '/Notes/*.md',
+		},
 		opts = {
 			completion = { nvim_cmp = true },
-			finder = "telescope.nvim",
+			finder = 'telescope.nvim',
 			mappings = {
-				["gf"] = {
+				['gf'] = {
 					action = function()
 						return require('obsidian').util.gf_passthrough()
 					end,
 					opts = { buffer = true, expr = true, noremap = false },
 				},
-				["<cr>"] = {
+				['<cr>'] = {
 					action = function()
 						return require('obsidian').util.smart_action()
 					end,
 					opts = { buffer = true, expr = true },
 				},
 			},
-			ui = { enable = false },
+			ui = {
+				enable = false,
+				checkboxes = {
+					[' '] = { char = '󰄱', hl_group = 'ObsidianTodo' },
+					['x'] = { char = '', hl_group = 'ObsidianDone' },
+				},
+			},
 			workspaces = {
-				{ name = "Notes", path = "/home/matt/Notes" },
+				{ name = 'Notes', path = vim.fn.expand '~' .. '/Notes' },
 			},
 		},
 	},
@@ -355,7 +362,7 @@ return {
 		},
 		opts = {
 			extensions = {
-				["ui-select"] = {
+				['ui-select'] = {
 					require('telescope.themes').get_dropdown {}
 				}
 			},
@@ -382,14 +389,14 @@ return {
 	},
 	{ 'folke/which-key.nvim',
 		dir = PluginsFromNix['which-key-nvim'],
-		event = "VeryLazy",
+		event = 'VeryLazy',
 		keys = {
 			{
-				"<leader>?",
+				'<leader>?',
 				function()
-					require("which-key").show({ global = false })
+					require('which-key').show({ global = false })
 				end,
-				desc = "Buffer Local Keymaps (which-key)",
+				desc = 'Buffer Local Keymaps (which-key)',
 			},
 		},
 		opts = {},
