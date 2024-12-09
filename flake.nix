@@ -123,8 +123,6 @@
 		);
 
 		pluginPathsLua = builtins.concatStringsSep "\n" (
-			( [ "PluginsFromNix['parsers'] = '${grammarsPath}/parser'" ] )
-			++
 			( pkgs.lib.lists.forEach nixpkgPlugins
 				( plugin:
 					"PluginsFromNix['${plugin.pname}'] = '${plugin}'"
