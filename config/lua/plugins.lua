@@ -140,6 +140,25 @@ return {
 			},
 		},
 	},
+	{ 'echasnovski/mini.nvim',
+		dir = PluginsFromNix['mini-nvim'],
+		config = function()
+			require('mini.ai').setup()
+			require('mini.align').setup()
+			require('mini.bracketed').setup()
+			require('mini.comment').setup()
+			require('mini.cursorword').setup()
+			require('mini.hipatterns').setup({
+				highlighters = {
+					hex_color = require('mini.hipatterns').gen_highlighter.hex_color()
+				}
+			})
+			require('mini.indentscope').setup()
+			require('mini.operators').setup()
+			require('mini.pairs').setup()
+			require('mini.splitjoin').setup()
+		end,
+	},
 	{ 'folke/noice.nvim',
 		dir = PluginsFromNix['noice-nvim'],
 		dependencies = {
@@ -247,8 +266,6 @@ return {
 			require('lspconfig').taplo.setup { on_attach = on_attach, capabilities = capabilities }
 			require('lspconfig').templ.setup { on_attach = on_attach, capabilities = capabilities }
 			require('lspconfig').yamlls.setup { on_attach = on_attach, capabilities = capabilities }
-			vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, { desc = 'Go to previous diagnostic message' })
-			vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, { desc = 'Go to next diagnostic message' })
 			vim.g.markdown_fenced_languages = {'css', 'fish', 'html', 'go', 'javascript', 'json', 'lua', 'nix', 'python', 'sql', 'vim'}
 		end
 	},
@@ -289,6 +306,9 @@ return {
 	{ 'nvim-tree/nvim-web-devicons', dir = PluginsFromNix['nvim-web-devicons'], lazy = true },
 	{ 'epwalsh/obsidian.nvim',
 		dir = PluginsFromNix['obsidian-nvim'],
+		dependencies = {
+			{ 'nvim-lua/plenary.nvim', dir = PluginsFromNix['plenary-nvim'] },
+		},
 		event = {
 			"BufReadPre " .. vim.fn.expand '~' .. '/Notes/*.md',
 			"BufNewFile " .. vim.fn.expand '~' .. '/Notes/*.md',
@@ -376,16 +396,6 @@ return {
 			vim.diagnostic.config({ virtual_text = false })
 		end,
 		opts = {}
-	},
-	{ 'Wansmer/treesj',
-		dir = PluginsFromNix['treesj'],
-		keys = {
-			{ '<leader>J', '<cmd>TSJToggle<CR>', desc = 'Join Toggle' },
-		},
-		opts = {
-			use_default_keymaps = false,
-			max_join_length = 999
-		},
 	},
 	{ 'folke/which-key.nvim',
 		dir = PluginsFromNix['which-key-nvim'],

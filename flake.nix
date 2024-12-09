@@ -17,6 +17,7 @@
 		"plugin:lazy-nvim" = { url = "github:folke/lazy.nvim"; flake = false; };
 		"plugin:lazydev-nvim" = { url = "github:folke/lazydev.nvim"; flake = false; };
 		"plugin:lualine-nvim" = { url = "github:nvim-lualine/lualine.nvim"; flake = false; };
+		"plugin:mini-nvim" = { url = "github:echasnovski/mini.nvim"; flake = false; };
 		"plugin:noice-nvim" = { url = "github:folke/noice.nvim"; flake = false; };
 		"plugin:nui-nvim" = { url = "github:MunifTanjim/nui.nvim"; flake = false; };
 		"plugin:nvim-cmp" = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
@@ -32,7 +33,6 @@
 		"plugin:telescope-nvim" = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
 		"plugin:telescope-ui-select-nvim" = { url = "github:nvim-telescope/telescope-ui-select.nvim"; flake = false; };
 		"plugin:tiny-inline-diagnostic-nvim" = { url = "github:rachartier/tiny-inline-diagnostic.nvim"; flake = false; };
-		"plugin:treesj" = { url = "github:Wansmer/treesj"; flake = false; };
 		"plugin:vim-fugitive" = { url = "github:tpope/vim-fugitive"; flake = false; };
 		"plugin:which-key-nvim" = { url = "github:folke/which-key.nvim"; flake = false; };
 
