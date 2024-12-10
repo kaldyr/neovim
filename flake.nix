@@ -28,7 +28,6 @@
         "plugin:obsidian-nvim" = { url = "github:epwalsh/obsidian.nvim"; flake = false; };
         "plugin:plenary-nvim" = { url = "github:nvim-lua/plenary.nvim"; flake = false; };
         "plugin:render-markdown-nvim" = { url = "github:MeanderingProgrammer/render-markdown.nvim"; flake = false; };
-        "plugin:sort-nvim" = { url = "github:sQVe/sort.nvim"; flake = false; };
         "plugin:telescope-git-file-history-nvim" = { url = "github:isak102/telescope-git-file-history.nvim"; flake = false; };
         "plugin:telescope-nvim" = { url = "github:nvim-telescope/telescope.nvim"; flake = false; };
         "plugin:telescope-ui-select-nvim" = { url = "github:nvim-telescope/telescope-ui-select.nvim"; flake = false; };

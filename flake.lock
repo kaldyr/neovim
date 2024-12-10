@@ -370,22 +370,6 @@
         "type": "github"
       }
     },
-    "plugin:sort-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1681328492,
-        "narHash": "sha256-xncv1vuSoxLEFoWUC2RR5wlzXvrPBd2Fpl2di+EGMTU=",
-        "owner": "sQVe",
-        "repo": "sort.nvim",
-        "rev": "c789da6968337d2a61104a929880b5f144e02855",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sQVe",
-        "repo": "sort.nvim",
-        "type": "github"
-      }
-    },
     "plugin:telescope-git-file-history-nvim": {
       "flake": false,
       "locked": {
@@ -507,7 +491,6 @@
         "plugin:obsidian-nvim": "plugin:obsidian-nvim",
         "plugin:plenary-nvim": "plugin:plenary-nvim",
         "plugin:render-markdown-nvim": "plugin:render-markdown-nvim",
-        "plugin:sort-nvim": "plugin:sort-nvim",
         "plugin:telescope-git-file-history-nvim": "plugin:telescope-git-file-history-nvim",
         "plugin:telescope-nvim": "plugin:telescope-nvim",
         "plugin:telescope-ui-select-nvim": "plugin:telescope-ui-select-nvim",
