@@ -46,7 +46,7 @@ vim.opt.shiftwidth = 0
 vim.opt.smartindent = false
 vim.opt.smarttab = false
 vim.opt.softtabstop = -1
-vim.opt.tabstop = 4
+vim.opt.tabstop = 3
 
 -- Special characters
 vim.opt.fillchars = {

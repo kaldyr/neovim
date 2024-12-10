@@ -37,7 +37,7 @@ return {
 		require('mini.pairs').setup()
 		require('mini.splitjoin').setup({
 			mappings = {
-				toggle = '<Leader>J',
+				toggle = '\\j',
 			},
 		})
 		require('mini.surround').setup()
