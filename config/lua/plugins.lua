@@ -140,8 +140,6 @@ return {
 	{ 'echasnovski/mini.nvim',
 		dir = PluginsFromNix['mini-nvim'],
 		config = function()
-			require('mini.ai').setup()
-			require('mini.align').setup()
 			require('mini.basics').setup({
 				options = {
 					basic = true,
@@ -160,7 +158,6 @@ return {
 				silent = true,
 			})
 			require('mini.bracketed').setup()
-			require('mini.comment').setup()
 			require('mini.cursorword').setup()
 			require('mini.hipatterns').setup({
 				highlighters = {
@@ -168,7 +165,7 @@ return {
 				}
 			})
 			require('mini.icons').setup()
-			require('mini.indentscope').setup()
+			require('mini.indentscope').setup({ symbol = "▏" })
 			require('mini.operators').setup()
 			require('mini.pairs').setup()
 			require('mini.splitjoin').setup({
@@ -365,8 +362,12 @@ return {
 	{ 'MeanderingProgrammer/render-markdown.nvim',
 		dir = PluginsFromNix['render-markdown-nvim'],
 		ft = 'markdown',
+		keys = {
+			{ '\\m', '<Cmd>RenderMarkdown toggle<CR>', desc = "Toggle 'RenderMarkdown'", silent = true },
+		},
 		opts = {
-			file_types = { 'markdown' }
+			file_types = { 'markdown' },
+			render_modes = { 'n', 'c', 't' }
 		},
 	},
 	{ 'sQVe/sort.nvim',
