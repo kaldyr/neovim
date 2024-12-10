@@ -27,7 +27,7 @@ vim.opt.timeoutlen = 400
 -- vim.opt.title = true
 -- vim.opt.undofile = true
 -- vim.opt.wrap = false
--- vim.opt.shortmess:append "sFI"
+vim.opt.shortmess:append "sfFI"
 
 -- Folding
 vim.opt.foldcolumn = 'auto:1'
@@ -43,6 +43,7 @@ vim.opt.foldtext = ''
 -- vim.opt.autoindent = true
 vim.opt.expandtab = false
 vim.opt.shiftwidth = 0
+vim.opt.smartindent = false
 -- vim.opt.smarttab = false
 vim.opt.softtabstop = -1
 vim.opt.tabstop = 4
