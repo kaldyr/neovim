@@ -17,20 +17,14 @@ vim.api.nvim_create_autocmd('VimEnter', {
 	end,
 })
 
--- Deal with yaml's stupid decisions
-vim.api.nvim_create_autocmd('FileType', {
-	pattern = { 'yaml', 'yml' },
-	command = 'setlocal expandtab'
-})
-
--- Languages with tabstop=2
-vim.api.nvim_create_autocmd('FileType', {
-	pattern = { 'css', 'htm', 'html', 'templ', 'tmpl', 'yaml', 'yml' },
-	command = 'setlocal tabstop=2'
-})
-
 -- Open help on the side
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = 'help',
 	command = 'wincmd L'
+})
+
+-- Disable list characters on filetypes
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = { 'md'},
+	command = 'set nolist'
 })

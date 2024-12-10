@@ -17,9 +17,11 @@ require('lazy').setup({
 				'tarPlugin',
 				'tohtml',
 				'tutor',
-				'zipPlugin',
+				'zipPlugin'
 			},
 		},
 	},
 	spec = { import = 'plugins' }
 })
+
+vim.cmd [[ colorscheme catppuccin ]]

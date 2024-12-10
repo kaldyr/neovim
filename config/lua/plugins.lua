@@ -33,9 +33,6 @@ return {
 		name = 'catppuccin',
 		lazy = false,
 		priority = 1000,
-		init = function()
-			vim.cmd [[ colorscheme catppuccin-frappe ]]
-		end,
 		opts = {
 			flavour = 'frappe',
 			background = {
@@ -45,7 +42,7 @@ return {
 			dim_inactive = {
 				enabled = true,
 				shade = 'dark',
-				percentage = 0.35,
+				percentage = 0.05,
 			},
 			integrations = {
 				barbar = true,
@@ -145,6 +142,23 @@ return {
 		config = function()
 			require('mini.ai').setup()
 			require('mini.align').setup()
+			require('mini.basics').setup({
+				options = {
+					basic = true,
+					extra_ui = true,
+					win_borders = 'bold'
+				},
+				mappings = {
+					basic = true,
+					option_toggle_prefix = [[\]],
+					windows = true,
+				},
+				autocommands = {
+					basic = true,
+					relnum_in_visual_mode = true,
+				},
+				silent = true,
+			})
 			require('mini.bracketed').setup()
 			require('mini.comment').setup()
 			require('mini.cursorword').setup()
@@ -153,10 +167,16 @@ return {
 					hex_color = require('mini.hipatterns').gen_highlighter.hex_color()
 				}
 			})
+			require('mini.icons').setup()
 			require('mini.indentscope').setup()
 			require('mini.operators').setup()
 			require('mini.pairs').setup()
-			require('mini.splitjoin').setup()
+			require('mini.splitjoin').setup({
+				mappings = {
+					toggle = '<Leader>J',
+				},
+			})
+			require('mini.surround').setup()
 		end,
 	},
 	{ 'folke/noice.nvim',

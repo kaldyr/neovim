@@ -15,17 +15,11 @@ vim.keymap.set('n', '<Right>', '"mx"mp', { silent = true })
 -- Window management
 vim.keymap.set('n', '<C-w>n', ':new<CR>', { desc = 'Split down', silent = true })
 vim.keymap.set('n', '<C-w>v', ':vnew<CR>', { desc = 'Split to right', silent = true })
-vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', { silent = true })
-vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', { silent = true })
-vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', { silent = true })
-vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', { silent = true })
 -- Movement
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
--- Spellcheck
-vim.keymap.set('n', '<leader>S', ':set invspell<CR>', { desc = 'Toggle Spellcheck', silent = true, noremap = true })
 -- Replace word under cursor
 vim.keymap.set(
 	'n',
