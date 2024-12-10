@@ -25,6 +25,6 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Disable list characters on filetypes
 vim.api.nvim_create_autocmd('FileType', {
-	pattern = { 'md'},
+	pattern = 'markdown',
 	command = 'set nolist'
 })
