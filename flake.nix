@@ -64,6 +64,8 @@
             vscode-langservers-extracted
             # Extras
             python312Packages.pylatexenc
+            # Symbol font
+            nerd-fonts.symbols-only # Symbol font
         ];
 
         pluginsFromInputs = builtins.filter
