@@ -16,17 +16,17 @@ Plugins can be installed either directly from github or from nixpkgs.
 #### Installation
 If you want a plugin from nixpkgs, add it to the nixpkgPlugins list at the top of the outputs:
 ```nix
-	# Plugins from nixpkgs
-	nixpkgPlugins = with pkgs.vimPlugins; [
-		nvim-treesitter.withAllGrammars
-		PLUGIN_NAME
-		...
-	];
+# Plugins from nixpkgs
+nixpkgPlugins = with pkgs.vimPlugins; [
+    nvim-treesitter.withAllGrammars
+    PLUGIN_NAME
+    ...
+];
 ```
 
 If you install a plugin from github, add it is an input to the flake with the following format:
 ```nix
-	"plugin:PLUGIN-NAME" = { url = "github:OWNER/REPO"; flake = false; };
+    "plugin:PLUGIN-NAME" = { url = "github:OWNER/REPO"; flake = false; };
 ```
 
 The flake will automatically do the following:
@@ -37,9 +37,9 @@ The flake will automatically do the following:
 It is important to configure lazy with this:
 ```lua
 require('lazy').setup({
-	performance = {
-		rtp = {
-			reset = false,
+    performance = {
+        rtp = {
+            reset = false,
 ```
 Treesitter grammars from nixpkgs will not correctly load if lazy.nvim controls the runtime path.
 
@@ -48,37 +48,36 @@ Treesitter grammars from nixpkgs will not correctly load if lazy.nvim controls t
 The PluginsFromNix lua table allows you to tell lazy the nix store path the plugin is installed to.  
 Configure plugins just like you would with lazy.nvim, but add the following line:
 ```lua
-	dir = PluginsFromNix['PLUGIN_NAME'];
+dir = PluginsFromNix['PLUGIN_NAME'];
 ```
 Where PLUGIN_NAME is the same name you gave it in the flake.nix inputs or pkgs.vimPlugins.PLUGIN_NAME.  
 
 Example:
 flake.nix:
 ```nix
-{
-	inputs = {
-		...
-        "plugin:which-key-nvim" = { url = "github:folke/which-key.nvim"; flake = false; };
-		...
-	}
-	...
+inputs = {
+    ...
+    "plugin:which-key-nvim" = { url = "github:folke/which-key.nvim"; flake = false; };
+    ...
+}
+...
 ```
 lazy plugin table:
 ```lua
 {
-	'folke/which-key.nvim',
-	dir = PluginsFromNix['which-key-nvim'],
-	event = 'VeryLazy',
-	keys = {
-		{
-			'<leader>?',
-			function()
-				require('which-key').show({ global = false })
-			end,
-			desc = 'Buffer Local Keymaps (which-key)',
-		},
-	},
-	opts = {},
+    'folke/which-key.nvim',
+    dir = PluginsFromNix['which-key-nvim'],
+    event = 'VeryLazy',
+    keys = {
+        {
+            '<leader>?',
+            function()
+                require('which-key').show({ global = false })
+            end,
+            desc = 'Buffer Local Keymaps (which-key)',
+        },
+    },
+    opts = {},
 }
 ```
 
@@ -91,33 +90,33 @@ This flake will act as your package manager.
 To update plugins, use ```nix flake update```.  
 
 To run without installing:
-```
+```fish
 nix shell github:kaldyr/neovim -- -c nvim
 ```
 To include in a nix config:
 - Add as input in flake.nix
 - Install the package with:
-```
+```nix
 inputs.neovim.packages.${pkgs.system}.default
 ```
 - Or add as an overlay with:
-```
+```nix
 overlays.modifications = final: prev: {
-	...
-	neovim = inputs.neovim.packages.${prev.system}.default;
-	...
+    ...
+    neovim = inputs.neovim.packages.${prev.system}.default;
+    ...
 };
 
 ...
 
 "system" = nixpkgs.lib.nixosSystem {
-	...
-	modules = [
-		...
-		{ nixpkgs.overlays = with overlays; [ modifications ]; }
-		...
-	];
-	...
+    ...
+    modules = [
+        ...
+        { nixpkgs.overlays = with overlays; [ modifications ]; }
+        ...
+    ];
+    ...
 };
 ```
 
