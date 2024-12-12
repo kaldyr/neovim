@@ -6,7 +6,6 @@
         flake-utils.url = "github:numtide/flake-utils";
 
         # Plugins from git
-        # "plugin:PLUGIN-NAME" = { url = "github:OWNER/REPO"; flake = false; };
         "plugin:barbar-nvim" = { url = "github:romgrk/barbar.nvim"; flake = false; };
         "plugin:boole-nvim" = { url = "github:nat-418/boole.nvim"; flake = false; };
         "plugin:catppuccin-nvim" = { url = "github:catppuccin/nvim"; flake = false; };
@@ -64,8 +63,8 @@
             vscode-langservers-extracted
             # Extras
             python312Packages.pylatexenc
-            # Symbol font
-            nerd-fonts.symbols-only # Symbol font
+            # Symbol rendering
+            nerd-fonts.symbols-only
         ];
 
         pluginsFromInputs = builtins.filter

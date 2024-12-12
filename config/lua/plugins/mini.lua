@@ -4,8 +4,6 @@ return {
 	dir = PluginsFromNix['mini-nvim'],
 
 	config = function()
-		-- require('mini.ai').setup()
-		-- require('mini.align').setup()
 		require('mini.basics').setup({
 			options = {
 				basic = true,
@@ -24,7 +22,6 @@ return {
 			silent = true,
 		})
 		require('mini.bracketed').setup()
-		-- require('mini.comment').setup()
 		require('mini.cursorword').setup()
 		require('mini.hipatterns').setup({
 			highlighters = {
@@ -33,6 +30,7 @@ return {
 		})
 		require('mini.icons').setup()
 		require('mini.indentscope').setup({ symbol = "▏" })
+		require('mini.notify').setup()
 		require('mini.operators').setup()
 		require('mini.pairs').setup()
 		require('mini.splitjoin').setup({

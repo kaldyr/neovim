@@ -6,6 +6,7 @@ vim.g.maplocalleader = ' '
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.conceallevel = 2
 vim.opt.cursorline = true
+vim.opt.laststatus = 3
 vim.opt.mouse = 'a'
 vim.opt.number = true
 vim.opt.numberwidth = 2
@@ -65,5 +66,5 @@ vim.opt.listchars = {
 	precedes = '⟨',
 	space = '·',
 	tab = '▏ ',
-	trail = '*',
+	trail = '␣',
 }
