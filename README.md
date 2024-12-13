@@ -24,12 +24,13 @@ nixpkgPlugins = with pkgs.vimPlugins; [
 ];
 ```
 
-If you install a plugin from github, add it is an input to the flake with the following format:
+If you install a plugin from github, add it as an input to the flake with the following format:
 ```nix
     "plugin:PLUGIN-NAME" = { url = "github:OWNER/REPO"; flake = false; };
 ```
 
 The flake will automatically do the following:
+- Build plugins from github and add them to pkgs.neovimPlugins
 - Create a global key/value table in lua named PluginsFromNix
 - Reset neovim's runtime path
 - Arrange the new runtime path in the correct order to load treesitter grammars.
