@@ -4,8 +4,8 @@ return {
 	dir = PluginsFromNix['nvim-cmp'],
 
 	dependencies = {
-		{ 'hrsh7th/cmp-nvim-lsp', dir = PluginsFromNix['cmp-nvim-lsp'], lazy = true },
-		{ 'hrsh7th/cmp-path', dir = PluginsFromNix['cmp-path'], lazy = true },
+		{ 'hrsh7th/cmp-nvim-lsp', dir = PluginsFromNix['cmp-nvim-lsp'] },
+		{ 'hrsh7th/cmp-path', dir = PluginsFromNix['cmp-path'] },
 	},
 
 	lazy = false,
