@@ -92,7 +92,7 @@ To update plugins, use ```nix flake update```.
 
 To run without installing:
 ```fish
-nix shell github:kaldyr/neovim -- -c nvim
+nix shell github:kaldyr/neovim -c nvim
 ```
 To include in a nix config:
 - Add as input in flake.nix
