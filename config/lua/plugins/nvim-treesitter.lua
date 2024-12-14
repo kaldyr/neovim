@@ -5,13 +5,12 @@ return {
 	main = 'nvim-treesitter.configs',
 
 	dependencies = {
-		{ 'nvim-treesitter-context', dir = PluginsFromNix['nvim-treesitter-context'], opts = {line_numbers = false} },
+		{ 'nvim-treesitter-context', dir = PluginsFromNix['nvim-treesitter-context'] },
 		{ 'nvim-treesitter-textobjects', dir = PluginsFromNix['nvim-treesitter-textobjects'] },
 	},
 
 	opts = {
 		auto_install = false,
-		parser_install_dir = PluginsFromNix['parsers'],
 		highlight = {
 			enable = true,
 			additional_vim_regex_highlighting = true,
