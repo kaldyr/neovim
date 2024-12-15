@@ -21,6 +21,7 @@
         "plugin:nui-nvim" = { url = "github:MunifTanjim/nui.nvim"; flake = false; };
         "plugin:nvim-cmp" = { url = "github:hrsh7th/nvim-cmp"; flake = false; };
         "plugin:nvim-lspconfig" = { url = "github:neovim/nvim-lspconfig"; flake = false; };
+        "plugin:nvim-notify" = { url = "github:rcarriga/nvim-notify"; flake = false; };
         "plugin:nvim-treesitter-context" = { url = "github:nvim-treesitter/nvim-treesitter-context"; flake = false; };
         "plugin:nvim-treesitter-textobjects" = { url = "github:nvim-treesitter/nvim-treesitter-textobjects"; flake = false; };
         "plugin:nvim-web-devicons" = { url = "github:nvim-tree/nvim-web-devicons"; flake = false; };

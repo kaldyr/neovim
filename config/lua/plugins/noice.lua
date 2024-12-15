@@ -5,6 +5,7 @@ return {
 
 	dependencies = {
 		{ 'MunifTanjim/nui.nvim', dir = PluginsFromNix['nui-nvim'] },
+		{ 'rcarriga/nvim-notify', dir = PluginsFromNix['nvim-notify'] },
 	},
 
 	event = 'VeryLazy',
